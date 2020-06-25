@@ -1,3 +1,9 @@
 /Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/config/MvcConfig.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/web/model/Dong.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/service/AddressSearchService.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/web/model/AddressInputCommand.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/service/ApiBuildService.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/web/model/Gu.java
+/Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/web/model/AddressSearchCommand.java
 /Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/web/MainController.java
 /Users/polka/IdeaProjects/NobodyCanQuit/src/main/java/nobodyCanQuit/config/ControllerConfig.java

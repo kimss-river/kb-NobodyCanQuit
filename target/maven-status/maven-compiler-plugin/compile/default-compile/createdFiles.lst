@@ -1,3 +1,9 @@
+nobodyCanQuit/web/model/Dong.class
 nobodyCanQuit/web/MainController.class
-nobodyCanQuit/config/MvcConfig.class
+nobodyCanQuit/service/AddressSearchService.class
 nobodyCanQuit/config/ControllerConfig.class
+nobodyCanQuit/web/model/AddressSearchCommand.class
+nobodyCanQuit/config/MvcConfig.class
+nobodyCanQuit/web/model/AddressInputCommand.class
+nobodyCanQuit/web/model/Gu.class
+nobodyCanQuit/service/ApiBuildService.class

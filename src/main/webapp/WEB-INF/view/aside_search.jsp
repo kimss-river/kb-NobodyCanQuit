@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -18,6 +21,15 @@
                 <input class="serch__input" type="text" placeholder="구/군을 입력해주세요">
                 <button class="serch__button">검색</button>
             </div>
+        </div>
+        <div class="search-test">
+            <c:if test="${! empty addressInputCommand}">
+                <h4>${addressInputCommand.city}</h4>
+            </c:if>
+            <form:form modelAttribute="addressInputCommand">
+                <form:select path="city" items="${searchCommand.cityName}"/>
+                <button type="submit">Search</button>
+            </form:form>
         </div>
     </div>
 </body>
