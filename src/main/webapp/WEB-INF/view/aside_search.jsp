@@ -1,3 +1,5 @@
+<%@ page contentType="text/html; charset=utf-8" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -10,11 +12,11 @@
             <img src="/imgs/markerWrab.png" alt="markerWrab">
         </div>
         <div class="serch">
-            <h2 style="font-size: 23px; font-weight: bold;">¿ì¸®µ¿³× ³¯¾¾ ¾î¶§?</h2><br>
+            <h2 style="font-size: 23px; font-weight: bold;">ìš°ë¦¬ ë™ë„¤ ë‚ ì”¨ ì–´ë•Œ?</h2><br>
             <div id="aside__serch">
-                <!-- ½Ã/µµ, ±¸/±º, µ¿ ¿É¼Ç ¼±ÅÃÀ¸·Î º¯°æÇØ¾ßÇÔ -->
-                <input class="serch__input" type="text" placeholder="±¸/±ºÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä">
-                <button class="serch__button">°Ë»ö</button>
+                <!-- ì‹œ/ë„, êµ¬/êµ°, ë™ ì˜µì…˜ ì„ íƒìœ¼ë¡œ ë³€ê²½í•´ì•¼í•¨ -->
+                <input class="serch__input" type="text" placeholder="êµ¬/êµ°ì„ ìž…ë ¥í•´ì£¼ì„¸ìš”">
+                <button class="serch__button">ê²€ìƒ‰</button>
             </div>
         </div>
     </div>

@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+<%@ page contentType="text/html; charset=utf-8" %>
 <header>
     헤더
 </header>
