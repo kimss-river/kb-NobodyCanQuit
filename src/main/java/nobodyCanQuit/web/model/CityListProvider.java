@@ -1,29 +1,24 @@
 package nobodyCanQuit.web.model;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
-@Getter
-@Setter
 @Component
-public class AddressSearchCommand {
+public class CityListProvider {
 
-    private Map<String, String> cityMap;
-    private List<String> cityName;
-    private List<Gu> guList;
-    private List<Dong> dongList;
+    private final Map<String, String> cityMap;
+    @Getter
+    private final List<String> cityName;
 
-    public AddressSearchCommand() {
+    public CityListProvider() {
+        this.cityMap = new TreeMap<>();
+        this.cityName = new ArrayList<>(17);
         initCityList();
     }
 
     private void initCityList() {
-        this.cityMap = new HashMap<>();
-        this.cityName = new ArrayList<>(17);
-
         cityMap.put("서울특별시", "11");
         cityMap.put("부산광역시", "21");
         cityMap.put("대구광역시", "22");

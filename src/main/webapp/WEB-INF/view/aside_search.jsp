@@ -23,12 +23,26 @@
             </div>
         </div>
         <div class="search-test">
-            <h5>${accessToken}</h5>
-            <c:if test="${! empty addressInputCommand}">
-                <h4>${addressInputCommand.city}</h4>
-            </c:if>
             <form:form modelAttribute="addressInputCommand">
-                <form:select path="city" items="${searchCommand.cityName}"/>
+                <c:if test="${! empty addressInputCommand.dong}">
+                    <h4>${addressInputCommand.dong}</h4>
+                </c:if>
+                <form:select path="city" >
+                    <option value="">--선택--</option>
+                    <form:options items="${cityList.cityName}" />
+                </form:select>
+                <form:select path="gu" >
+                    <option value="">--선택--</option>
+                    <c:if test="${! empty addressCommand.resultList}">
+                        <form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
+                    </c:if>
+                </form:select>
+                <form:select path="dong" >
+                    <option value="">--선택--</option>
+                    <c:if test="${! empty addressForDongCommand.resultList}">
+                        <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
+                    </c:if>
+                </form:select>
                 <button type="submit">Search</button>
             </form:form>
         </div>
