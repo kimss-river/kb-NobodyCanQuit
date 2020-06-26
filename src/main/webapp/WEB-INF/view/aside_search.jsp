@@ -27,17 +27,17 @@
                 <c:if test="${! empty addressInputCommand.dong}">
                     <h4>${addressInputCommand.dong}</h4>
                 </c:if>
-                <form:select path="city" >
+                <form:select path="city" onChange="this.form.submit()">
                     <option value="">--선택--</option>
                     <form:options items="${cityList.cityName}" />
                 </form:select>
-                <form:select path="gu" >
+                <form:select path="gu" onChange="this.form.submit()">
                     <option value="">--선택--</option>
                     <c:if test="${! empty addressCommand.resultList}">
                         <form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
                     </c:if>
                 </form:select>
-                <form:select path="dong" >
+                <form:select path="dong">
                     <option value="">--선택--</option>
                     <c:if test="${! empty addressForDongCommand.resultList}">
                         <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
