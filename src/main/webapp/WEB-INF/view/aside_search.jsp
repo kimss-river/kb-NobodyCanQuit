@@ -8,6 +8,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aside_serch</title>
+    <!-- Bootstrap 4 -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     <div id="aside__sWrap">
@@ -22,30 +27,30 @@
                 <button class="serch__button">검색</button>
             </div>
         </div>
-        <div class="search-test">
-            <form:form modelAttribute="addressInputCommand">
-                <c:if test="${! empty addressInputCommand.dong}">
-                    <h4>${addressInputCommand.dong}</h4>
-                </c:if>
-                <form:select path="city" onChange="this.form.submit()">
-                    <option value="">--선택--</option>
+        <nav class="navbar navbar-expand-sm bg-light navbar-light shadow">
+            <form:form modelAttribute="addressInputCommand" class="form-inline">
+                <form:select path="city" onChange="this.form.submit()" class="form-control mr-sm-3">
+                    <option value="">--시/도--</option>
                     <form:options items="${cityList.cityName}" />
                 </form:select>
-                <form:select path="gu" onChange="this.form.submit()">
-                    <option value="">--선택--</option>
+                <form:select path="gu" onChange="this.form.submit()" class="form-control mr-sm-3">
+                    <option value="">--시/군/구--</option>
                     <c:if test="${! empty addressCommand.resultList}">
                         <form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
                     </c:if>
                 </form:select>
-                <form:select path="dong">
-                    <option value="">--선택--</option>
+                <form:select path="dong"  class="form-control mr-sm-3">
+                    <option value="">--읍/면/동--</option>
                     <c:if test="${! empty addressForDongCommand.resultList}">
                         <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
                     </c:if>
                 </form:select>
-                <button type="submit">Search</button>
+                <button class="btn btn-success" type="submit">Search</button>
+                <c:if test="${! empty addressInputCommand.dong}">
+                    <h4>${addressInputCommand.dong}</h4>
+                </c:if>
             </form:form>
-        </div>
+        </nav>
     </div>
 </body>
 </html>
