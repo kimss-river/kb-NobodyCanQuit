@@ -1,6 +1,8 @@
 package nobodyCanQuit.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nobodyCanQuit.service.AddressSearchService;
 import nobodyCanQuit.web.model.AddressInputCommand;
 import nobodyCanQuit.web.model.AddressSearchCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +19,14 @@ public class MainController {
     private AddressSearchCommand addressSearchCommand;
 
     @GetMapping("/")
-    public String main(AddressInputCommand addressInputCommand, Model model) {
+    public String main(AddressInputCommand addressInputCommand, Model model) throws Exception {
 
         model.addAttribute("searchCommand", addressSearchCommand);
 
+        //TODO
+        AddressSearchService addressSearchService = new AddressSearchService();
+        String accessToken = addressSearchService.getAccessToken();
+        model.addAttribute("accessToken", accessToken);
 
         return "index";
     }

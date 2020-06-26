@@ -23,6 +23,7 @@
             </div>
         </div>
         <div class="search-test">
+            <h5>${accessToken}</h5>
             <c:if test="${! empty addressInputCommand}">
                 <h4>${addressInputCommand.city}</h4>
             </c:if>
