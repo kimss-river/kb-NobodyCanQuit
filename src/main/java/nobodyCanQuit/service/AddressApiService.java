@@ -2,6 +2,7 @@ package nobodyCanQuit.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Setter;
+import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.web.model.AddressInputCommand;
 import nobodyCanQuit.web.model.CityListProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +14,14 @@ import java.net.URL;
 @Component
 public class AddressApiService {
 
-    private String BUILDED_API;
-    private final ObjectMapper mapper = new ObjectMapper();
-    @Setter
-    private AddressInputCommand addressInputCommand;
     @Autowired
     private CityListProvider cityListProvider;
+    @Autowired
+    private ApiAuthKeys apiAuthKeys;
+    @Setter
+    private AddressInputCommand addressInputCommand;
+    private final ObjectMapper mapper = new ObjectMapper();
+    private String BUILDED_API;
     private String city = "1";
     private String gu;
 
@@ -59,7 +62,7 @@ public class AddressApiService {
 
         final String TOKEN_API = "https://sgisapi.kostat.go.kr/OpenAPI3/auth/authentication.json";
         final String CONSUMER_KEY = "9fbcd12ae4d34b8a9dd2";
-        final String SECRET_KEY = "39ab7bf878bc45f3ab98";
+        final String SECRET_KEY = apiAuthKeys.getADDRESS_API_SECRET_KEY();
         final String ADDRESS_API = "https://sgisapi.kostat.go.kr/OpenAPI3/addr/stage.json";
 
         StringBuilder builder = new StringBuilder(TOKEN_API);

@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MainController {
 
-    private final ObjectMapper mapper = new ObjectMapper();
     @Autowired
     private CityListProvider cityListProvider;
     @Autowired
-    private AddressApiService apiService;
+    private AddressApiService addressApiService;
+    private final ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/")
     public String main(AddressInputCommand addressInputCommand, Model model) {
@@ -35,14 +35,15 @@ public class MainController {
 
         model.addAttribute("cityList", cityListProvider);
 
-        apiService.buildApi();
-        apiService.setAddressInputCommand(addressInputCommand);
+        addressApiService.buildApi();
+        addressApiService.setAddressInputCommand(addressInputCommand);
 
-        AddressCommand addressCommand = mapper.readValue(apiService.getAddressLevel2Url(), AddressCommand.class);
+        AddressCommand addressCommand =
+                mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);
         model.addAttribute("addressCommand", addressCommand);
 
         AddressForDongCommand addressForDongCommand =
-                mapper.readValue(apiService.getAddressLevel3Url() ,AddressForDongCommand.class);
+                mapper.readValue(addressApiService.getAddressLevel3Url() ,AddressForDongCommand.class);
         model.addAttribute("addressForDongCommand", addressForDongCommand);
 
         return "index";

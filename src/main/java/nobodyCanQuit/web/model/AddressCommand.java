@@ -25,8 +25,6 @@ public class AddressCommand {
         private String name;
         @JsonProperty("cd")
         private String code;
-
-
     }
 
 }
