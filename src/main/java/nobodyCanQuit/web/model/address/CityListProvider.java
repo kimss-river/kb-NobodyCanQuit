@@ -1,4 +1,4 @@
-package nobodyCanQuit.web.model;
+package nobodyCanQuit.web.model.address;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;

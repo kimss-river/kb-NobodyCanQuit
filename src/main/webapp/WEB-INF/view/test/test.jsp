@@ -1,13 +1,27 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <!-- Bootstrap 4 -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body>
 
  <%-- ${vilage.response.body.items.fsctItems} --%>
    
    <!-- TMX(낮 최고기온)는 11시에 나옴 --> 
    <!-- TMN(아침 최저기온)는 02시에 나옴 --> 
-    <table border = 1 class="table table-hover">
-	 
-    	 <c:forEach items="${vilage.response.body.items.fsctItems}" var="fsctItem">
+    <table class="table table-hover">
+        <c:forEach items="${vilage.response.body.items.fsctItems}" var="fsctItem">
             <tr>       
             <td width = 150>발표일자</td>                     	                         
              <td width = 150>${fsctItem.baseDate}</td>  
@@ -71,10 +85,6 @@
                <c:out value ="${fsctItem.fcstValue} m/s"/>
             </c:if>
             <br/> <!-- 확인용 -->${fsctItem.fcstValue}
-          
-            
-            
-            
             </td>
             </tr>         
             <tr>
@@ -83,7 +93,8 @@
             <td width = 150>y좌표</td>
             <td width = 150>${fsctItem.ny}</td>
             </tr>
-           
-     </c:forEach>   
-    
+        </c:forEach>
     </table>
+
+</body>
+</html>

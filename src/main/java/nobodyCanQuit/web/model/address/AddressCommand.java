@@ -1,4 +1,4 @@
-package nobodyCanQuit.web.model;
+package nobodyCanQuit.web.model.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
