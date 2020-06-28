@@ -1,89 +1,65 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
- <%-- ${vilage.response.body.items.fsctItems} --%>
-   
-   <!-- TMX(³· ÃÖ°í±â¿Â)´Â 11½Ã¿¡ ³ª¿È --> 
-   <!-- TMN(¾ÆÄ§ ÃÖÀú±â¿Â)´Â 02½Ã¿¡ ³ª¿È --> 
-    <table border = 1 class="table table-hover">
-	 
-    	 <c:forEach items="${vilage.response.body.items.fsctItems}" var="fsctItem">
-            <tr>       
-            <td width = 150>¹ßÇ¥ÀÏÀÚ</td>                     	                         
-             <td width = 150>${fsctItem.baseDate}</td>  
-             <td width = 150>¹ßÇ¥½Ã°¢</td>                     	                         
-             <td width = 150>
-         		 ${fsctItem.baseTime}
-             </td>                                                                                            
-            </tr>
-           
-            <tr>
-            <td width = 150>ÀÚ·á±¸ºĞ¹®ÀÚ</td>
-            <td width = 150>         
-              <c:if test= "${fsctItem.category eq 'POP'}" >
-               <c:out value ="°­¼öÈ®·ü"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'PTY'}" >
-               <c:out value ="°­¼öÇüÅÂ"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'R06'}" >
-               <c:out value ="6½Ã°£ °­¼ö·®"/>
-              </c:if>
-                <c:if test= "${fsctItem.category eq 'S06'}" >
-               <c:out value ="6½Ã°£ ½ÅÀû¼³"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'REH'}" >
-               <c:out value ="½Àµµ"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'SKY'}" >
-               <c:out value ="ÇÏ´Ã»óÅÂ"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'T3H'}" >
-               <c:out value ="3½Ã°£±â¿Â"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'TMN'}" >
-               <c:out value ="¾ÆÄ§ ÃÖÀú ±â¿Â"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'TMX'}" >
-               <c:out value ="³· ÃÖ°í ±â¿Â"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'UUU'}" >
-               <c:out value ="Ç³¼Ó"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'VVV'}" >
-               <c:out value ="Ç³¼Ó"/>
-              </c:if>
-              <c:if test= "${fsctItem.category eq 'VEC'}" >
-               <c:out value ="Ç³Çâ"/>
-              </c:if>                	
-            </td>
-             <td width = 150>¿¹º¸ °ª</td>
-            <td width = 150>
-            <c:if test= "${fsctItem.category eq 'POP' || fsctItem.category eq 'REH'}" >
-               <c:out value ="${fsctItem.fcstValue}%"/>
-            </c:if>
-           
-             <c:if test= "${fsctItem.category eq 'T3H' || fsctItem.category eq 'TMX' || fsctItem.category eq 'TMN'}" >
-               <c:out value ="${fsctItem.fcstValue}¡É"/>
-            </c:if>
-            
-             <c:if test= "${fsctItem.category eq 'UUU' || fsctItem.category eq 'VVV' || fsctItem.category eq 'VEC' }" >
-               <c:out value ="${fsctItem.fcstValue} m/s"/>
-            </c:if>
-            <br/> <!-- È®ÀÎ¿ë -->${fsctItem.fcstValue}
-          
-            
-            
-            
-            </td>
-            </tr>         
-            <tr>
-            <td width = 150>xÁÂÇ¥</td>
-            <td width = 150>${fsctItem.nx}</td>
-            <td width = 150>yÁÂÇ¥</td>
-            <td width = 150>${fsctItem.ny}</td>
-            </tr>
-           
-     </c:forEach>   
-    
-    </table>
+<<script type="text/javascript">
+	function findParent(el, className){
+	  let check = el.parentNode.classList.contains(className);
+	  
+	  if(check === true){
+	     return el.parentNode;
+	  }else{
+	    return findParent(el.parentNode, className);
+	  }
+	}
+
+	function bindingTabEvent(wrap){
+	  let wrapEl = document.querySelectorAll(wrap);
+	  
+	  wrapEl.forEach(function(tabArea){
+	    let btn = tabArea.querySelectorAll('.btn_tab');
+	    
+	    btn.forEach(function(item){
+	      item.addEventListener('click', function(){
+	        let parent = findParent(this, 'tab_area');
+	        let idx = this.dataset['idx'];
+	        let depth = this.dataset['depth'];
+	        let btnArr = parent.querySelectorAll('.btn_tab[data-depth="'+ depth +'"]');
+	        let contentArr = parent.querySelectorAll('.content_area[data-depth="'+ depth +'"]');
+	        
+	        btnArr.forEach(function(btn){ btn.classList.remove('act'); });
+	        this.classList.add('act');
+	        contentArr.forEach(function(content){ content.classList.remove('act'); });
+	        parent.querySelector('.content_area[data-idx="'+ idx +'"][data-depth="'+ depth +'"]').classList.add('act');
+	      });
+	    });
+	  });
+	}
+
+	bindingTabEvent('.tab_wrap');
+</script>
+
+<div class="tab_wrap tab_area">
+	<div class="btn_area clearfix">
+		<button class="btn btn_tab act" data-depth="0" data-idx="0">ë‚ ì”¨</button>
+		<button class="btn btn_tab" data-depth="0" data-idx="1">ë¯¸ì„¸ë¨¼ì§€</button>
+	</div>
+	<div class="content_area act" data-depth="0" data-idx="0">
+		<p>ì¼ê°„ ë‚ ì”¨</p>
+		<div class="tab_area">
+			<div class="btn_area clearfix">
+				<button class="btn btn_tab act" data-depth="1" data-idx="0">ë‚ ì”¨</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="1">ê°•ìˆ˜</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="2">ë°”ëŒ</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="3">ìŠµë„</button>
+			</div>
+	
+			<div class="content_area act" data-depth="1" data-idx="0">ë‚ ì”¨ ìƒì„¸</div>
+			<div class="content_area" data-depth="1" data-idx="1">ê°•ìˆ˜ ìƒì„¸</div>
+			<div class="content_area" data-depth="1" data-idx="2">ë°”ëŒ ìƒì„¸</div>
+			<div class="content_area" data-depth="1" data-idx="3">ìŠµë„ ìƒì„¸</div>
+		</div>
+		<p>ì£¼ê°„ ë‚ ì”¨</p>
+	</div>
+	<div class="content_area" data-depth="0" data-idx="1">
+		<p>ë¯¸ì„¸ë¨¼ì§€ ìƒì„¸</p>
+	</div>
+</div>
