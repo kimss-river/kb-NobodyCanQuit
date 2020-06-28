@@ -1,5 +1,6 @@
 ﻿<%@ page contentType="text/html; charset=utf-8" %>
 
+<style>
 @font-face { 
     font-family: 'NanumBarunGothic';
     src: url('/fonts/NanumBarunGothic.eot');
@@ -116,6 +117,7 @@ footer a {
 	display:block;
 }
 .tab_wrap *[data-depth="1"] {
-	<!-- 탭 안의 탭. 스타일 -->
-}
 	
+}
+
+</style>

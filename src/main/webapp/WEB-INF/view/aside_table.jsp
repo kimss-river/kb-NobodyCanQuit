@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 	function findParent(el, className){
 	  let check = el.parentNode.classList.contains(className);
 	  

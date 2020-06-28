@@ -6,10 +6,11 @@
     <meta charset="UTF-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style type="text/css">
-    	<%@ include file="style.jsp" %>
-    	<%@ include file="styleInit.jsp" %>
+    <style>
     </style>
+    <jsp:include page="style.jsp" flush="false"/>
+    <jsp:include page="styleInit.jsp" flush="false" />
+    
 </head>
 <body>
     <div id="wrap">

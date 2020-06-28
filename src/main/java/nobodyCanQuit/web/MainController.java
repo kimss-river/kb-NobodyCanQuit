@@ -4,11 +4,11 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.AddressApiService;
 import nobodyCanQuit.service.VilageFcstInfoService;
+import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
 import nobodyCanQuit.web.model.AddressCommand;
 import nobodyCanQuit.web.model.AddressForDongCommand;
 import nobodyCanQuit.web.model.AddressInputCommand;
 import nobodyCanQuit.web.model.CityListProvider;
-import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
 
 import java.net.URL;
 
@@ -56,12 +56,12 @@ public class MainController {
         
         VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
         URL url = vilageFcstInfoService.getApiUrl();
-        
-        ViligeFcstStores viligeFcstStores = 
+
+        ViligeFcstStores viligeFcstStores =
         		mapper.readValue(url, ViligeFcstStores.class);
-        
-       
-       
+
+
+
         model.addAttribute("vilage", viligeFcstStores);
         
         return "index";
