@@ -1,4 +1,4 @@
-package nobodyCanQuit.web.model.address;
+package nobodyCanQuit.service;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -43,5 +43,17 @@ public class CityListProvider {
 
     public String getCityCode(String cityName) {
         return cityMap.get(cityName);
+    }
+
+    public String getShortName(String cityName) {
+
+        int code = Integer.parseInt(getCityCode(cityName));
+        StringBuilder stringBuilder = new StringBuilder(cityName);
+
+        if (code >= 33 && code <= 38) {
+            return stringBuilder.deleteCharAt(1).deleteCharAt(2).toString();
+        }
+
+        return stringBuilder.substring(0,2);
     }
 }

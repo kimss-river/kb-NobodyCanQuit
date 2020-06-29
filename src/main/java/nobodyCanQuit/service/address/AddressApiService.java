@@ -1,10 +1,10 @@
-package nobodyCanQuit.service;
+package nobodyCanQuit.service.address;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Setter;
 import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.address.CityListProvider;
+import nobodyCanQuit.service.CityListProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

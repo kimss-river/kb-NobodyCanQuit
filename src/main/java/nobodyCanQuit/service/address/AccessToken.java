@@ -1,4 +1,4 @@
-package nobodyCanQuit.service;
+package nobodyCanQuit.service.address;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

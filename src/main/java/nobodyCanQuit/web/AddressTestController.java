@@ -1,11 +1,11 @@
 package nobodyCanQuit.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nobodyCanQuit.service.AddressApiService;
+import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.address.CityListProvider;
+import nobodyCanQuit.service.CityListProvider;
 
 import java.io.IOException;
 
@@ -39,6 +39,9 @@ public class AddressTestController {
 
         addressApiService.buildApi();
         addressApiService.setAddressInputCommand(addressInputCommand);
+
+
+        model.addAttribute("test", cityListProvider.getShortName(addressInputCommand.getCity()));
 
         AddressCommand addressCommand =
                 mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);

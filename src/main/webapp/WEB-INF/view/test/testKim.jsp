@@ -38,6 +38,9 @@
             <c:if test="${! empty addressInputCommand.dong}">
                 <h4>${addressInputCommand.dong}</h4>
             </c:if>
+            <c:if test="${! empty test}">
+                <h4>${test}</h4>
+            </c:if>
         </form:form>
     </nav>
 </body>
