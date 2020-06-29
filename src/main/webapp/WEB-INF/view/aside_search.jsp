@@ -2,7 +2,7 @@
 
 <div id="aside__sWrap">
     <div id="marker">
-        <img src="/imgs/markerWrab.png" alt="markerWrab">
+        <img src="images/markerWrab.png" width="400" height="100" alt="markerWrab">
     </div>
     <div class="serch">
         <h2 style="font-size: 23px; font-weight: bold;">우리 동네 날씨 어때?</h2><br>

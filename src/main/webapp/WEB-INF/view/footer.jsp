@@ -1,12 +1,12 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+
 <footer>
 	<div>
         <ul>
-            <li>© NobodyCanQuit</li>
+        	<li>© NobodyCanQuit</li>
             <li>|</li>
             <li>측정정보출처 : 한국환경공단</li>
-        </ul>
-        <ul>
+            <br>
             <li class="txtDark">개발참여자</li>
             <li>|</li>
             <li><a href="https://github.com/KwonUriWe">권우리</a></li>

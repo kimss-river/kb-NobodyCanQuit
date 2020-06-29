@@ -10,7 +10,7 @@
 
 /* 반응형 */
 #wrap {width: 100%; margin: auto;}
-body {background: #E2D6FB;} 
+body {background: #fff;} 
 header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0;}
 #contents {width: 60%; margin: auto; margin-top: 85px;}
 section {float: left; width: 65%;}
@@ -71,6 +71,7 @@ footer li {
     display: inline;
     margin: 0px 1px 0px 1px;
     font-size: 12px;
+    color: #263857;
 }
 footer a {
     color: #263857;
@@ -89,12 +90,12 @@ footer a {
 	clear:both;
 }
 .tab_wrap {
-	width:800px;
+	width:100%;
 	margin:50px auto;
 }
 .tab_wrap .btn_tab {
 	float:left;
-	width:120px;
+	width:50%;
 	height:30px;
 	background:#E2D6FB;
 	text-align:center;
@@ -110,14 +111,15 @@ footer a {
 	min-height:200px;
 	padding:10px;
 	background:#E2D6FB;
-	border-radius:0 0 10px 10px;
 	box-sizing:border-box;
 }
 .tab_wrap .content_area.act {
 	display:block;
 }
-.tab_wrap *[data-depth="1"] {
-	
+.tab_wrap .btn_tab[data-depth="1"] {
+	width: 25%
 }
-
+.tab_wrap .content_area[data-depth="1"] {
+	width: 90%;
+}
 </style>

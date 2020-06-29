@@ -1,5 +1,32 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
+<div class="tab_wrap tab_area">
+	<div class="btn_area clearfix">
+		<button class="btn btn_tab act" data-depth="0" data-idx="0">날씨</button>
+		<button class="btn btn_tab" data-depth="0" data-idx="1">미세먼지</button>
+	</div>
+	<div class="content_area act" data-depth="0" data-idx="0">
+		<p>일간 날씨</p>
+		<div class="tab_area">
+			<div class="btn_area clearfix">
+				<button class="btn btn_tab act" data-depth="1" data-idx="0">날씨</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="1">강수</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="2">바람</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="3">습도</button>
+			</div>
+	
+			<div class="content_area act" data-depth="1" data-idx="0">날씨 상세</div>
+			<div class="content_area" data-depth="1" data-idx="1">강수 상세</div>
+			<div class="content_area" data-depth="1" data-idx="2">바람 상세</div>
+			<div class="content_area" data-depth="1" data-idx="3">습도 상세</div>
+		</div>
+		<p>주간 날씨</p>
+	</div>
+	<div class="content_area" data-depth="0" data-idx="1">
+		<p>미세먼지 상세</p>
+	</div>
+</div>
+
 <script type="text/javascript">
 	function findParent(el, className){
 	  let check = el.parentNode.classList.contains(className);
@@ -36,30 +63,3 @@
 
 	bindingTabEvent('.tab_wrap');
 </script>
-
-<div class="tab_wrap tab_area">
-	<div class="btn_area clearfix">
-		<button class="btn btn_tab act" data-depth="0" data-idx="0">날씨</button>
-		<button class="btn btn_tab" data-depth="0" data-idx="1">미세먼지</button>
-	</div>
-	<div class="content_area act" data-depth="0" data-idx="0">
-		<p>일간 날씨</p>
-		<div class="tab_area">
-			<div class="btn_area clearfix">
-				<button class="btn btn_tab act" data-depth="1" data-idx="0">날씨</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="1">강수</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="2">바람</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="3">습도</button>
-			</div>
-	
-			<div class="content_area act" data-depth="1" data-idx="0">날씨 상세</div>
-			<div class="content_area" data-depth="1" data-idx="1">강수 상세</div>
-			<div class="content_area" data-depth="1" data-idx="2">바람 상세</div>
-			<div class="content_area" data-depth="1" data-idx="3">습도 상세</div>
-		</div>
-		<p>주간 날씨</p>
-	</div>
-	<div class="content_area" data-depth="0" data-idx="1">
-		<p>미세먼지 상세</p>
-	</div>
-</div>

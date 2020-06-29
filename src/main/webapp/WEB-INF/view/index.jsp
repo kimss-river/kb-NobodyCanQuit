@@ -10,6 +10,7 @@
     </style>
     <jsp:include page="styleInit.jsp" flush="false" />
     <jsp:include page="style.jsp" flush="false"/>
+    <script src="<c:url value="/resources/js/script.js" />"></script>
     
 </head>
 <body>
