@@ -36,7 +36,7 @@
  </c:forEach>
 <br />
 <!-- MainController 알고리즘 -->
-<h2>BackAnd</h2>
+<h2>BackEnd</h2>
 sidoName:${sidoName} cityName:${cityName} pm10:${pm10}
 </body>
 </html>

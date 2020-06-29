@@ -15,7 +15,7 @@ public class AddressCommand {
 
     @Data
     @JsonIgnoreProperties({"full_addr"})
-    private static class Result {
+    public static class Result {
 
         @JsonProperty("y_coor")
         private String yCoor;
@@ -27,4 +27,13 @@ public class AddressCommand {
         private String code;
     }
 
+    public String getGuName(String code) {
+        for (Result result: this.resultList) {
+            if (result.getCode().equals(code)) {
+                return result.getName();
+            }
+        }
+
+        return "";
+    }
 }

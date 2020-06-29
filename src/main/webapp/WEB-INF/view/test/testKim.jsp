@@ -43,5 +43,33 @@
             </c:if>
         </form:form>
     </nav>
+
+    <!-- 시군구별 실시간 평균정보 조회 조회	 -->
+    <h3>미세먼지 일평균 일주일</h3>
+    <br />
+    시/군/구 이름:${dustAreaAddr.dustArea[0].cityName}
+    <br />
+    지역이름:${dustAreaAddr.dustArea[0].sidoName}
+    <br />
+    pm10미세먼지:${dustAreaAddr.dustArea[0].pm10Value}
+    <br />
+
+    <!-- MainController 알고리즘 -->
+    <h4>BackEnd</h4>
+    sidoName:${sidoName} cityName:${cityName} pm10:${pm10}
+
+    <h5>검색결과</h5>
+    <c:forEach items="${dustAreaAddr.dustArea}" var= "dustArea" varStatus="status">
+        ${status.count}.시/군/구 이름:${dustArea.cityName}
+        <c:if test="${! empty dustArea.cityName}">
+        <!-- 사용자 구 검색 결과  -->
+            <h5>
+                인덱스 : ${status.count}
+                미세먼지 : ${dustArea.pm10Value}
+            </h5>
+        </c:if>
+        <br />
+    </c:forEach>
+
 </body>
 </html>
