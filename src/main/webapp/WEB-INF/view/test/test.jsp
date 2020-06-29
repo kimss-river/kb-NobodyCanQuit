@@ -76,7 +76,42 @@
             <c:if test= "${fsctItem.category eq 'POP' || fsctItem.category eq 'REH'}" >
                <c:out value ="${fsctItem.fcstValue}%"/>
             </c:if>
-           
+            
+            <c:if test= "${fsctItem.category eq 'PTY'}" >
+	           	<c:choose>
+	           		<c:when test ="${fsctItem.fcstValue ==0}">
+	           			없음
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==1}">
+	           			비
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==2}">
+	           			비/눈
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==3}">
+	           			눈
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==4}">
+	           			소나기
+	           		</c:when>
+	           	</c:choose>            
+            </c:if>
+            
+            
+           <c:if test= "${fsctItem.category eq 'SKY'}" >
+	           	<c:choose>
+	           		<c:when test ="${fsctItem.fcstValue ==1}">
+	           			맑음
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==3}">
+	           			구름많음
+	           		</c:when>
+	           		<c:when test ="${fsctItem.fcstValue ==4}">
+	           			흐림
+	           		</c:when>
+	           	</c:choose>            
+            </c:if>
+            
              <c:if test= "${fsctItem.category eq 'T3H' || fsctItem.category eq 'TMX' || fsctItem.category eq 'TMN'}" >
                <c:out value ="${fsctItem.fcstValue}℃"/>
             </c:if>
