@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Setter;
 import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.service.CityListProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ public class AddressApiService {
     private static final String CONSUMER_KEY = "9fbcd12ae4d34b8a9dd2";
     private static final String ADDRESS_API = "https://sgisapi.kostat.go.kr/OpenAPI3/addr/stage.json";
     @Autowired
-    private CityListProvider cityListProvider;
+    private CityListService cityListService;
     @Autowired
     private ApiAuthKeys apiAuthKeys;
     @Setter
@@ -42,7 +41,7 @@ public class AddressApiService {
             gu = "reload";
         }
 
-        stringBuilder.append("&cd=").append(cityListProvider.getCityCode(city));
+        stringBuilder.append("&cd=").append(cityListService.getCityCode(city));
 
         return new URL(stringBuilder.toString());
     }

@@ -1,4 +1,4 @@
-package nobodyCanQuit.service;
+package nobodyCanQuit.service.address;
 
 import lombok.Getter;
 import org.springframework.stereotype.Component;
@@ -6,13 +6,13 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Component
-public class CityListProvider {
+public class CityListService {
 
     private final Map<String, String> cityMap;
     @Getter
     private final List<String> cityName;
 
-    public CityListProvider() {
+    public CityListService() {
         this.cityMap = new TreeMap<>();
         this.cityName = new ArrayList<>(17);
         initCityList();
@@ -27,7 +27,7 @@ public class CityListProvider {
         cityMap.put("대전광역시", "25");
         cityMap.put("울산광역시", "26");
         cityMap.put("세종특별자치시", "29");
-        cityMap.put("경기도", "32");
+        cityMap.put("경기도", "31");
         cityMap.put("강원도", "32");
         cityMap.put("충청북도", "33");
         cityMap.put("충청남도", "34");

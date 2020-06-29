@@ -6,7 +6,7 @@ import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.service.CityListProvider;
+import nobodyCanQuit.service.address.CityListService;
 
 import java.io.IOException;
 import java.util.List;
@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AddressTestController {
 
     @Autowired
-    private CityListProvider cityListProvider;
+    private CityListService cityListService;
     @Autowired
     private AddressApiService addressApiService;
     @Autowired
@@ -33,7 +33,7 @@ public class AddressTestController {
     @GetMapping("/testKim")
     public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {
 
-        model.addAttribute("cityList", cityListProvider);
+        model.addAttribute("cityList", cityListService);
 
         return "test/testKim";
     }
@@ -44,7 +44,7 @@ public class AddressTestController {
         /*
         * 계층별 주소검색
         */
-        model.addAttribute("cityList", cityListProvider);
+        model.addAttribute("cityList", cityListService);
 
         addressApiService.buildApi();
         addressApiService.setAddressInputCommand(addressInputCommand);
