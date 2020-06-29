@@ -35,6 +35,8 @@ public class AddressTestController {
 
         model.addAttribute("cityList", cityListService);
 
+        addressApiService.buildApi();
+
         return "test/testKim";
     }
 

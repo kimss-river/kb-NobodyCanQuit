@@ -14,8 +14,8 @@ public class CityListService {
 
     public CityListService() {
         this.cityMap = new TreeMap<>();
-        this.cityName = new ArrayList<>(17);
         initCityList();
+        this.cityName = new ArrayList<>(cityMap.keySet());
     }
 
     private void initCityList() {
@@ -36,9 +36,6 @@ public class CityListService {
         cityMap.put("경상북도", "37");
         cityMap.put("경상남도", "38");
         cityMap.put("제주특별자치도", "39");
-
-        Set<String> keySet = cityMap.keySet();
-        cityName.addAll(keySet);
     }
 
     public String getCityCode(String cityName) {
