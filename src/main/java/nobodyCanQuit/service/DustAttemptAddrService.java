@@ -59,7 +59,7 @@ public class DustAttemptAddrService{
     	//Model model;
 //    	int a = 0;
     	Division division = new Division() ;
-    	List<Division> listDivision =new ArrayList<Division>();
+    	List<Division> listDivision = new ArrayList<Division>();
     	for(DustAttempt e:listDustAttempt) {
     		arr[0] = Integer.parseInt(e.getSeoul());
     		arr[1] = Integer.parseInt(e.getBusan());

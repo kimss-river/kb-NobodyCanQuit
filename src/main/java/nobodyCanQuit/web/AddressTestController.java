@@ -11,6 +11,7 @@ import nobodyCanQuit.service.address.CityListService;
 import java.io.IOException;
 import java.util.List;
 
+import nobodyCanQuit.web.model.viligeDust.DuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,21 +71,9 @@ public class AddressTestController {
         //TODO revision
         if (! addressInputCommand.getGu().isEmpty()) {
             String guName = addressCommand.getGuName(addressInputCommand.getGu());
-
             List<DustArea> listDust = dustAreaAddr.getDustArea();
-            String pm10 = "";
-            String sidoName = "";
-            String cityName = "";
-            for (DustArea e : listDust) {
-                if (e.getCityName().equals(guName)) {
-                    pm10 = e.getPm10Value();
-                    sidoName = e.getSidoName();
-                    cityName = e.getCityName();
-                }
-            }
-            model.addAttribute("pm10", pm10);
-            model.addAttribute("sidoName", sidoName);
-            model.addAttribute("cityName", cityName);
+            DuNameSelected duNameSelected =  dustAreaAddrService.Selected(guName, listDust);
+            model.addAttribute("duNameSelected",duNameSelected);
         }
 
         return "test/testKim";

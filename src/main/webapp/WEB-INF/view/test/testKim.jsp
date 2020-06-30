@@ -53,10 +53,13 @@
     <br />
     pm10미세먼지:${dustAreaAddr.dustArea[0].pm10Value}
     <br />
-
-    <!-- MainController 알고리즘 -->
-    <h4>BackEnd</h4>
-    sidoName:${sidoName} cityName:${cityName} pm10:${pm10}
+    <!-- DustAreaAddrService.Selected -->
+	<h2>Back End 처리</h2>
+		${duNameSelected}<br />
+		sidoName : ${duNameSelected.sidoName}<br />
+		cityName : ${duNameSelected.cityName}<br />
+		pm10 : ${duNameSelected.pm10}<br />
+		pm25 : ${duNameSelected.pm25}
 
     <h5>검색결과</h5>
     <c:forEach items="${dustAreaAddr.dustArea}" var= "dustArea" varStatus="status">
@@ -65,7 +68,8 @@
         <!-- 사용자 구 검색 결과  -->
             <h5>
                 인덱스 : ${status.count}
-                미세먼지 : ${dustArea.pm10Value}
+        pm10 : ${dustArea.pm10Value}
+        pm25 : ${dustArea.pm25Value}
             </h5>
         </c:if>
         <br />

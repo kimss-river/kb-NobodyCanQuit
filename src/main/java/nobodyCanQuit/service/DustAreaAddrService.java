@@ -4,16 +4,24 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 import lombok.Setter;
 import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
+import nobodyCanQuit.web.model.viligeDust.Division;
+import nobodyCanQuit.web.model.viligeDust.DuNameSelected;
+import nobodyCanQuit.web.model.viligeDust.DustArea;
+import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DustAreaAddrService implements ApiUrlProvider {
+
 	@Autowired
 	private ApiAuthKeys apiAuthKeys;
 	@Autowired
@@ -25,7 +33,6 @@ public class DustAreaAddrService implements ApiUrlProvider {
 
 	@Override
     public URL getApiUrl() throws IOException {
-
 		final String numOfRows = "25";
 		final String pageNo = "1";
 		final String searchCondition = "DAILY";
@@ -42,9 +49,18 @@ public class DustAreaAddrService implements ApiUrlProvider {
 
         return new URL(stringBuilder.toString());
 	}
-
-	
-
-		
+	public DuNameSelected Selected(String guName,List<DustArea> listDust) {
+		DuNameSelected duNameSelected =new DuNameSelected();        
+		 for(DustArea e : listDust) {
+             if (e.getCityName().equals(guName)) {
+            	 duNameSelected.setPm25(e.getPm25Value());
+            	 duNameSelected.setPm10(e.getPm10Value());
+            	 duNameSelected.setSidoName(e.getSidoName());
+            	 duNameSelected.setCityName(e.getCityName());
+			 }
+         }
+		 return duNameSelected;
+	}
+			
 	}
 

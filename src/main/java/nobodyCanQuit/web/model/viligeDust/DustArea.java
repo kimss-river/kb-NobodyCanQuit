@@ -18,7 +18,6 @@ import lombok.Data;
     "numOfRows",
     "o3Value",
     "pageNo",
-    "pm25Value",
     "resultCode",
     "resultMsg",
     "searchCondition",
@@ -33,4 +32,6 @@ public class DustArea {
 	 private String sidoName;
 	 @JsonProperty("pm10Value")
 	 private String pm10Value;
+	 @JsonProperty("pm25Value")
+	 private String pm25Value;
 }
