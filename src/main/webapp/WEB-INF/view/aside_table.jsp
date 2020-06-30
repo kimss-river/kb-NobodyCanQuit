@@ -16,22 +16,26 @@
 	
 			<div class="content_area act" data-depth="1" data-idx="0">
 				<div class="content_area_value">
-					날씨
+					<!-- 날씨 -->
+					<%@ include file="chart_weather.jsp" %>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="1">
 				<div class="content_area_value">
-					강수
+					<!-- 강수 -->
+					<%@ include file="chart_prec.jsp" %>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="2">
 				<div class="content_area_value">
-					바람
+					<!-- 바람 -->
+					<%@ include file="chart_wind.jsp" %>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="3">
 				<div class="content_area_value">
-					습도
+					<!-- 습도 -->
+					<%@ include file="chart_humid.jsp" %>
 				</div>
 			</div>
 		</div>
