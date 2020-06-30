@@ -23,11 +23,11 @@
     <table class="table table-hover">
         <c:forEach items="${vilage.response.body.items.fsctItems}" var="fsctItem">
             <tr>       
-            <td width = 150>발표일자</td>                     	                         
-             <td width = 150>${fsctItem.baseDate}</td>  
-             <td width = 150>발표시각</td>                     	                         
+            <td width = 150>예보일자</td>                     	                         
+             <td width = 150>${fsctItem.fcstDate}</td>  
+             <td width = 150>예보시각</td>                     	                         
              <td width = 150>
-         		 ${fsctItem.baseTime}
+         		 ${fsctItem.fcstTime}
              </td>                                                                                            
             </tr>
            
