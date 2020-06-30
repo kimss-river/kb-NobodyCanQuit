@@ -6,7 +6,6 @@
 		<button class="btn btn_tab" data-depth="0" data-idx="1">미세먼지</button>
 	</div>
 	<div class="content_area act" data-depth="0" data-idx="0">
-		<p>일간 날씨</p>
 		<div class="tab_area">
 			<div class="btn_area clearfix">
 				<button class="btn btn_tab act" data-depth="1" data-idx="0">날씨</button>
@@ -15,15 +14,35 @@
 				<button class="btn btn_tab" data-depth="1" data-idx="3">습도</button>
 			</div>
 	
-			<div class="content_area act" data-depth="1" data-idx="0">날씨 상세</div>
-			<div class="content_area" data-depth="1" data-idx="1">강수 상세</div>
-			<div class="content_area" data-depth="1" data-idx="2">바람 상세</div>
-			<div class="content_area" data-depth="1" data-idx="3">습도 상세</div>
+			<div class="content_area act" data-depth="1" data-idx="0">
+				<div class="content_area_value">
+					날씨
+				</div>
+			</div>
+			<div class="content_area" data-depth="1" data-idx="1">
+				<div class="content_area_value">
+					강수
+				</div>
+			</div>
+			<div class="content_area" data-depth="1" data-idx="2">
+				<div class="content_area_value">
+					바람
+				</div>
+			</div>
+			<div class="content_area" data-depth="1" data-idx="3">
+				<div class="content_area_value">
+					습도
+				</div>
+			</div>
 		</div>
-		<p>주간 날씨</p>
+		<div class="content_area_value">
+			주간 날씨
+		</div>
 	</div>
 	<div class="content_area" data-depth="0" data-idx="1">
-		<p>미세먼지 상세</p>
+		<div class="content_area_value">
+			미세먼지
+		</div>
 	</div>
 </div>
 

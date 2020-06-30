@@ -28,34 +28,16 @@ footer {clear: both; width: 100%; height: 55px; background: #A197C9; position:fi
     aside {width: 100%;}
 }
 
-/* 색상 클래스 */
-.bgLight {
-    background-color: #E2D6FB;
-}
-.bgMid {
-    background-color: #A197C9;
-}
-.bgDark {
-    background-color: #263857;
-}
-.txtLight {
-    color: #E2D6FB;
-}
-.txtMid {
-    color: #A197C9;
-}
-.txtDark {
-    color: #263857;
-}
-
 /* header */
 header a {
     display: block;
+    width: 350px;
     margin: auto; 
     line-height: 65px;
     text-align: center;
     font-size: 40px;
     font-weight: bolder;
+    color: #E2D6FB;
 }
 
 /* footer */
@@ -75,6 +57,9 @@ footer li {
 }
 footer a {
     color: #263857;
+}
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* aside_table */
@@ -97,12 +82,12 @@ footer a {
 	float:left;
 	width:50%;
 	height:30px;
-	background:#E2D6FB;
+	background:#fff;
 	text-align:center;
 	line-height:30px;
 }
 .tab_wrap .btn_tab.act {
-	background:#A197C9;
+	background: #E2D6FB;
 	font-weight:bold;
 }
 .tab_wrap .content_area {
@@ -113,6 +98,18 @@ footer a {
 	background:#E2D6FB;
 	box-sizing:border-box;
 }
+.tab_wrap .content_area .tab_area {
+	margin-bottom: 10px;
+}
+.tab_wrap .content_area .btn_tab {
+	background: #E2D6FB
+}
+.tab_wrap .content_area .btn_tab.act {
+	background: #fff
+}
+.tab_wrap .content_area .content_area_value {
+	background: #fff;
+}
 .tab_wrap .content_area.act {
 	display:block;
 }
@@ -120,6 +117,9 @@ footer a {
 	width: 25%
 }
 .tab_wrap .content_area[data-depth="1"] {
-	width: 90%;
+	background: #fff
+}
+.tab_wrap .content_area[data-depth="1"] .content_area_value {
+	background: #fff;
 }
 </style>

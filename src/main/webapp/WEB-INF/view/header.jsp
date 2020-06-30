@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
 <header>
-	<a class="txtLight" href="#">NobodyCanQuit</a>
+	<a href="#">NobodyCanQuit</a>
 </header>
