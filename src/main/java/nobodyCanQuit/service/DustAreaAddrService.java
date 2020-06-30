@@ -14,14 +14,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DustAreaAddrService implements ApiUrlProvider {
-
+//시군구별 실시간 미세먼지 평균 조회 
 	@Autowired
 	private ApiAuthKeys apiAuthKeys;
 	@Autowired
 	CityListService cityListService;
 	@Setter
 	private AddressInputCommand addressInputCommand;
-	private static final String Finedust_Abbr =
+	private static final String FinedustArea_Abbr =
 			"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureSidoLIst?_returnType=json";
 
 	@Override
@@ -34,7 +34,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 		String chosenCity = cityListService.getShortName(addressInputCommand.getCity());
 		String encodeAddress = URLEncoder.encode(chosenCity,"utf-8");
 
-		StringBuilder stringBuilder = new StringBuilder(Finedust_Abbr);
+		StringBuilder stringBuilder = new StringBuilder(FinedustArea_Abbr);
 		stringBuilder.append("&numOfRows=").append(numOfRows)
 				.append("&pageNo=").append(pageNo)
 				.append("&searchCondition=").append(searchCondition)
@@ -44,12 +44,8 @@ public class DustAreaAddrService implements ApiUrlProvider {
         return new URL(stringBuilder.toString());
 	}
 
-	public URL getDustAttemptUrl() throws MalformedURLException {
+	
 
-		final String serviceKey = apiAuthKeys.getDUST_API_SERVICE_KEY();
-
-		return new URL("http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?serviceKey=" +
-				serviceKey +
-				"&numOfRows=10&pageNo=1&itemCode=PM10&dataGubun=HOUR&searchCondition=MONTH&_returnType=json");
+		
 	}
-}
+
