@@ -11,6 +11,7 @@ import lombok.Data;
 public class DustAttempt {
     @JsonProperty("seoul")//서울
     private String seoul;
+    @JsonProperty("busan")//부산
     private String busan;
     @JsonProperty("daegu")//대구
     private String daegu;
@@ -34,7 +35,7 @@ public class DustAttempt {
     private String jeonbuk;
     @JsonProperty("jeonnam")//전남
     private String jeonnam;
-    @JsonProperty("gyeongbuk")//경남
+    @JsonProperty("gyeongbuk")//경북
     private String gyeongbuk;
     @JsonProperty("gyeongnam")//경남
     private String gyeongnam;

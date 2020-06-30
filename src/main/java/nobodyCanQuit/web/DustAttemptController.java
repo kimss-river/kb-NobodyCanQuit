@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.DustAreaAddrService;
 import nobodyCanQuit.service.DustAttemptAddrService;
+import nobodyCanQuit.web.model.viligeDust.Division;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
@@ -38,8 +39,11 @@ public class DustAttemptController {
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
 		URL url = dustAttemptAddrService.getApiUrl("PM10");
 		DustAttemptAddr dustAttempt = mapper.readValue(url,DustAttemptAddr.class);
+		Division division = dustAttemptAddrService.divisionPm20("PM10",dustAttempt);
+		
 		model.addAttribute("finedustAddr", dustAttempt);
-
+		model.addAttribute("division", division);
+		
 		return "test/DustAttempt";
 	}
 	
@@ -53,11 +57,10 @@ public class DustAttemptController {
 	public String getDutArea(Model model) throws IOException {
 
 		//시군구별 실시간 평균정보 조회 dustAreaAddrService.getApiUrl()
-
 		DustAreaAddr dustAreaAddr = mapper.readValue(new URL("http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureSidoLIst?serviceKey=AFt3TjNEJq7jb0QYqGCXr2rMOb4LS%2F11Mv2HqbaHQNsJkT2McS8dfggWVOeac%2FGJFEQRokOtJaEmZSeZKKvqGQ%3D%3D&numOfRows=24&pageNo=1&sidoName=%EC%84%9C%EC%9A%B8&searchCondition=DAILY&_returnType=json")
 				, DustAreaAddr.class);
 		model.addAttribute("dustAreaAddr", dustAreaAddr);
-
+		
 		List<DustArea> listDust = dustAreaAddr.getDustArea();
 		String pm10 = "";
 		String sidoName = "";

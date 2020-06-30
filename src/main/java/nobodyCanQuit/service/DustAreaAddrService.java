@@ -14,7 +14,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class DustAreaAddrService implements ApiUrlProvider {
-//시군구별 실시간 미세먼지 평균 조회 
 	@Autowired
 	private ApiAuthKeys apiAuthKeys;
 	@Autowired

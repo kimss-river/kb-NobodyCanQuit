@@ -25,7 +25,16 @@
     울산:${finedustAddr.dustAttempt[0].ulsan}
      경기:${finedustAddr.dustAttempt[0].gyeonggi}
     강원:${finedustAddr.dustAttempt[0].gangwon}
-    
+   <h3>미세먼지 표시 PM10</h3>
+  ${division} <br />
+서울 : ${division.seoul} 
+대구 : ${division.daegu}
+인천: ${division.incheon}
+광주: ${division.gwangju}
+대전: ${division.daejeon}
+울산: ${division.ulsan}
+경기: ${division.gyeonggi}
+강원: ${division.gangwon}  
 
 </body>
 </html>

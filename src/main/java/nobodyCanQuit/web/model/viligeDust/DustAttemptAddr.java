@@ -13,5 +13,4 @@ import lombok.Data;
 public class DustAttemptAddr {
 	 @JsonProperty("list")
 	 private List<DustAttempt> dustAttempt;
-
 }
