@@ -16,10 +16,39 @@
 </head>
 <body>
 
+	<nav class="navbar navbar-expand-sm bg-light navbar-light shadow">
+        <form:form action="/NobodyCanQuit/test/addressSearch.do" modelAttribute="addressInputCommand"
+        class="form-inline">
+            <form:select path="city" onChange="this.form.submit()" class="form-control mr-sm-3">
+                <option value=""><spring:message code="search.addressLevel1.title"/></option>
+                <form:options items="${cityList.cityName}" />
+            </form:select>
+            <form:select path="gu" onChange="this.form.submit()" class="form-control mr-sm-3">
+                <option value=""><spring:message code="search.addressLevel2.title"/></option>
+                <c:if test="${! empty addressCommand.resultList}">
+                    <form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
+                </c:if>
+            </form:select>
+            <form:select path="dong"  class="form-control mr-sm-3">
+                <option value=""><spring:message code="search.addressLevel3.title"/></option>
+                <c:if test="${! empty addressForDongCommand.resultList}">
+                    <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
+                </c:if>
+            </form:select>
+            <button class="btn btn-success" type="submit"><spring:message code="common.search.title"/></button>
+            <c:if test="${! empty addressInputCommand.dong}">
+                <h4>${addressInputCommand.dong}</h4>
+            </c:if>
+            <c:if test="${! empty test}">
+                <h4>${test}</h4>
+            </c:if>
+        </form:form>
+    </nav>
+
  <%-- ${vilage.response.body.items.fsctItems} --%>
    
    <!-- TMX(낮 최고기온)는 11시에 나옴 --> 
-   <!-- TMN(아침 최저기온)는 02시에 나옴 --> 
+   <!-- TMN(아침 최저기온)는 02시에 나옴 -->
     <table class="table table-hover">
         <c:forEach items="${vilage.response.body.items.fsctItems}" var="fsctItem">
             <tr>       
