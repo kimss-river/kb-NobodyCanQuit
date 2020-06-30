@@ -50,7 +50,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
         return new URL(stringBuilder.toString());
 	}
 	public DuNameSelected Selected(String guName,List<DustArea> listDust) {
-		DuNameSelected duNameSelected =new DuNameSelected();        
+		DuNameSelected duNameSelected =new DuNameSelected();
 		 for(DustArea e : listDust) {
              if (e.getCityName().equals(guName)) {
             	 duNameSelected.setPm25(e.getPm25Value());

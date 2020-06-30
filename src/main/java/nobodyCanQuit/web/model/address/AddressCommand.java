@@ -27,7 +27,7 @@ public class AddressCommand {
         private String code;
     }
 
-    public String getGuName(String code) {
+    public String getName(String code) {
         for (Result result: this.resultList) {
             if (result.getCode().equals(code)) {
                 return result.getName();

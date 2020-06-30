@@ -1,6 +1,7 @@
 package nobodyCanQuit.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.type.CollectionType;
 import nobodyCanQuit.service.DustAreaAddrService;
 import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.web.model.address.AddressCommand;
@@ -9,8 +10,10 @@ import nobodyCanQuit.web.model.address.AddressInputCommand;
 import nobodyCanQuit.service.address.CityListService;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
+import nobodyCanQuit.web.model.address.FxxxKMA;
 import nobodyCanQuit.web.model.viligeDust.DuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
@@ -34,6 +37,13 @@ public class AddressTestController {
     @GetMapping("/testKim")
     public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {
 
+        CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMA.class);
+        List<FxxxKMA> tests =
+                mapper.readValue(new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/top.json.txt"), collectionType);
+
+        if (tests != null) {
+            model.addAttribute("test1", tests);
+        }
         model.addAttribute("cityList", cityListService);
 
         addressApiService.buildApi();
@@ -70,7 +80,7 @@ public class AddressTestController {
 
         //TODO revision
         if (! addressInputCommand.getGu().isEmpty()) {
-            String guName = addressCommand.getGuName(addressInputCommand.getGu());
+            String guName = addressCommand.getName(addressInputCommand.getGu());
             List<DustArea> listDust = dustAreaAddr.getDustArea();
             DuNameSelected duNameSelected =  dustAreaAddrService.Selected(guName, listDust);
             model.addAttribute("duNameSelected",duNameSelected);

@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>testKim</title>
     <!-- Bootstrap 4 -->
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-light navbar-light shadow">
@@ -31,7 +31,7 @@
             <form:select path="dong"  class="form-control mr-sm-3">
                 <option value=""><spring:message code="search.addressLevel3.title"/></option>
                 <c:if test="${! empty addressForDongCommand.resultList}">
-                    <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
+                    <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="name" />
                 </c:if>
             </form:select>
             <button class="btn btn-success" type="submit"><spring:message code="common.search.title"/></button>
@@ -43,6 +43,13 @@
             </c:if>
         </form:form>
     </nav>
+    <c:if test="${! empty test1}">
+        <c:forEach items="${test1}" var= "citycode" varStatus="status">
+            ${citycode.code}
+            ${citycode.value}
+        </c:forEach>
+    </c:if>
+
 
     <!-- 시군구별 실시간 평균정보 조회 조회	 -->
     <h3>미세먼지 일평균 일주일</h3>
