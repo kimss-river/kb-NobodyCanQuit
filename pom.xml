@@ -141,7 +141,7 @@
                 <version>2.2</version>
                 <configuration>
                     <port>8080</port>
-                    <path>/nobody-can-quit</path>
+                    <path>/NobodyCanQuit</path>
                 </configuration>
             </plugin>
             <plugin>

@@ -16,7 +16,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-sm bg-light navbar-light shadow">
-        <form:form action="/nobody-can-quit/testKim/addressSearch.do" modelAttribute="addressInputCommand" 
+        <form:form action="/NobodyCanQuit/testKim/addressSearch.do" modelAttribute="addressInputCommand"
         class="form-inline">
             <form:select path="city" onChange="this.form.submit()" class="form-control mr-sm-3">
                 <option value=""><spring:message code="search.addressLevel1.title"/></option>
