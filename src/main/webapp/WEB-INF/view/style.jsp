@@ -15,7 +15,7 @@ header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; l
 #contents {width: 60%; margin: auto; margin-top: 85px;}
 section {float: left; width: 65%;}
 aside {float: left; width: 35%;}
-footer {clear: both; width: 100%; height: 55px; background: #A197C9; position:fixed; bottom:0; left:0}
+footer {clear: both; width: 100%; height: 79px; background: #A197C9; position:fixed; bottom:0; left:0}
 
 /* 화면 너비 0 ~ 1200px */
 @media (max-width: 1140px){
@@ -122,4 +122,35 @@ footer a:hover {
 .tab_wrap .content_area[data-depth="1"] .content_area_value {
 	background: #fff;
 }
+
+/* aside search */
+select {
+width: 130px;
+padding: .8em .5em;
+border: 1px solid #999;
+font-family: inherit;
+border-radius: 0px;
+/* -webkit-appearance: none;
+-moz-appearance: none;
+appearance: none; */
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.serch__button {
+    width: 50px;
+    height: 39.5px;
+    border: 0px;
+    background: #A197C9;
+    outline: none;
+    float: right;
+    color: white;
+}
+
+.serch__button:hover {
+	background: #263857;
+}
+
 </style>

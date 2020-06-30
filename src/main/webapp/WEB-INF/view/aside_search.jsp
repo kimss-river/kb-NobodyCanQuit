@@ -5,8 +5,9 @@
 
 <div id="aside__sWrap">
     <div id="marker">
-        <img src="images/markerWrab.png" width="400" height="100" alt="markerWrab">
+        <img src="${pageContext.request.contextPath}/resources/imgs/markerWrab.png" width="341" height="100" alt="markerWrab">
     </div>
+    <br>
     <div class="serch">
         <h2 style="font-size: 23px; font-weight: bold;">우리 동네 날씨 어때?</h2><br>
         <div id="aside__serch">
@@ -18,7 +19,7 @@
 				        <option value=""><spring:message code="search.addressLevel1.title"/></option>
 						<form:options items="${cityList.cityName}" />
 				    </form:select>
-				    <input type="submit" value="검색">
+				    <button class="serch__button" type="submit"><spring:message code="common.search.title"/></button>
 				</form:form>
         </div>
     </div>
