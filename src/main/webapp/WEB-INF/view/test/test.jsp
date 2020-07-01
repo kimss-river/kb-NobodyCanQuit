@@ -15,6 +15,10 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
+ <c:if test="${! empty coord}">
+        x: ${coord.x}<br />
+        y: ${coord.y}
+    </c:if>
 
 	<nav class="navbar navbar-expand-sm bg-light navbar-light shadow">
         <form:form action="/NobodyCanQuit/test/addressSearch.do" modelAttribute="addressInputCommand"
@@ -32,7 +36,7 @@
             <form:select path="dong"  class="form-control mr-sm-3">
                 <option value=""><spring:message code="search.addressLevel3.title"/></option>
                 <c:if test="${! empty addressForDongCommand.resultList}">
-                    <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="code" />
+                    <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="name" />
                 </c:if>
             </form:select>
             <button class="btn btn-success" type="submit"><spring:message code="common.search.title"/></button>
@@ -44,6 +48,8 @@
             </c:if>
         </form:form>
     </nav>
+    
+    
 
  <%-- ${vilage.response.body.items.fsctItems} --%>
    
@@ -151,12 +157,7 @@
             <br/> <!-- 확인용 -->${fsctItem.fcstValue}
             </td>
             </tr>         
-            <tr>
-            <td width = 150>x좌표</td>
-            <td width = 150>${fsctItem.nx}</td>
-            <td width = 150>y좌표</td>
-            <td width = 150>${fsctItem.ny}</td>
-            </tr>
+          
         </c:forEach>
     </table>
 

@@ -8,9 +8,11 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import lombok.Getter;
 import lombok.Setter;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
+import nobodyCanQuit.web.model.address.FxxxKMAcoord;
 
 @Component
 public class VilageFcstInfoService {
@@ -19,23 +21,28 @@ public class VilageFcstInfoService {
 	AddressCommand addressCommand;
 	@Setter
 	AddressInputCommand addressInputCommand;
+	@Setter
+	FxxxKMAcoord fxxxKMAcoord;
+
+	
 
 	String date = new SimpleDateFormat("yyyyMMdd HH").format((new Date(System.currentTimeMillis())));
 	String[] base_date = date.split(" ");
 
 	private String Apiaddress;
 
-	public URL getApiUrl() throws IOException {
+	public URL getApiUrl(FxxxKMAcoord fxxxKMAcoord) throws IOException {
 
-		String x = addressCommand.getXCoor(addressInputCommand.getGu());
-		String y = addressCommand.getYCoor(addressInputCommand.getGu());
-
+//		String x = addressCommand.getXCoor(addressInputCommand.getGu());
+//		String y = addressCommand.getYCoor(addressInputCommand.getGu());
+		
+		System.out.println(fxxxKMAcoord.getX()+""+fxxxKMAcoord.getY());
 		getTime(Integer.parseInt(base_date[1]));
 
 		Apiaddress = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst"
 				+ "?serviceKey=zGuDv3a%2FY%2FxXtJPaZ4x2I09BsyEbbwzdzoZ5xxO6VSba6r%2BrvDH7bOkuE3R0c5oe3hdHkLdeoFAdD6oPk48cxw%3D%3D"
 				+ "&dataType=json&numOfRows=10&pageNo=1" + "&base_date=" + base_date[0]
-				+ "&base_time=" + base_date[1] + "&nx=" + x + "&ny=" + y;
+				+ "&base_time=" + base_date[1] + "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
 
 		return new URL(Apiaddress);
 	}

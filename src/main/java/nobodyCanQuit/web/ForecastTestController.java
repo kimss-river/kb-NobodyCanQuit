@@ -4,9 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.VilageFcstInfoService;
 import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.service.address.CityListService;
+import nobodyCanQuit.service.address.KMAlistService;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
+import nobodyCanQuit.web.model.address.FxxxKMAcoord;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
@@ -29,22 +31,24 @@ public class ForecastTestController {
 	private CityListService cityListService;
 	@Autowired
 	private AddressApiService addressApiService;
+	@Autowired
+	private KMAlistService kmAlistService;
 
 	private final ObjectMapper mapper = new ObjectMapper();
 
-    @RequestMapping("/test")
-    public String weatherForecast(Model model) throws Exception {
-
-        VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
-        URL url = vilageFcstInfoService.getApiUrl();
-
-        ViligeFcstStores viligeFcstStores =
-                mapper.readValue(url, ViligeFcstStores.class);
-
-        model.addAttribute("vilage", viligeFcstStores);
-
-        return "test/test";
-    }
+//    @RequestMapping("/test")
+//    public String weatherForecast(Model model) throws Exception {
+//
+//        VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
+//        URL url = vilageFcstInfoService.getApiUrl();
+//
+//        ViligeFcstStores viligeFcstStores =
+//                mapper.readValue(url, ViligeFcstStores.class);
+//
+//        model.addAttribute("vilage", viligeFcstStores);
+//
+//        return "test/test";
+//    }
 
 	@GetMapping("/test")
 	public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {
@@ -63,7 +67,6 @@ public class ForecastTestController {
 		 * 계층별 주소검색
 		 */
 		model.addAttribute("cityList", cityListService);
-
 		addressApiService.buildApi();
 		addressApiService.setAddressInputCommand(addressInputCommand);
 		
@@ -74,17 +77,26 @@ public class ForecastTestController {
 				AddressForDongCommand.class);
 		model.addAttribute("addressForDongCommand", addressForDongCommand);
 
+		
+		
 		VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
+		
 		vilageFcstInfoService.setAddressInputCommand(addressInputCommand);
 		vilageFcstInfoService.setAddressCommand(addressCommand);
 		
-		if (!addressInputCommand.getGu().isEmpty()) {
-			URL url = vilageFcstInfoService.getApiUrl();
 
+		
+		FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
+		vilageFcstInfoService.setFxxxKMAcoord(fxxxKMAcoord);
+		
+		if (!addressInputCommand.getDong().isEmpty()) {
+			String x = fxxxKMAcoord.getX();
+			String y = fxxxKMAcoord.getY();
+			URL url = vilageFcstInfoService.getApiUrl(fxxxKMAcoord);
 			ViligeFcstStores viligeFcstStores = mapper.readValue(url, ViligeFcstStores.class);
 
 			model.addAttribute("vilage", viligeFcstStores);
-
+			model.addAttribute("coord", fxxxKMAcoord);
 		}
 		return "test/test";
 	}
