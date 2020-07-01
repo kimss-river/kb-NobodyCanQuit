@@ -38,8 +38,8 @@ public class DustAttemptController {
 		//미세먼지 지역별
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
 		URL url = dustAttemptAddrService.getApiUrl(DustItemCodes.PM10);
-		DustAttemptAddr dustAttempt = mapper.readValue(url,DustAttemptAddr.class);
-		Division division = dustAttemptAddrService.division(DustItemCodes.PM10,dustAttempt);
+		DustAttemptAddr dustAttempt = mapper.readValue(url, DustAttemptAddr.class);
+		Division division = dustAttemptAddrService.division(DustItemCodes.PM10, dustAttempt);
 		
 		model.addAttribute("finedustAddr", dustAttempt);
 		model.addAttribute("division", division);

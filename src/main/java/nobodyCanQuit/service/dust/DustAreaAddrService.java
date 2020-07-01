@@ -46,6 +46,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 
         return new URL(stringBuilder.toString());
 	}
+
 	public DuNameSelected Selected(String guName,List<DustArea> listDust) {
 		DuNameSelected duNameSelected =new DuNameSelected();
 		 for(DustArea e : listDust) {

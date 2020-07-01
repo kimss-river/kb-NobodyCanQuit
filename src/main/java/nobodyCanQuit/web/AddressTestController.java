@@ -61,11 +61,6 @@ public class AddressTestController {
                 mapper.readValue(addressApiService.getAddressLevel3Url() ,AddressForDongCommand.class);
         model.addAttribute("addressForDongCommand", addressForDongCommand);
 
-        if (! addressInputCommand.getDong().isEmpty()) {
-            FxxxKMAcoord kmaCoord  = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
-            model.addAttribute("coord", kmaCoord);
-        }
-
         /*
         * 시군구별 실시간 평균정보 조회
         */

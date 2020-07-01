@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
-import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.web.model.viligeDust.Division;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
@@ -19,8 +18,6 @@ public class DustAttemptAddrService{
 	//지역별 미세먼지 평균 조회
 	@Autowired
 	private ApiAuthKeys apiAuthKeys;
-	
-	CityListService cityListService;
 	static String FinedustArea_Abbr =
 			"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?";
     
@@ -39,6 +36,7 @@ public class DustAttemptAddrService{
 				.append("&dataGubun=").append(dataGubun)
 				.append("&searchCondition=").append(searchCondition)
 				.append("&_returnType=json");
+
 		return new URL(stringBuilder.toString());
 	}
     
@@ -75,28 +73,16 @@ public class DustAttemptAddrService{
     		
     	}
 
-    	//TODO 디버깅용 sout코드 삭제할것
     	if (itemCodes.equals(DustItemCodes.PM10)) {
-    		for (int i=0 ; i<=16 ; i++) {
-				if (arr[i]>0&&arr[i]<30) {
+    		for (int i = 0; i <= 16; i++) {
+				if (arr[i] >= 0 && arr[i] <= 30) {
 					str[i]="좋음";
-					System.out.println(arr[i]+"좋음");
-					//좋음
-				} else if(arr[i]>31&&arr[i]<80){
-					//보통
+				} else if (arr[i] >= 31 && arr[i] <= 80){
 					str[i]="보통";
-					System.out.println(arr[i]+"보통");
-				} else if(arr[i]>81&&arr[i]<150) {
-					System.out.println("나쁨");
+				} else if (arr[i] >= 81 && arr[i] <= 150) {
 					str[i]="나쁨";
-					//나쁨
-				} else if(arr[i]>=151){
-					//매우 나쁨
-					str[i]="매우 나쁨";
-					System.out.println("매우 나쁨");
 				} else {
 					str[i]="매우 나쁨";
-					System.out.println("없음");
 				}
     		}
     	}
@@ -105,23 +91,14 @@ public class DustAttemptAddrService{
     		for(int i=0 ; i<=16 ; i++) {
         		if(arr[i]>0&&arr[i]<30) {
         			str[i]="좋음";
-        			System.out.println(arr[i]+"좋음");
-        			//좋음
         		}else if(arr[i]>31&&arr[i]<80){
-        			//보통
         			str[i]="보통";
-        			System.out.println(arr[i]+"보통");
         		}else if(arr[i]>81&&arr[i]<150) {
-        			System.out.println("나쁨");
         			str[i]="나쁨";
-        			//나쁨
         		}else if(arr[i]>=151){
-        			//매우 나쁨
         			str[i]="매우 나쁨";
-        			System.out.println("매우 나쁨");
         		}else {
         			str[i]="매우 나쁨";
-        			System.out.println("없음");
         		}
     		}
         }
