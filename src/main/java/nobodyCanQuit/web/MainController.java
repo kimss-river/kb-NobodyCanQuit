@@ -1,25 +1,19 @@
 package nobodyCanQuit.web;
 
 import java.io.IOException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import nobodyCanQuit.service.DustAreaAddrService;
+import nobodyCanQuit.service.dust.DustAreaAddrService;
 import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.service.address.CityListService;
-import nobodyCanQuit.web.model.address.AddressCommand;
-import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 
 @Controller
 public class MainController {

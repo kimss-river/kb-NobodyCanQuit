@@ -1,20 +1,17 @@
-package nobodyCanQuit.service;
+package nobodyCanQuit.service.dust;
 
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
 
 import lombok.Setter;
 import nobodyCanQuit.config.auth.ApiAuthKeys;
+import nobodyCanQuit.service.ApiUrlProvider;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.viligeDust.Division;
 import nobodyCanQuit.web.model.viligeDust.DuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

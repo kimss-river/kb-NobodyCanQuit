@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
+import nobodyCanQuit.service.dust.DustItemCodes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nobodyCanQuit.service.DustAreaAddrService;
-import nobodyCanQuit.service.DustAttemptAddrService;
+import nobodyCanQuit.service.dust.DustAttemptAddrService;
 import nobodyCanQuit.web.model.viligeDust.Division;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
@@ -37,9 +37,9 @@ public class DustAttemptController {
 	public String getDustAttempt(Model model) throws IOException {
 		//미세먼지 지역별
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
-		URL url = dustAttemptAddrService.getApiUrl("PM10");
+		URL url = dustAttemptAddrService.getApiUrl(DustItemCodes.PM10);
 		DustAttemptAddr dustAttempt = mapper.readValue(url,DustAttemptAddr.class);
-		Division division = dustAttemptAddrService.division("PM10",dustAttempt);
+		Division division = dustAttemptAddrService.division(DustItemCodes.PM10,dustAttempt);
 		
 		model.addAttribute("finedustAddr", dustAttempt);
 		model.addAttribute("division", division);
