@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+﻿<%@ page contentType="text/html; charset=utf-8" %>
 
 <!-- 날씨 -->
 <div id="weatherChart" style="height: 150px; width: 100%;"></div>
@@ -41,6 +41,8 @@ window.onload = function () {
 		}]
 	};
 	$("#weatherChart").CanvasJSChart(weather);
+	//클래스 클릭시 수행되는 이벤트.. 참고해서 탭 클릭시 차트 뜨도록 수정해보기
+	//$('.content').click(function(){});
 
 	function toggleDataSeries(e) {
 		if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {

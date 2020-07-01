@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=utf-8" %>
+﻿<%@ page contentType="text/html; charset=utf-8" %>
 
 <div class="tab_wrap tab_area">
 	<div class="btn_area clearfix">
@@ -23,7 +23,7 @@
 			<div class="content_area" data-depth="1" data-idx="1">
 				<div class="content_area_value">
 					<!-- 강수 -->
-					<%@ include file="chart_prec.jsp" %>
+					<%@ include file="chart_prcpt.jsp" %>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="2">
