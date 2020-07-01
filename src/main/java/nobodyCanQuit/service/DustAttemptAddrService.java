@@ -83,30 +83,31 @@ public class DustAttemptAddrService{
     		//arr[16] = 102;
     		
     	}
-    	
-    	if("PM10".equals(itemCode)) {
-    		for(int i=0 ; i<=16 ; i++) {
-    		if(arr[i]>0&&arr[i]<30) {
-    			str[i]="좋음";
-    			System.out.println(arr[i]+"좋음");
-    			//좋음
-    		}else if(arr[i]>31&&arr[i]<80){
-    			//보통
-    			str[i]="보통";
-    			System.out.println(arr[i]+"보통");
-    		}else if(arr[i]>81&&arr[i]<150) {
-    			System.out.println("나쁨");
-    			str[i]="나쁨";
-    			//나쁨
-    		}else if(arr[i]>=151){
-    			//매우 나쁨
-    			str[i]="매우 나쁨";
-    			System.out.println("매우 나쁨");
-    		}else {
-    			str[i]="매우 나쁨";
-    			System.out.println("없음");
+
+    	//TODO 디버깅용 코드 삭제할것
+    	if ("PM10".equals(itemCode)) {
+    		for (int i=0 ; i<=16 ; i++) {
+				if (arr[i]>0&&arr[i]<30) {
+					str[i]="좋음";
+					System.out.println(arr[i]+"좋음");
+					//좋음
+				} else if(arr[i]>31&&arr[i]<80){
+					//보통
+					str[i]="보통";
+					System.out.println(arr[i]+"보통");
+				} else if(arr[i]>81&&arr[i]<150) {
+					System.out.println("나쁨");
+					str[i]="나쁨";
+					//나쁨
+				} else if(arr[i]>=151){
+					//매우 나쁨
+					str[i]="매우 나쁨";
+					System.out.println("매우 나쁨");
+				} else {
+					str[i]="매우 나쁨";
+					System.out.println("없음");
+				}
     		}
-          }
     	}
     	
     	if("PM25".equals(itemCode)) {
@@ -131,8 +132,9 @@ public class DustAttemptAddrService{
         			str[i]="매우 나쁨";
         			System.out.println("없음");
         		}
-              }
-      }
+    		}
+        }
+
     	division.setSeoul(str[0]); 
     	division.setBusan(str[1]);
     	division.setDaegu(str[2]);

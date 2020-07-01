@@ -9,26 +9,26 @@ import lombok.Data;
 public class FcstItem {
 
 	@JsonProperty("baseDate")
-	private  String baseDate;
-	
+	private String baseDate;
+
 	@JsonProperty("baseTime")
-	private  String baseTime;
+	private String baseTime;
 	
 	@JsonProperty("category")
-	private  String category;
+	private String category;
 	
 	@JsonProperty("fcstDate")
-	private  String fcstDate;
+	private String fcstDate;
 	
 	@JsonProperty("fcstTime")
-	private  String fcstTime;
+	private String fcstTime;
 	
 	@JsonProperty("fcstValue")
-	private  String fcstValue;
+	private String fcstValue;
 	
 	@JsonProperty("nx")
-	private  int nx;
+	private int nx;
 	
 	@JsonProperty("ny")
-	private  int ny;
+	private int ny;
 }

@@ -41,8 +41,8 @@ public class VilageFcstInfoService {
 
 		Apiaddress = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst"
 				+ "?serviceKey=zGuDv3a%2FY%2FxXtJPaZ4x2I09BsyEbbwzdzoZ5xxO6VSba6r%2BrvDH7bOkuE3R0c5oe3hdHkLdeoFAdD6oPk48cxw%3D%3D"
-				+ "&dataType=json&numOfRows=10&pageNo=1" + "&base_date=" + base_date[0]
-				+ "&base_time=" + base_date[1] + "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
+				+ "&dataType=json&numOfRows=20&pageNo=1" + "&base_date=" + base_date[0]
+				+ "&base_time=" + "0200" + "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
 
 		return new URL(Apiaddress);
 	}

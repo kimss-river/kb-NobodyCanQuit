@@ -65,17 +65,14 @@
 	<!-- TMX(낮 최고기온)는 11시에 나옴 -->
 	<!-- TMN(아침 최저기온)는 02시에 나옴 -->
 	<table class="table table-hover">
-		<c:if test="${! empty vilage.response.body.items.fsctItems}">
-			<tr>
-				<td width=150>예보일자</td>
-				<td width=150>${vilage.response.body.items.fsctItems[0].fcstDate}</td>
-				<td width=150>예보시각</td>
-				<td width=150>${vilage.response.body.items.fsctItems[0].fcstTime}</td>
-			</tr>
-		</c:if>
 		<c:forEach items="${vilage.response.body.items.fsctItems}"
 			var="fsctItem">
-
+                <tr>
+                    <td width=150>예보일자</td>
+                    <td width=150>${fsctItem.fcstDate}</td>
+                    <td width=150>예보시각</td>
+                    <td width=150>${fsctItem.fcstTime}</td>
+                </tr>
 			<tr>
 				<td width=150>자료구분문자</td>
 				<td width=150><c:if test="${fsctItem.category eq 'POP'}">
