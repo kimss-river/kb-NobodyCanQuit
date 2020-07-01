@@ -1,45 +1,54 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
 <!-- 날씨 -->
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="weatherChart" style="height: 150px; width: 100%;"></div>
 
 <script>
+//윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
 window.onload = function () {
+	
+	var weather = {
+		animationEnabled: true,  
+		theme: "light2",
+		axisX: {
+			
+		},
+		axisY: {
+			title: "기온",
+	      	suffix: "°C",
+			includeZero: false
+		},
+		toolTip:{
+			shared:true
+		},
+		data: [{
+			type: "spline",
+			color: "#C0504E",
+			name: "기온",
+			showInLegend: true,
+			//xValueFormatString: "MMM YYYY",
+			yValueFormatString: "#,###°C",
+			dataPoints: [
+				{ x: 00, y: 26 },
+				{ x: 03, y: 27 },
+				{ x: 06, y: 29 },
+				{ x: 09, y: 28 },
+				{ x: 12, y: 30 },
+				{ x: 15, y: 32 },
+				{ x: 18, y: 31 },
+				{ x: 21, y: 27 } 
+			]
+		}]
+	};
+	$("#weatherChart").CanvasJSChart(weather);
 
-var options = {
-	animationEnabled: true,  
-	title:{
-		text: "Monthly Sales - 2017"
-	},
-	axisX: {
-		valueFormatString: "MMM"
-	},
-	axisY: {
-		title: "Sales (in USD)",
-		prefix: "$",
-		includeZero: false
-	},
-	data: [{
-		yValueFormatString: "$#,###",
-		xValueFormatString: "MMMM",
-		type: "spline",
-		dataPoints: [
-			{ x: 00, y: 28 },
-			{ x: 03, y: 27 },
-			{ x: 06, y: 29 },
-			{ x: 09, y: 35 },
-			{ x: 12, y: 31 },
-			{ x: 15, y: 24 },
-			{ x: 18, y: 32 },
-			{ x: 21, y: 35 },
-			{ x: 24, y: 26 },
-		]
-	}]
-};
-$("#chartContainer").CanvasJSChart(options);
-
+	function toggleDataSeries(e) {
+		if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+			e.dataSeries.visible = false;
+		} else {
+			e.dataSeries.visible = true;
+		}
+		e.chart.render();
+	}
 }
 </script>
-
-<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
