@@ -29,14 +29,14 @@ window.onload = function () {
 			//마우스를 올렸을 때 뜨는 값의 포맷 적용 안됨
 			yValueFormatString: "#,###%",
 			dataPoints: [
-				{ x: 00, y: 26 }, 
-				{ x: 03, y: 27 }, 
-				{ x: 06, y: 29 }, 
-				{ x: 09, y: 28 }, 
-				{ x: 12, y: 30 }, 
-				{ x: 15, y: 32 }, 
-				{ x: 18, y: 31 }, 
-				{ x: 21, y: 27 }
+				{ label: "00", y: 10 },
+				{ label: "03", y: 15 },
+				{ label: "06", y: 25 },
+				{ label: "09", y: 30 },
+				{ label: "12", y: 28 },
+				{ label: "15", y: 32 }, 
+				{ label: "18", y: 31 }, 
+				{ label: "21", y: 27 }
 			]
 		}]
 	};
