@@ -2,10 +2,10 @@ package nobodyCanQuit.service.address;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.type.CollectionType;
-import lombok.Getter;
-import lombok.Setter;
 import nobodyCanQuit.web.model.address.*;
+import org.springframework.stereotype.Component;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,21 +13,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+@Component
 public class KMAlistService {
 
     private final ObjectMapper mapper = new ObjectMapper();
     private final Map<String, String> cityMap;
-    @Getter
-    private final List<String> cityName;
-    @Setter
-    AddressInputCommand addressInputCommand;
-    @Setter
-    AddressCommand addressCommand;
 
     public KMAlistService() {
         this.cityMap = new TreeMap<>();
         initCityList();
-        this.cityName = new ArrayList<>(cityMap.keySet());
     }
 
     private void initCityList() {
@@ -50,18 +44,20 @@ public class KMAlistService {
         cityMap.put("세종특별자치시", "0");
     }
 
-    public FxxxKMAcoord getKMAcoord() throws IOException {
+    public FxxxKMAcoord getKMAcoord(AddressCommand address, AddressInputCommand addressInput) throws IOException {
 
-        String city = addressInputCommand.getCity();
-        String gu = addressCommand.getName(addressInputCommand.getGu());
-        String dong = addressInputCommand.getDong();
+        String kmaCityCode = cityMap.get(addressInput.getCity());
+        String gu = address.getName(addressInput.getGu());
+        String dong = addressInput.getDong();
+        String kmaGuCode = "";
 
-        String kmaCityCode = cityMap.get(city);
         CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMA.class);
         List<FxxxKMA> fxxxKMAList =
-                mapper.readValue(new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/mdl" + kmaCityCode + ".json.txt"), collectionType);
+                mapper.readValue(
+                        new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/mdl." + kmaCityCode + ".json.txt"),
+                        collectionType
+                );
 
-        String kmaGuCode = "";
         for (FxxxKMA f: fxxxKMAList) {
             if (f.getValue().equals(gu)) {
                 kmaGuCode = f.getCode();
@@ -69,15 +65,22 @@ public class KMAlistService {
         }
 
         collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMAcoord.class);
-        List<FxxxKMAcoord> fcoordList =
-                mapper.readValue(new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/leaf" + kmaGuCode + ".json.txt"), collectionType);
+        List<FxxxKMAcoord> fcoordList = new ArrayList<>();
+        try {
+            fcoordList = mapper.readValue(
+                    new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/leaf." + kmaGuCode + ".json.txt"),
+                    collectionType
+            );
+        } catch (FileNotFoundException e) {
+            e.getStackTrace();
+        }
+
         for (FxxxKMAcoord fcoord: fcoordList) {
             if (fcoord.getValue().equals(dong)) {
                 return fcoord;
             }
         }
-
         return new FxxxKMAcoord();
     }
-}
 
+}

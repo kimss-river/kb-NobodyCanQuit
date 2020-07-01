@@ -32,19 +32,19 @@ public class ForecastTestController {
 
 	private final ObjectMapper mapper = new ObjectMapper();
 
-//    @RequestMapping("/test")
-//    public String weatherForecast(Model model) throws Exception {
-//
-//        VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
-//        URL url = vilageFcstInfoService.getApiUrl();
-//
-//        ViligeFcstStores viligeFcstStores =
-//                mapper.readValue(url, ViligeFcstStores.class);
-//
-//        model.addAttribute("vilage", viligeFcstStores);
-//
-//        return "test/test";
-//    }
+    @RequestMapping("/test")
+    public String weatherForecast(Model model) throws Exception {
+
+        VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
+        URL url = vilageFcstInfoService.getApiUrl();
+
+        ViligeFcstStores viligeFcstStores =
+                mapper.readValue(url, ViligeFcstStores.class);
+
+        model.addAttribute("vilage", viligeFcstStores);
+
+        return "test/test";
+    }
 
 	@GetMapping("/test")
 	public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {

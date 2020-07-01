@@ -43,11 +43,9 @@
             </c:if>
         </form:form>
     </nav>
-    <c:if test="${! empty test1}">
-        <c:forEach items="${test1}" var= "citycode" varStatus="status">
-            ${citycode.code}
-            ${citycode.value}
-        </c:forEach>
+    <c:if test="${! empty coord}">
+        x: ${coord.x}<br />
+        y: ${coord.y}
     </c:if>
 
 
