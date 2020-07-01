@@ -46,14 +46,14 @@ window.onload = function () {
 			//xValueFormatString: "MMM YYYY",
 			yValueFormatString: "#,###mm",
 			dataPoints: [
-				{ x: 00, y: 26 },
-				{ x: 03, y: 27 },
-				{ x: 06, y: 29 },
-				{ x: 09, y: 28 },
-				{ x: 12, y: 30 },
-				{ x: 15, y: 32 },
-				{ x: 18, y: 31 },
-				{ x: 21, y: 27 } 
+				{ label: "00", y: 21 },
+				{ label: "03", y: 22 },
+				{ label: "06", y: 23 },
+				{ label: "09", y: 24 },
+				{ label: "12", y: 27 },
+				{ label: "15", y: 28 }, 
+				{ label: "18", y: 25 }, 
+				{ label: "21", y: 29 }
 			]
 		},
 		{
@@ -65,14 +65,14 @@ window.onload = function () {
 			//xValueFormatString: "MMM YYYY",
 			yValueFormatString: "#,###%",
 			dataPoints: [
-				{ x: 00, y: 16 },
-				{ x: 03, y: 17 },
-				{ x: 06, y: 19 },
-				{ x: 09, y: 18 },
-				{ x: 12, y: 20 },
-				{ x: 15, y: 22 },
-				{ x: 18, y: 21 },
-				{ x: 21, y: 17 } 
+				{ label: "00", y: 16 },
+				{ label: "03", y: 17 },
+				{ label: "06", y: 18 },
+				{ label: "09", y: 19 },
+				{ label: "12", y: 21 },
+				{ label: "15", y: 22 }, 
+				{ label: "18", y: 20 }, 
+				{ label: "21", y: 23 }
 			]
 		}]
 	};
