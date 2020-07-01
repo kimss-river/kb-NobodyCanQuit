@@ -123,6 +123,36 @@ footer a:hover {
 	background: #fff;
 }
 
+/* aside table - fdWrab */
+.fdWrapF {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows : repeat(1, 100px);
+  
+  grid-gap: 8px 8px;
+ 
+  padding: 5px;
+}
+
+.fdWrapS {
+	display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows : repeat(1, 100px);
+    
+    grid-gap: 8px 8px;
+ 
+    padding: 5px;
+}
+
+.item {
+  background-color: #80cbc4;
+  border: 1px solid #fff;
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 10px;
+}
+
 /* aside search */
 select {
 width: 130px;

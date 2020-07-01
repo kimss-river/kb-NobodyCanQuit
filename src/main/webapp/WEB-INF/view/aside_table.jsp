@@ -45,7 +45,8 @@
 	</div>
 	<div class="content_area" data-depth="0" data-idx="1">
 		<div class="content_area_value">
-			미세먼지
+			<!-- 미세먼지 -->
+			<%@ include file="chart_fdust.jsp" %>
 		</div>
 	</div>
 </div>
