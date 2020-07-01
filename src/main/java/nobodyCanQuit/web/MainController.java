@@ -18,13 +18,13 @@ import nobodyCanQuit.web.model.address.AddressInputCommand;
 @Controller
 public class MainController {
 	
+    private final ObjectMapper mapper = new ObjectMapper();
 	@Autowired
     private CityListService cityListService;
     @Autowired
     private AddressApiService addressApiService;
     @Autowired
     private DustAreaAddrService dustAreaAddrService;
-    private final ObjectMapper mapper = new ObjectMapper();
 
     @GetMapping("/")
     public String indexget(AddressInputCommand addressInputCommand, Model model) throws IOException {
@@ -46,14 +46,6 @@ public class MainController {
 
         addressApiService.buildApi();
         addressApiService.setAddressInputCommand(addressInputCommand);
-
-//        AddressCommand addressCommand =
-//                mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);
-//        model.addAttribute("addressCommand", addressCommand);
-
-//        AddressForDongCommand addressForDongCommand =
-//                mapper.readValue(addressApiService.getAddressLevel3Url() ,AddressForDongCommand.class);
-//        model.addAttribute("addressForDongCommand", addressForDongCommand);
 
         return "index";
     }

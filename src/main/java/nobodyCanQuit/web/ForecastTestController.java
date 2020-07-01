@@ -9,32 +9,28 @@ import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ForecastTestController {
 
+	private final ObjectMapper mapper = new ObjectMapper();
 	@Autowired
 	private CityListService cityListService;
 	@Autowired
 	private AddressApiService addressApiService;
 	@Autowired
 	private KMAlistService kmAlistService;
-
-	private final ObjectMapper mapper = new ObjectMapper();
+	@Autowired
+	private VilageFcstInfoService vilageFcstInfoService;
 
 //    @RequestMapping("/test")
 //    public String weatherForecast(Model model) throws Exception {
@@ -77,23 +73,14 @@ public class ForecastTestController {
 				AddressForDongCommand.class);
 		model.addAttribute("addressForDongCommand", addressForDongCommand);
 
-		
-		
-		VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
-		
-		vilageFcstInfoService.setAddressInputCommand(addressInputCommand);
-		vilageFcstInfoService.setAddressCommand(addressCommand);
-		
-
-		
-		FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
-		vilageFcstInfoService.setFxxxKMAcoord(fxxxKMAcoord);
-		
+		/*
+		* 날씨 조회 서비스
+		* */
 		if (!addressInputCommand.getDong().isEmpty()) {
-			String x = fxxxKMAcoord.getX();
-			String y = fxxxKMAcoord.getY();
-			URL url = vilageFcstInfoService.getApiUrl(fxxxKMAcoord);
-			ViligeFcstStores viligeFcstStores = mapper.readValue(url, ViligeFcstStores.class);
+
+			FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
+			ViligeFcstStores viligeFcstStores =
+					mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord), ViligeFcstStores.class);
 
 			model.addAttribute("vilage", viligeFcstStores);
 			model.addAttribute("coord", fxxxKMAcoord);

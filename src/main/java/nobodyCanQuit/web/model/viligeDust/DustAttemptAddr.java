@@ -1,6 +1,5 @@
 package nobodyCanQuit.web.model.viligeDust;
 
-import java.net.URL;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

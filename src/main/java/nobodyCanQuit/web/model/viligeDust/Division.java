@@ -1,7 +1,5 @@
 package nobodyCanQuit.web.model.viligeDust;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.Data;
 
 @Data

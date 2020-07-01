@@ -39,7 +39,7 @@ public class DustAttemptAddrService{
 				.append("&dataGubun=").append(dataGubun)
 				.append("&searchCondition=").append(searchCondition)
 				.append("&_returnType=json");
-				return new URL(stringBuilder.toString());
+		return new URL(stringBuilder.toString());
 	}
     
     //미세먼지 좋음 나쁨 표시
@@ -75,7 +75,7 @@ public class DustAttemptAddrService{
     		
     	}
 
-    	//TODO 디버깅용 코드 삭제할것
+    	//TODO 디버깅용 sout코드 삭제할것
     	if (itemCodes.equals(DustItemCodes.PM10)) {
     		for (int i=0 ; i<=16 ; i++) {
 				if (arr[i]>0&&arr[i]<30) {
