@@ -37,23 +37,23 @@ public class AddressCommand {
         return "";
     }
     
-    public String getXCoor(String code) {
-        for (Result result: this.resultList) {
-            if (result.getCode().equals(code)) {
-                return result.getXCoor();
-            }
-        }
-
-        return "";
-    }
-    
-    public String getYCoor(String code) {
-        for (Result result: this.resultList) {
-            if (result.getCode().equals(code)) {
-                return result.getYCoor();
-            }
-        }
-
-        return "";
-    }
+//    public String getXCoor(String code) {
+//        for (Result result: this.resultList) {
+//            if (result.getCode().equals(code)) {
+//                return result.getXCoor();
+//            }
+//        }
+//
+//        return "";
+//    }
+//    
+//    public String getYCoor(String code) {
+//        for (Result result: this.resultList) {
+//            if (result.getCode().equals(code)) {
+//                return result.getYCoor();
+//            }
+//        }
+//
+//        return "";
+//    }
 }
