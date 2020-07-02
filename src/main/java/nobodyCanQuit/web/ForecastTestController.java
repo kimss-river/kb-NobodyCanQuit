@@ -74,9 +74,23 @@ public class ForecastTestController {
 					mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord), ViligeFcstStores.class);
 			
 			forecastData.setViligeFcstStores(viligeFcstStores);
-			Map<String, String> valueMap =forecastData.getValue("POP");
 			
-			model.addAttribute("valueMap", valueMap);
+			//강수확률 강수형태 강수량
+			Map<String, String> PopMap =forecastData.getValue("POP");
+			Map<String, String> PtyeMap =forecastData.getValue("PTY");
+			Map<String, String> R06Map =forecastData.getValue("R06");
+			
+			//3시간 기온 최저기온 최고기온
+			Map<String, String> TH3Map =forecastData.getValue("TH3");
+			Map<String, String> TMNMap =forecastData.getValue("TMN");
+			Map<String, String> TMXMap =forecastData.getValue("TMX");
+			
+			//하늘상태 풍향 풍속
+			Map<String, String> SkyMap =forecastData.getValue("SKY");
+			Map<String, String> VecMap =forecastData.getValue("VEC");
+			Map<String, String> WSDMap =forecastData.getValue("WSD");
+			
+			model.addAttribute("PopMap", PopMap);
 			model.addAttribute("vilage", viligeFcstStores);
 		}
 		return "test/test";
