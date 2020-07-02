@@ -30,7 +30,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 
 	@Override
     public URL getApiUrl() throws IOException {
-		final String numOfRows = "35";
+		final String numOfRows = "30";
 		final String pageNo = "1";
 		final String searchCondition = "DAILY";
 		final String serviceKey = apiAuthKeys.getDUST_API_SERVICE_KEY();
@@ -49,19 +49,20 @@ public class DustAreaAddrService implements ApiUrlProvider {
 	
 	public List<DustArea> dustAreaList(List<DustArea> listDust) {
 		for(DustArea e : listDust) {
-			if(e.getPm10Value() != null) {
-				e.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
-			}
-		}
-			 
+            	if(e.getPm10Value() != null) {
+            		e.setPm10Grade(grade(Double.parseDouble(e.getPm10Value()),dustArea(DustItemCodes.PM10)));
+            	}
+		}	 
 		return listDust;
 	}
 	
 	public DustArea selected(String guName, List<DustArea> listDust) {
 		DustArea guNameSelected = new DustArea();
 		boolean b = true;
-		for(DustArea e : listDust) {
-			if (e.getCityName().equals(guName) && b) {
+		System.out.println(listDust);
+		try {
+			for(DustArea e : listDust) {
+				if (e.getCityName().equals(guName) && b) {
             	guNameSelected.setSidoName(e.getSidoName());
             	guNameSelected.setCityName(e.getCityName());
             	guNameSelected.setPm25Value(e.getPm25Value());
@@ -70,36 +71,72 @@ public class DustAreaAddrService implements ApiUrlProvider {
             	guNameSelected.setCoValue(e.getCoValue());
             	guNameSelected.setO3Value(e.getO3Value());
             	guNameSelected.setNo2Value(e.getNo2Value());
+            	b=false;
 
             	b = false;
             	if(e.getPm10Value() != null) 
-            		guNameSelected.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
+            		guNameSelected.setPm10Grade(grade(Double.parseDouble(e.getPm10Value()),dustArea(DustItemCodes.PM10)));
             	if(e.getPm25Value() != null) 
-            		guNameSelected.setPm25Grade(Grade(Double.parseDouble(e.getPm25Value()),0,15,16,35,36,75));
+            		guNameSelected.setPm25Grade(grade(Double.parseDouble(e.getPm25Value()),dustArea(DustItemCodes.PM25)));
             	if(e.getSo2Value() != null) 
-                	guNameSelected.setSo2Grade(Grade(Double.parseDouble(e.getSo2Value()),0,0.03,0.031,0.06,0.061,2));
+                	guNameSelected.setSo2Grade(grade(Double.parseDouble(e.getSo2Value()),dustArea(DustItemCodes.SO2)));
             	if(e.getCoValue() != null) 
-                	guNameSelected.setCoGrade(Grade(Double.parseDouble(e.getCoValue()),0,2,2.01,9,9.01,15));
+                	guNameSelected.setCoGrade(grade(Double.parseDouble(e.getCoValue()),dustArea(DustItemCodes.CO)));
             	if(e.getO3Value() != null) 
-                	guNameSelected.setO3Grade(Grade(Double.parseDouble(e.getO3Value()),0,0.030,0.031,0.090,0.091,0.150));
+                	guNameSelected.setO3Grade(grade(Double.parseDouble(e.getO3Value()),dustArea(DustItemCodes.O3)));
             	if(e.getNo2Value() != null) 
-                	guNameSelected.setNo2Grade(Grade(Double.parseDouble(e.getNo2Value()),0,0.02,0.021,0.05,0.051,15));
+                	guNameSelected.setNo2Grade(grade(Double.parseDouble(e.getNo2Value()),dustArea(DustItemCodes.NO2)));
+            	}else {
+            		System.out.println("없는 정보 입니");
+            		}
 			}
-		}
 		return guNameSelected;
+		}catch(Exception e) {
+			return guNameSelected;
+		}
 	}
-			
-	public String Grade(double value, double a,double b, double c, double d, double e, double f) {
 
-		if (value >= a && value <= b) {
+	public String grade(double value, double[] dArea) {
+		if (value >= 0 && value <= dArea[0]) {
 			return "좋음";
-		} else if (value >= c && value <= d) {
-			return "보통";
-		} else if (value >= e && value <= f) {
-			return "나쁨";
+		}else if (value > dArea[0] && value <= dArea[1]){
+			return"보통";
+		} else if (value > dArea[1] && value <= dArea[2]) {
+			return"나쁨";
 		} else {
 			return "매우 나쁨";
 		}
+	}
+	
+//	public String Grade(double value, double a,double b, double c, double d, double e, double f) {
+//
+//		if (value >= a && value <= b) {
+//			return "좋음";
+//		} else if (value >= c && value <= d) {
+//			return "보통";
+//		} else if (value >= e && value <= f) {
+//			return "나쁨";
+//		} else {
+//			return "매우 나쁨";
+//		}
+//	}
+	
+	public double[] dustArea(DustItemCodes str){
+		double[] num = new double[2] ;
+		if(str == DustItemCodes.PM10) {
+			return num = new double[] {30,80,150};
+			 }else if(str == DustItemCodes.PM25){
+				 return num = new double[] {15,35,75};
+				 }else if(str == DustItemCodes.SO2){
+					 return num = new double[] {0.03,0.06,2}; 
+					 }else if(str == DustItemCodes.CO) {
+						 return num = new double[] {2,9,15};
+					 }else if(str == DustItemCodes.O3) {
+						 return num = new double[] {0.030,0.090,0.150};
+					 }else if(str == DustItemCodes.NO2) {
+						 return num = new double[] {0.02,0.05,15};
+					 }
+		return num;
 	}
 }
 

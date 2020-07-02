@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.web.model.viligeDust.Division;
+import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
 
@@ -20,6 +21,8 @@ public class DustAttemptAddrService{
 	private ApiAuthKeys apiAuthKeys;
 	static String FinedustArea_Abbr =
 			"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?";
+	@Autowired
+	DustAreaAddrService dustAreaAddrService;
     
     public URL getApiUrl(DustItemCodes itemCodes) throws IOException {
 		String serviceKey = apiAuthKeys.getDUST_API_SERVICE_KEY();
@@ -43,24 +46,35 @@ public class DustAttemptAddrService{
     //미세먼지 좋음 나쁨 표시
     public Division division(DustItemCodes itemCodes, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
-    	int[] arr = new int[17];
+    	double[] arr = new double[17];
     	String[] str = new String[17];
     	Division division = new Division() ;
     	for(DustAttempt e:listDustAttempt) {
-    		arr[0] = Integer.parseInt(e.getSeoul());
-    		arr[1] = Integer.parseInt(e.getBusan());
-    		arr[2] = Integer.parseInt(e.getDaegu());
-    		arr[3] = Integer.parseInt(e.getIncheon());
-    		arr[4] = Integer.parseInt(e.getGwangju());
-    		arr[5] = Integer.parseInt(e.getDaejeon());
+    		arr[0] = Double.parseDouble(e.getSeoul());
+    		arr[1] = Double.parseDouble(e.getBusan());
+    		arr[2] = Double.parseDouble(e.getDaegu());
+    		arr[3] = Double.parseDouble(e.getIncheon());
+    		arr[4] = Double.parseDouble(e.getGwangju());
+    		arr[5] = Double.parseDouble(e.getDaejeon());
     		
-    		arr[6] = Integer.parseInt(e.getUlsan());
-    		arr[7] = Integer.parseInt(e.getGyeonggi());
-    		arr[8] = Integer.parseInt(e.getGangwon());
-    		arr[9] = Integer.parseInt(e.getChungbuk());
-    		arr[10] = Integer.parseInt(e.getChungnam());
-    		arr[11] = Integer.parseInt(e.getJeonbuk());
+    		arr[6] = Double.parseDouble(e.getUlsan());
+    		arr[7] = Double.parseDouble(e.getGyeonggi());
+    		arr[8] = Double.parseDouble(e.getGangwon());
+    		arr[9] = Double.parseDouble(e.getChungbuk());
+    		arr[10] = Double.parseDouble(e.getChungnam());
+    		arr[11] = Double.parseDouble(e.getJeonbuk());
     		
+    		arr[12] = Double.parseDouble(e.getJeonnam());
+    		arr[13] = Double.parseDouble(e.getGyeongbuk());
+    		arr[14] = Double.parseDouble(e.getGyeongnam());
+    		arr[15] = Double.parseDouble(e.getJeju());
+    		arr[16] = Double.parseDouble(e.getSejong()); 
+    		
+    		if (itemCodes.equals(DustItemCodes.PM10)) {
+        		for (int i = 0; i <= 16; i++) {
+        			str[i] = dustAreaAddrService.grade(arr[i],dustAreaAddrService.dustArea(DustItemCodes.PM10));
+        			System.out.println(str[i]+"널이야?!");
+        		}
     		arr[12] = Integer.parseInt(e.getJeonnam());
     		arr[13] = Integer.parseInt(e.getGyeongbuk());
     		arr[14] = Integer.parseInt(e.getGyeongnam());
@@ -81,7 +95,6 @@ public class DustAttemptAddrService{
 				}
     		}
     	}
-
     	division.setSeoul(str[0]); 
     	division.setBusan(str[1]);
     	division.setDaegu(str[2]);
@@ -102,7 +115,7 @@ public class DustAttemptAddrService{
     	division.setJeju(str[15]);
     	division.setJeju(str[15]);
     	division.setSejong(str[16]);
-
+    	} 
         return division;
     } 
    
