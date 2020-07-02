@@ -48,11 +48,24 @@ public class DustAreaAddrService implements ApiUrlProvider {
 
         return new URL(stringBuilder.toString());
 	}
-
-	public DustArea Selected(String guName, List<DustArea> listDust) {
+	
+	public List<DustArea> dustAreaList(List<DustArea> listDust) {
+//		List<DustArea> 
+		for(DustArea e : listDust) {
+            	if(e.getPm10Value() != null) {
+            		e.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
+System.out.println(e.getPm10Grade()+e.getPm10Value() +"\n");
+            	}
+		}
+			 
+		return listDust;
+	
+	}
+	
+	public DustArea selected(String guName, List<DustArea> listDust) {
 		DustArea guNameSelected =new DustArea();
 		boolean b = true;
-		
+		System.out.println(listDust);
 		for(DustArea e : listDust) {
 			if (e.getCityName().equals(guName) && b) {
             	guNameSelected.setSidoName(e.getSidoName());
@@ -77,8 +90,9 @@ public class DustAreaAddrService implements ApiUrlProvider {
                 	guNameSelected.setO3Grade(Grade(Double.parseDouble(e.getO3Value()),0,0.030,0.031,0.090,0.091,0.150));
             	if(e.getNo2Value() != null) 
                 	guNameSelected.setNo2Grade(Grade(Double.parseDouble(e.getNo2Value()),0,0.02,0.021,0.05,0.051,15));
-				}
-			System.out.println(e.getPm25Value()+e.getPm10Value()+e.getCoGrade()+e.getO3Grade()+e.getNo2Grade());
+//    			System.out.println(e.getPm25Value()+e.getPm10Value()+e.getCoGrade()+e.getO3Grade()+e.getNo2Grade());
+		
+		}
 			 }
 		return guNameSelected;
 	}
