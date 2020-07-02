@@ -8,8 +8,10 @@
 function getWindChart() {
 	
 	var wind = {
-		animationEnabled: true,  
+		animationEnabled: true,
 		theme: "light2",
+		width: 380,
+		height: 150,
 		axisY: {
 			title: "풍속",
 	      	suffix: "m/s",

@@ -10,6 +10,8 @@ function getWeatherChart() {
 	var weather = {
 		animationEnabled: true,  
 		theme: "light2",
+		width: 380,
+		height: 150,
 		axisY: {
 			title: "기온",
 	      	suffix: "°C",

@@ -11,21 +11,25 @@
 /* 반응형 */
 #wrap {width: 100%; margin: auto;}
 body {background: #fff;} 
-header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0;}
-#contents {width: 60%; margin: auto; margin-top: 85px;}
-section {float: left; width: 65%;}
-aside {float: left; width: 35%;}
-footer {clear: both; width: 100%; height: 79px; background: #A197C9; position:fixed; bottom:0; left:0}
+header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0; z-index: 10;}
+#contents {width: 1200px; margin: auto; margin-top: 85px;}
+section {float: left; width: 780px;}
+#map {width: 95%; height: 550px; margin-right: 5%;}
+aside {float: left; width: 420px;}
+footer {clear: both; width: 100%; height: 79px; background: #A197C9; position:fixed; bottom:0; left:0; z-index: 10;}
 
 /* 화면 너비 0 ~ 1200px */
-@media (max-width: 1140px){
-    #contents {width: 100%;}
+@media (max-width: 1200px){
+    #contents {width: 800px;}
+    section {width: 460px;}
+    aside {width: 340px;}
 }
-/* 화면 너비 0 ~ 768px */
+/* 화면 너비 0 ~ 720px */
 @media (max-width: 720px){
-    #contents {width: 100%;}
-    section {width: 100%;}
-    aside {width: 100%;}
+    #contents {width: 540px;}
+    section {width: 540px;}
+    #map {width: 100%; height: 550px;}
+    aside {width: 540px;}
 }
 
 /* header */
@@ -61,6 +65,9 @@ footer a {
 footer a:hover {
     text-decoration: underline;
 }
+
+/* section */
+
 
 /* aside_table */
 .btn {

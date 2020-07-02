@@ -10,6 +10,8 @@ function getPrcptChart() {
 	var prcpt = {
 		animationEnabled: true,  
 		theme: "light2",
+		width: 380,
+		height: 150,
 		axisY: {
 			title: "강수량",
 			suffix: "mm",

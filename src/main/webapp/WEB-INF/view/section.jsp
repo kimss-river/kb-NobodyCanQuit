@@ -1,57 +1,50 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
 <section>
-    <div id="map" style="width: 95%; height: 550px; margin-right: 5%;"></div>
+    <div id="map"></div>
 
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f40abcb03a397dc715624e07f39732f&libraries=clusterer"></script>
     <script>
-      var mapContainer = document.getElementById("map"), // Áöµµ¸¦ Ç¥½ÃÇÒ div
+      var mapContainer = document.getElementById("map"), // ì§€ë„ë¥¼ í‘œì‹œí•  div
         mapOption = {
-          center: new kakao.maps.LatLng(35.878044, 128.627612), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
-          level: 10, // ÁöµµÀÇ È®´ë ·¹º§
-          mapTypeId: kakao.maps.MapTypeId.ROADMAP, // ÁöµµÁ¾·ù
+          center: new kakao.maps.LatLng(35.878044, 128.627612), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
+          level: 10, // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
+          mapTypeId: kakao.maps.MapTypeId.ROADMAP, // ì§€ë„ì¢…ë¥˜
         };
-
-      // Áöµµ¸¦ »ı¼ºÇÑ´Ù
+      // ì§€ë„ë¥¼ ìƒì„±í•œë‹¤
       var map = new kakao.maps.Map(mapContainer, mapOption);
-      // ¸¶Ä¿ Å¬·¯½ºÅÍ·¯¸¦ »ı¼ºÇÕ´Ï´Ù
+      // ë§ˆì»¤ í´ëŸ¬ìŠ¤í„°ëŸ¬ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
       var clusterer = new kakao.maps.MarkerClusterer({
-        map: map, // ¸¶Ä¿µéÀ» Å¬·¯½ºÅÍ·Î °ü¸®ÇÏ°í Ç¥½ÃÇÒ Áöµµ °´Ã¼
-        averageCenter: true, // Å¬·¯½ºÅÍ¿¡ Æ÷ÇÔµÈ ¸¶Ä¿µéÀÇ Æò±Õ À§Ä¡¸¦ Å¬·¯½ºÅÍ ¸¶Ä¿ À§Ä¡·Î ¼³Á¤
-        minLevel: 10, // Å¬·¯½ºÅÍ ÇÒ ÃÖ¼Ò Áöµµ ·¹º§
+        map: map, // ë§ˆì»¤ë“¤ì„ í´ëŸ¬ìŠ¤í„°ë¡œ ê´€ë¦¬í•˜ê³  í‘œì‹œí•  ì§€ë„ ê°ì²´
+        averageCenter: true, // í´ëŸ¬ìŠ¤í„°ì— í¬í•¨ëœ ë§ˆì»¤ë“¤ì˜ í‰ê·  ìœ„ì¹˜ë¥¼ í´ëŸ¬ìŠ¤í„° ë§ˆì»¤ ìœ„ì¹˜ë¡œ ì„¤ì •
+        minLevel: 10, // í´ëŸ¬ìŠ¤í„° í•  ìµœì†Œ ì§€ë„ ë ˆë²¨
       });
-
-      var imageSrc = "${pageContext.request.contextPath}/resources/imgs/good.png", // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ÁÖ¼ÒÀÔ´Ï´Ù
-        imageSize = new kakao.maps.Size(64, 69), // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ Å©±âÀÔ´Ï´Ù
-        imageOption = { offset: new kakao.maps.Point(27, 69) }; // ¸¶Ä¿ÀÌ¹ÌÁöÀÇ ¿É¼ÇÀÔ´Ï´Ù. ¸¶Ä¿ÀÇ ÁÂÇ¥¿Í ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ¾È¿¡¼­ÀÇ ÁÂÇ¥¸¦ ¼³Á¤ÇÕ´Ï´Ù.
-
-      // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁöÁ¤º¸¸¦ °¡Áö°í ÀÖ´Â ¸¶Ä¿ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù
+      var imageSrc = "${pageContext.request.contextPath}/resources/imgs/good.png", // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì£¼ì†Œì…ë‹ˆë‹¤
+        imageSize = new kakao.maps.Size(64, 69), // ë§ˆì»¤ì´ë¯¸ì§€ì˜ í¬ê¸°ì…ë‹ˆë‹¤
+        imageOption = { offset: new kakao.maps.Point(27, 69) }; // ë§ˆì»¤ì´ë¯¸ì§€ì˜ ì˜µì…˜ì…ë‹ˆë‹¤. ë§ˆì»¤ì˜ ì¢Œí‘œì™€ ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ì•ˆì—ì„œì˜ ì¢Œí‘œë¥¼ ì„¤ì •í•©ë‹ˆë‹¤.
+      // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ì •ë³´ë¥¼ ê°€ì§€ê³  ìˆëŠ” ë§ˆì»¤ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
       var markerImage = new kakao.maps.MarkerImage(
         imageSrc,
         imageSize,
         imageOption
       );
-
       var data = [
         [35.878044, 128.627612, '<div style="padding:5px;">Hello World!</div>'],
         [35.879018, 128.626593, '<div style="padding:5px;">Hello World!</div>'],
         [35.879357, 128.628417, '<div style="padding:5px;">Hello World!</div>'],
       ];
-
       var markers = [];
       for (var i = 0; i < data.length; i++) {
-        // ¸¶Ä¿¸¦ »ı¼ºÇÕ´Ï´Ù
+        // ë§ˆì»¤ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
         var marker = new kakao.maps.Marker({
           position: new kakao.maps.LatLng(data[i][0], data[i][1]),
           image: markerImage,
         });
-
-        // ÀÎÆ÷À©µµ¿ì¸¦ »ı¼ºÇÕ´Ï´Ù
+        // ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
         var infowindow = new kakao.maps.InfoWindow({
           content: data[i][2],
         });
-
-        // ¸¶Ä¿ À§¿¡ ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÕ´Ï´Ù. µÎ¹øÂ° ÆÄ¶ó¹ÌÅÍÀÎ marker¸¦ ³Ö¾îÁÖÁö ¾ÊÀ¸¸é Áöµµ À§¿¡ Ç¥½ÃµË´Ï´Ù
+        // ë§ˆì»¤ ìœ„ì— ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤. ë‘ë²ˆì§¸ íŒŒë¼ë¯¸í„°ì¸ markerë¥¼ ë„£ì–´ì£¼ì§€ ì•Šìœ¼ë©´ ì§€ë„ ìœ„ì— í‘œì‹œë©ë‹ˆë‹¤
         infowindow.open(map, marker);
         markers.push(marker);
         kakao.maps.event.addListener(
@@ -66,15 +59,13 @@
         );
       }
       clusterer.addMarkers(markers);
-
-      // ÀÎÆ÷À©µµ¿ì¸¦ Ç¥½ÃÇÏ´Â Å¬·ÎÀú¸¦ ¸¸µå´Â ÇÔ¼öÀÔ´Ï´Ù
+      // ì¸í¬ìœˆë„ìš°ë¥¼ í‘œì‹œí•˜ëŠ” í´ë¡œì €ë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
       function makeOverListener(map, marker, infowindow) {
         return function () {
           infowindow.open(map, marker);
         };
       }
-
-      // ÀÎÆ÷À©µµ¿ì¸¦ ´İ´Â Å¬·ÎÀú¸¦ ¸¸µå´Â ÇÔ¼öÀÔ´Ï´Ù
+      // ì¸í¬ìœˆë„ìš°ë¥¼ ë‹«ëŠ” í´ë¡œì €ë¥¼ ë§Œë“œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
       function makeOutListener(infowindow) {
         return function () {
           infowindow.close();

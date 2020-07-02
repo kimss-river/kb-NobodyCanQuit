@@ -5,7 +5,7 @@
 
 <div id="aside__sWrap">
     <div id="marker">
-        <img src="${pageContext.request.contextPath}/resources/imgs/markerWrab.png" width="341" height="100" alt="markerWrab">
+        <img src="${pageContext.request.contextPath}/resources/imgs/markerWrab.png" width="340" height="100" alt="markerWrab">
     </div>
     <br>
     <div class="serch">

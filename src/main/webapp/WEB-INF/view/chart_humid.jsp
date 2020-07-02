@@ -6,10 +6,12 @@
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
 function getHumidChart() {
-	
+
 	var humid = {
 		animationEnabled: true,
 		theme: "light2",
+		width: 380,
+		height: 150,
 		axisY: {
 			title: "습도",
 			suffix: "%",
