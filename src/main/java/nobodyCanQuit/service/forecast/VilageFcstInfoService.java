@@ -5,12 +5,10 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.viligefcst.FcstItem;
 
 @Component
 public class VilageFcstInfoService {

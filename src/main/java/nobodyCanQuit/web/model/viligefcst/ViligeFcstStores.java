@@ -12,7 +12,7 @@ public class ViligeFcstStores {
 	@JsonIgnoreProperties("header")
 	Response response;
 
-	
+
 	public List<FcstItem> getFcstItem() {
 				
 		return  response.getBody().getItems().getFsctItems();

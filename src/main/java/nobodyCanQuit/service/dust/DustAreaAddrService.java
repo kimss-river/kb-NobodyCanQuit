@@ -10,9 +10,7 @@ import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.service.ApiUrlProvider;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.viligeDust.GuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -50,22 +48,18 @@ public class DustAreaAddrService implements ApiUrlProvider {
 	}
 	
 	public List<DustArea> dustAreaList(List<DustArea> listDust) {
-//		List<DustArea> 
 		for(DustArea e : listDust) {
-            	if(e.getPm10Value() != null) {
-            		e.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
-System.out.println(e.getPm10Grade()+e.getPm10Value() +"\n");
-            	}
+			if(e.getPm10Value() != null) {
+				e.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
+			}
 		}
 			 
 		return listDust;
-	
 	}
 	
 	public DustArea selected(String guName, List<DustArea> listDust) {
-		DustArea guNameSelected =new DustArea();
+		DustArea guNameSelected = new DustArea();
 		boolean b = true;
-		System.out.println(listDust);
 		for(DustArea e : listDust) {
 			if (e.getCityName().equals(guName) && b) {
             	guNameSelected.setSidoName(e.getSidoName());
@@ -77,7 +71,7 @@ System.out.println(e.getPm10Grade()+e.getPm10Value() +"\n");
             	guNameSelected.setO3Value(e.getO3Value());
             	guNameSelected.setNo2Value(e.getNo2Value());
 
-            	b=false;
+            	b = false;
             	if(e.getPm10Value() != null) 
             		guNameSelected.setPm10Grade(Grade(Double.parseDouble(e.getPm10Value()),0,30,31,80,81,150));
             	if(e.getPm25Value() != null) 
@@ -90,26 +84,22 @@ System.out.println(e.getPm10Grade()+e.getPm10Value() +"\n");
                 	guNameSelected.setO3Grade(Grade(Double.parseDouble(e.getO3Value()),0,0.030,0.031,0.090,0.091,0.150));
             	if(e.getNo2Value() != null) 
                 	guNameSelected.setNo2Grade(Grade(Double.parseDouble(e.getNo2Value()),0,0.02,0.021,0.05,0.051,15));
-//    			System.out.println(e.getPm25Value()+e.getPm10Value()+e.getCoGrade()+e.getO3Grade()+e.getNo2Grade());
-		
+			}
 		}
-			 }
 		return guNameSelected;
 	}
 			
-	public String  Grade(double value, double a,double b, double c, double d, double e, double f){
-		String str = "";
-		
+	public String Grade(double value, double a,double b, double c, double d, double e, double f) {
+
 		if (value >= a && value <= b) {
-			str="좋음";
-		}else if (value >= c && value <= d){
-			str="보통";
+			return "좋음";
+		} else if (value >= c && value <= d) {
+			return "보통";
 		} else if (value >= e && value <= f) {
-			str="나쁨";
+			return "나쁨";
 		} else {
-			str="매우 나쁨";
+			return "매우 나쁨";
 		}
-		return str;
 	}
 }
 

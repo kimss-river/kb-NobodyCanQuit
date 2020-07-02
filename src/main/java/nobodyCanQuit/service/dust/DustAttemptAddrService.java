@@ -67,16 +67,17 @@ public class DustAttemptAddrService{
     		arr[15] = Integer.parseInt(e.getJeju());
     		arr[16] = Integer.parseInt(e.getSejong());    		
     	}
+
     	if (itemCodes.equals(DustItemCodes.PM10)) {
     		for (int i = 0; i <= 16; i++) {
 				if (arr[i] >= 0 && arr[i] <= 30) {
-					str[i]="좋음";
-				} else if (arr[i] >= 31 && arr[i] <= 80){
-					str[i]="보통";
+					str[i] = "좋음";
+				} else if (arr[i] > 30 && arr[i] <= 80){
+					str[i] = "보통";
 				} else if (arr[i] >= 81 && arr[i] <= 150) {
-					str[i]="나쁨";
+					str[i] = "나쁨";
 				} else {
-					str[i]="매우 나쁨";
+					str[i] = "매우 나쁨";
 				}
     		}
     	}

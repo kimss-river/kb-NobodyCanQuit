@@ -56,4 +56,5 @@ public class DustArea {
 //  좌표
 	private String xCoord;
 	private String yCoord;
+
 }

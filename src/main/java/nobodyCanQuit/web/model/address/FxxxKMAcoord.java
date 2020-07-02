@@ -1,11 +1,11 @@
 package nobodyCanQuit.web.model.address;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
-@EqualsAndHashCode(callSuper = true)
-@Data
+@Getter
+@Setter
 public class FxxxKMAcoord extends FxxxKMA {
 
     @JsonProperty("x")

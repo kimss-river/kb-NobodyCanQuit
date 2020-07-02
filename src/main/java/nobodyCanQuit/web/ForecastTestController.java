@@ -67,7 +67,7 @@ public class ForecastTestController {
 		/*
 		* 날씨 조회 서비스
 		* */
-		if (!addressInputCommand.getDong().isEmpty()) {
+		if (kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
 
 			FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
 			ViligeFcstStores viligeFcstStores =

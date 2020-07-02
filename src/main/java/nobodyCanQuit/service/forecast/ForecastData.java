@@ -23,7 +23,7 @@ public class ForecastData {
 
 		for (FcstItem f : items) {
 			if (f.getCategory().equals(category)) {
-				valueMap.put(f.getFcstDate()+":"+f.getFcstTime(), f.getFcstValue());
+				valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), f.getFcstValue());
 			}
 		}
 		return valueMap;

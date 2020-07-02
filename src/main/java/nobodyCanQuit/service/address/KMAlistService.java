@@ -50,8 +50,8 @@ public class KMAlistService {
         String gu = address.getName(addressInput.getGu());
         String dong = addressInput.getDong();
         String kmaGuCode = "";
-
         CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMA.class);
+
         List<FxxxKMA> fxxxKMAList =
                 mapper.readValue(
                         new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/mdl." + kmaCityCode + ".json.txt"),
@@ -59,7 +59,7 @@ public class KMAlistService {
                 );
 
         for (FxxxKMA f: fxxxKMAList) {
-            if (f.getValue().equals(gu)) {
+            if (f.equals(gu)) {
                 kmaGuCode = f.getCode();
             }
         }
@@ -73,14 +73,15 @@ public class KMAlistService {
             );
         } catch (FileNotFoundException e) {
             e.getStackTrace();
+            return null;
         }
 
         for (FxxxKMAcoord fcoord: fcoordList) {
-            if (fcoord.getValue().equals(dong)) {
+            if (fcoord.equals(dong)) {
                 return fcoord;
             }
         }
-        return new FxxxKMAcoord();
+        return null;
     }
 
 }
