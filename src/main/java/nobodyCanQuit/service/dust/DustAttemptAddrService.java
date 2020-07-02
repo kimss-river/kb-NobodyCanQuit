@@ -45,10 +45,7 @@ public class DustAttemptAddrService{
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	int[] arr = new int[17];
     	String[] str = new String[17];
-    	//Model model;
-//    	int a = 0;
     	Division division = new Division() ;
-    	List<Division> listDivision = new ArrayList<>();
     	for(DustAttempt e:listDustAttempt) {
     		arr[0] = Integer.parseInt(e.getSeoul());
     		arr[1] = Integer.parseInt(e.getBusan());
@@ -68,11 +65,8 @@ public class DustAttemptAddrService{
     		arr[13] = Integer.parseInt(e.getGyeongbuk());
     		arr[14] = Integer.parseInt(e.getGyeongnam());
     		arr[15] = Integer.parseInt(e.getJeju());
-    		arr[16] = Integer.parseInt(e.getSejong());
-    		//arr[16] = 102;
-    		
+    		arr[16] = Integer.parseInt(e.getSejong());    		
     	}
-
     	if (itemCodes.equals(DustItemCodes.PM10)) {
     		for (int i = 0; i <= 16; i++) {
 				if (arr[i] >= 0 && arr[i] <= 30) {
@@ -86,22 +80,6 @@ public class DustAttemptAddrService{
 				}
     		}
     	}
-    	
-    	if(itemCodes.equals(DustItemCodes.PM25)) {
-    		for(int i=0 ; i<=16 ; i++) {
-        		if(arr[i]>0&&arr[i]<30) {
-        			str[i]="좋음";
-        		}else if(arr[i]>31&&arr[i]<80){
-        			str[i]="보통";
-        		}else if(arr[i]>81&&arr[i]<150) {
-        			str[i]="나쁨";
-        		}else if(arr[i]>=151){
-        			str[i]="매우 나쁨";
-        		}else {
-        			str[i]="매우 나쁨";
-        		}
-    		}
-        }
 
     	division.setSeoul(str[0]); 
     	division.setBusan(str[1]);

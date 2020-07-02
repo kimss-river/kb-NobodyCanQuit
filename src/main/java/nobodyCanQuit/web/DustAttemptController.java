@@ -55,8 +55,7 @@ public class DustAttemptController {
 		
 	@GetMapping("/DustArea")
 	public String getDutArea(Model model) throws IOException {
-
-		//시군구별 실시간 평균정보 조회 dustAreaAddrService.getApiUrl()
+		//시군구별 실시간 평균정보 조회 
 		DustAreaAddr dustAreaAddr = mapper.readValue(new URL("http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureSidoLIst?serviceKey=AFt3TjNEJq7jb0QYqGCXr2rMOb4LS%2F11Mv2HqbaHQNsJkT2McS8dfggWVOeac%2FGJFEQRokOtJaEmZSeZKKvqGQ%3D%3D&numOfRows=24&pageNo=1&sidoName=%EC%84%9C%EC%9A%B8&searchCondition=DAILY&_returnType=json")
 				, DustAreaAddr.class);
 		model.addAttribute("dustAreaAddr", dustAreaAddr);

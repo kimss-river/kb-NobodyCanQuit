@@ -55,12 +55,17 @@
     <br />
     <!-- DustAreaAddrService.Selected -->
 	<h2>Back End 처리</h2>
-		${duNameSelected}<br />
-		sidoName : ${duNameSelected.sidoName}<br />
-		cityName : ${duNameSelected.cityName}<br />
-		pm10 : ${duNameSelected.pm10}<br />
-		pm25 : ${duNameSelected.pm25}
 
+		${guNameSelected}<br />
+		지역 : ${guNameSelected.sidoName}<br />
+		시군구 : ${guNameSelected.cityName}<br />
+		미세먼지(PM10) 평균농도 : ${guNameSelected.pm10Value}㎍/㎥ ${guNameSelected.pm10Grade}<br />
+		미세먼지(PM2.5) 평균농도 : ${guNameSelected.pm25Value}㎍/㎥ ${guNameSelected.pm25Grade}<br />
+		아황산가스 평균농도 : ${guNameSelected.so2Value}ppm ${guNameSelected.so2Grade}<br />
+		일산화탄소 평균농도 : ${guNameSelected.coValue}ppm ${guNameSelected.coGrade}<br />
+		오존 평균농도 : ${guNameSelected.o3Value}ppm ${guNameSelected.o3Grade}<br />
+		이산화질소 평균농도 : ${guNameSelected.no2Value}ppm ${guNameSelected.no2Grade}<br />
+		
     <h5>검색결과</h5>
     <c:forEach items="${dustAreaAddr.dustArea}" var= "dustArea" varStatus="status">
         ${status.count}.시/군/구 이름:${dustArea.cityName}

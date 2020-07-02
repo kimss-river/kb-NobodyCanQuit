@@ -10,7 +10,7 @@ import nobodyCanQuit.service.address.CityListService;
 import java.io.IOException;
 import java.util.List;
 
-import nobodyCanQuit.web.model.viligeDust.DuNameSelected;
+import nobodyCanQuit.web.model.viligeDust.GuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,13 +68,12 @@ public class AddressTestController {
 
         DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
         model.addAttribute("dustAreaAddr", dustAreaAddr);
-
         //TODO revision
         if (! addressInputCommand.getGu().isEmpty()) {
             String guName = addressCommand.getName(addressInputCommand.getGu());
             List<DustArea> listDust = dustAreaAddr.getDustArea();
-            DuNameSelected duNameSelected =  dustAreaAddrService.Selected(guName, listDust);
-            model.addAttribute("duNameSelected",duNameSelected);
+            DustArea guNameSelected =  dustAreaAddrService.Selected(guName, listDust);
+            model.addAttribute("guNameSelected",guNameSelected);
         }
 
         return "test/testKim";

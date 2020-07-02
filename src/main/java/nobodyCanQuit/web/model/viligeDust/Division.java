@@ -25,5 +25,27 @@ public class Division {
     
     private String jeju;
     private String sejong;
+    
+    private String seoulGrade;
+    private String busanGrade;
+    private String daeguGrade;
+    private String incheonGrade;
+    private String gwangjuGrade;
+    
+    private String daejeonGrade;
+    private String ulsanGrade;
+    private String gyeonggiGrade;
+    private String gangwonGrade;
+    private String chungbukGrade;
+    
+    private String chungnamGrade;
+    private String jeonbukGrade;
+    private String jeonnamGrade;
+    private String gyeongbukGrade;
+    private String gyeongnamGrade;
+    
+    private String jejuGrade;
+    private String sejongGrade;
+    
 	
 }
