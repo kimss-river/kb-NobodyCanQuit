@@ -8,6 +8,8 @@
     url('/fonts/NanumBarunGothic.woff') format('woff');
 }
 
+html { font-size:62.5%; }
+
 /* 반응형 */
 #wrap {width: 100%; margin: auto;}
 body {background: #fff;} 
@@ -16,20 +18,21 @@ header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; l
 section {float: left; width: 780px;}
 #map {width: 95%; height: 550px; margin-right: 5%;}
 aside {float: left; width: 420px;}
-footer {clear: both; width: 100%; height: 79px; background: #A197C9; position:fixed; bottom:0; left:0; z-index: 10;}
+footer {clear: both; width: 100%; height: 79px; background: #ede5ff; position:fixed; bottom:0; left:0; z-index: 10;}
 
 /* 화면 너비 0 ~ 1200px */
 @media (max-width: 1200px){
     #contents {width: 800px;}
-    section {width: 460px;}
-    aside {width: 340px;}
+    section {width: 431px;}
+    aside {width: 369px;}
 }
-/* 화면 너비 0 ~ 720px */
-@media (max-width: 720px){
+/* 화면 너비 0 ~ 800px */
+@media (max-width: 800px){
     #contents {width: 540px;}
     section {width: 540px;}
     #map {width: 100%; height: 550px;}
     aside {width: 540px;}
+    //#aside__sWrap .aside_search { width: 90px;} 반응형 수정필요
 }
 
 /* header */
@@ -115,7 +118,7 @@ footer a:hover {
 	background: #fff
 }
 .tab_wrap .content_area .content_area_value {
-	background: #fff;
+	background: #E2D6FB;
 }
 .tab_wrap .content_area.act {
 	display:block;
@@ -139,7 +142,7 @@ footer a:hover {
 .fdWrapF {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows : repeat(1, 100px);
+  grid-template-rows : repeat(1, 120px);
   
   grid-gap: 8px 8px;
  
@@ -149,7 +152,7 @@ footer a:hover {
 .fdWrapS {
 	display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows : repeat(1, 100px);
+    grid-template-rows : repeat(1, 120px);
     
     grid-gap: 8px 8px;
  
@@ -157,17 +160,30 @@ footer a:hover {
 }
 
 .item {
-  background-color: #80cbc4;
+  background-color: #fff;
   border: 1px solid #fff;
-  padding: 20px;
-  font-size: 30px;
+  font-size: 1.4rem;
   text-align: center;
-  border-radius: 10px;
+  border-radius: 8px;
+}
+
+.item > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.item_sta {
+  font-size: 2.3rem;
 }
 
 /* aside search */
+#aside__sWrap {
+	text-align:center;
+	margin: 10px auto;"
+}
+
 select {
-width: 130px;
+width: 115px;
 padding: .8em .5em;
 border: 1px solid #999;
 font-family: inherit;
