@@ -58,6 +58,9 @@
 		</form:form>
 	</nav>
 
+	<c:forEach items="${valueMap}" var="valueMap">
+			${valueMap.key} : ${valueMap.value}
+	</c:forEach>
 
 
 	<%-- ${vilage.response.body.items.fsctItems} --%>
@@ -65,6 +68,10 @@
 	<!-- TMX(낮 최고기온)는 11시에 나옴 -->
 	<!-- TMN(아침 최저기온)는 02시에 나옴 -->
 	<table class="table table-hover">
+		
+	
+	
+	
 		<c:forEach items="${vilage.response.body.items.fsctItems}"
 			var="fsctItem">
                 <tr>
@@ -94,11 +101,13 @@
 					</c:if> <c:if test="${fsctItem.category eq 'TMX'}">
 						<c:out value="낮 최고 기온" />
 					</c:if> <c:if test="${fsctItem.category eq 'UUU'}">
-						<c:out value="풍속" />
+						<c:out value="풍속(동서)" />
 					</c:if> <c:if test="${fsctItem.category eq 'VVV'}">
-						<c:out value="풍속" />
+						<c:out value="풍속(남북)" />
 					</c:if> <c:if test="${fsctItem.category eq 'VEC'}">
 						<c:out value="풍향" />
+					</c:if> <c:if test="${fsctItem.category eq 'WSD'}">
+						<c:out value="풍속" />
 					</c:if></td>
 				<td width=150>예보 값</td>
 				<td width=150><c:if
@@ -138,7 +147,7 @@
 						test="${fsctItem.category eq 'T3H' || fsctItem.category eq 'TMX' || fsctItem.category eq 'TMN'}">
 						<c:out value="${fsctItem.fcstValue}℃" />
 					</c:if> <c:if
-						test="${fsctItem.category eq 'UUU' || fsctItem.category eq 'VVV' || fsctItem.category eq 'VEC' }">
+						test="${fsctItem.category eq 'UUU' || fsctItem.category eq 'VVV' || fsctItem.category eq 'VEC' || fsctItem.category eq 'WSD' }">
 						<c:out value="${fsctItem.fcstValue} m/s" />
 					</c:if></td>
 			</tr>

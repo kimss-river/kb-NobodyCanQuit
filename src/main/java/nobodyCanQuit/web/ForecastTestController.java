@@ -1,10 +1,12 @@
 package nobodyCanQuit.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nobodyCanQuit.service.VilageFcstInfoService;
+
 import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.service.address.KMAlistService;
+import nobodyCanQuit.service.forecast.ForecastData;
+import nobodyCanQuit.service.forecast.VilageFcstInfoService;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
@@ -12,6 +14,7 @@ import nobodyCanQuit.web.model.address.FxxxKMAcoord;
 import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
 
 import java.io.IOException;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,20 +34,8 @@ public class ForecastTestController {
 	private KMAlistService kmAlistService;
 	@Autowired
 	private VilageFcstInfoService vilageFcstInfoService;
-
-//    @RequestMapping("/test")
-//    public String weatherForecast(Model model) throws Exception {
-//
-//        VilageFcstInfoService vilageFcstInfoService = new VilageFcstInfoService();
-//        URL url = vilageFcstInfoService.getApiUrl();
-//
-//        ViligeFcstStores viligeFcstStores =
-//                mapper.readValue(url, ViligeFcstStores.class);
-//
-//        model.addAttribute("vilage", viligeFcstStores);
-//
-//        return "test/test";
-//    }
+	@Autowired
+	private ForecastData forecastData;
 
 	@GetMapping("/test")
 	public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {
@@ -81,9 +72,12 @@ public class ForecastTestController {
 			FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
 			ViligeFcstStores viligeFcstStores =
 					mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord), ViligeFcstStores.class);
-
+			
+			forecastData.setViligeFcstStores(viligeFcstStores);
+			Map<String, String> valueMap =forecastData.getValue("POP");
+			
+			model.addAttribute("valueMap", valueMap);
 			model.addAttribute("vilage", viligeFcstStores);
-			model.addAttribute("coord", fxxxKMAcoord);
 		}
 		return "test/test";
 	}

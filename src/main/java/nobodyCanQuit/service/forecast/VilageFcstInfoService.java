@@ -1,14 +1,16 @@
-package nobodyCanQuit.service;
+package nobodyCanQuit.service.forecast;
 
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
+import nobodyCanQuit.web.model.viligefcst.FcstItem;
 
 @Component
 public class VilageFcstInfoService {
@@ -17,20 +19,21 @@ public class VilageFcstInfoService {
 
 	public URL getApiUrl(FxxxKMAcoord fxxxKMAcoord) throws IOException {
 
-		//System.out.println(fxxxKMAcoord.getX()+""+fxxxKMAcoord.getY());
-		//getTime(Integer.parseInt(base_date[1]));
-		//String date = new SimpleDateFormat("yyyyMMdd HH").format((new Date(System.currentTimeMillis())));
-		//String[] base_date = date.split(" ");
+		// System.out.println(fxxxKMAcoord.getX()+""+fxxxKMAcoord.getY());
+		// getTime(Integer.parseInt(base_date[1]));
+		// String date = new SimpleDateFormat("yyyyMMdd HH").format((new
+		// Date(System.currentTimeMillis())));
+		// String[] base_date = date.split(" ");
 
 		Apiaddress = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst"
 				+ "?serviceKey=zGuDv3a%2FY%2FxXtJPaZ4x2I09BsyEbbwzdzoZ5xxO6VSba6r%2BrvDH7bOkuE3R0c5oe3hdHkLdeoFAdD6oPk48cxw%3D%3D"
-				+ "&dataType=json&numOfRows=20&pageNo=1" + "&base_date=" + getDate()
-				+ "&base_time=" + getTime() + "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
+				+ "&dataType=json&numOfRows=999&pageNo=1" + "&base_date=" + getDate() + "&base_time=" + getTime()
+				+ "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
 
 		return new URL(Apiaddress);
 	}
-
-	private String getDate() {
+	
+	public String getDate() {
 		return LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
 	}
 
@@ -58,4 +61,5 @@ public class VilageFcstInfoService {
 		}
 	}
 
+	
 }

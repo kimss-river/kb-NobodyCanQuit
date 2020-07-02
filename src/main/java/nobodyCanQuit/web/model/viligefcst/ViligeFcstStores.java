@@ -1,5 +1,7 @@
 package nobodyCanQuit.web.model.viligefcst;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
@@ -11,29 +13,10 @@ public class ViligeFcstStores {
 	Response response;
 
 	
-	/*
-	 * public static class Response{
-	 * 
-	 * @JsonProperty("body") private Body body; }
-	 */
-	
-	/*
-	 * @Data
-	 * 
-	 * @JsonIgnoreProperties({"dataType","pageNo","numOfRows","totalCount"}) public
-	 * static class Body{
-	 * 
-	 * @JsonProperty("items") private Items items;
-	 * 
-	 * }
-	 */
-	
-	/*
-	 * @Data public static class Items{
-	 * 
-	 * @JsonProperty("item") private List<FcstItem> fsctItems; }
-	 */
-
-	
+	public List<FcstItem> getFcstItem() {
+				
+		return  response.getBody().getItems().getFsctItems();
+	}
+		
 }
 
