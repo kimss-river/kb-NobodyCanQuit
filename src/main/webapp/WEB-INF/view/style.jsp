@@ -114,13 +114,18 @@ footer a:hover {
 	display:block;
 }
 .tab_wrap .btn_tab[data-depth="1"] {
-	width: 25%
+	width: 25%;
 }
 .tab_wrap .content_area[data-depth="1"] {
-	background: #fff
+	background: #fff;
 }
 .tab_wrap .content_area[data-depth="1"] .content_area_value {
 	background: #fff;
+	
+}
+.wChart{
+	width:100%;
+	height: 150px
 }
 
 /* aside table - fdWrab */

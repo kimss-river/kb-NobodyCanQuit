@@ -2,16 +2,22 @@
 
 <div class="tab_wrap tab_area">
 	<div class="btn_area clearfix">
-		<button class="btn btn_tab act" data-depth="0" data-idx="0">날씨</button>
-		<button class="btn btn_tab" data-depth="0" data-idx="1">미세먼지</button>
+		<button class="btn btn_tab act" data-depth="0" data-idx="1">미세먼지</button>
+		<button class="btn btn_tab" data-depth="0" data-idx="0" onclick="getWeatherChart()">날씨</button>
 	</div>
-	<div class="content_area act" data-depth="0" data-idx="0">
+	<div class="content_area act" data-depth="0" data-idx="1">
+		<div class="content_area_value">
+			<!-- 미세먼지 -->
+			<%@ include file="chart_fdust.jsp" %>
+		</div>
+	</div>
+	<div class="content_area" data-depth="0" data-idx="0">
 		<div class="tab_area">
 			<div class="btn_area clearfix">
-				<button class="btn btn_tab act" data-depth="1" data-idx="0">날씨</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="1">강수</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="2">바람</button>
-				<button class="btn btn_tab" data-depth="1" data-idx="3">습도</button>
+				<button class="btn btn_tab act" data-depth="1" data-idx="0" onclick="getWeatherChart()">날씨</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="1" onclick="getPrcptChart()">강수</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="2" onclick="getWindChart()">바람</button>
+				<button class="btn btn_tab" data-depth="1" data-idx="3" onclick="getHumidChart()">습도</button>
 			</div>
 	
 			<div class="content_area act" data-depth="1" data-idx="0">
@@ -41,12 +47,6 @@
 		</div>
 		<div class="content_area_value">
 			주간 날씨
-		</div>
-	</div>
-	<div class="content_area" data-depth="0" data-idx="1">
-		<div class="content_area_value">
-			<!-- 미세먼지 -->
-			<%@ include file="chart_fdust.jsp" %>
 		</div>
 	</div>
 </div>

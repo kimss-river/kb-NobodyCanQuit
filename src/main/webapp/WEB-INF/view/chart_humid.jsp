@@ -1,18 +1,15 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 
 <!-- 습도 -->
-<div id="humidChart" style="height: 150px; width: 100%;"></div>
+<div id="humidChart" class="wChart"></div>
 
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
-window.onload = function () {
+function getHumidChart() {
 	
 	var humid = {
 		animationEnabled: true,
 		theme: "light2",
-		axisX: {
-			
-		},
 		axisY: {
 			title: "습도",
 			suffix: "%",
@@ -26,17 +23,16 @@ window.onload = function () {
 			color: "#C0504E",
 			name: "습도",
 			showInLegend: true,
-			//마우스를 올렸을 때 뜨는 값의 포맷 적용 안됨
 			yValueFormatString: "#,###%",
 			dataPoints: [
-				{ label: "00", y: 10 },
-				{ label: "03", y: 15 },
-				{ label: "06", y: 25 },
-				{ label: "09", y: 30 },
-				{ label: "12", y: 28 },
-				{ label: "15", y: 32 }, 
-				{ label: "18", y: 31 }, 
-				{ label: "21", y: 27 }
+				{ label: "00시", y: 21 },
+				{ label: "03시", y: 22 },
+				{ label: "06시", y: 23 },
+				{ label: "09시", y: 24 },
+				{ label: "12시", y: 27 },
+				{ label: "15시", y: 28 }, 
+				{ label: "18시", y: 25 }, 
+				{ label: "21시", y: 29 }
 			]
 		}]
 	};
