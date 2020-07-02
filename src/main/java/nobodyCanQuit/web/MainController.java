@@ -31,7 +31,7 @@ public class MainController {
 
         model.addAttribute("cityList", cityListService);
 
-        addressApiService.buildApi();
+        addressApiService.getSGIStoken();
 
         return "index";
     }
@@ -44,7 +44,7 @@ public class MainController {
         */
         model.addAttribute("cityList", cityListService);
 
-        addressApiService.buildApi();
+        addressApiService.getSGIStoken();
         addressApiService.setAddressInputCommand(addressInputCommand);
 
         return "index";

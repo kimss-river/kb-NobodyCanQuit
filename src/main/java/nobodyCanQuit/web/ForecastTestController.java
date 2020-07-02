@@ -43,7 +43,7 @@ public class ForecastTestController {
 
 		model.addAttribute("cityList", cityListService);
 
-		addressApiService.buildApi();
+		addressApiService.getSGIStoken();
 
 		return "test/test";
 	}
@@ -55,7 +55,7 @@ public class ForecastTestController {
 		 * 계층별 주소검색
 		 */
 		model.addAttribute("cityList", cityListService);
-		addressApiService.buildApi();
+		addressApiService.getSGIStoken();
 		addressApiService.setAddressInputCommand(addressInputCommand);
 		
 		AddressCommand addressCommand = mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);

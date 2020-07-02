@@ -1,13 +1,12 @@
 package nobodyCanQuit.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import nobodyCanQuit.service.address.*;
 import nobodyCanQuit.service.dust.DustAreaAddrService;
-import nobodyCanQuit.service.address.AddressApiService;
-import nobodyCanQuit.service.address.KMAlistService;
 import nobodyCanQuit.web.model.address.*;
-import nobodyCanQuit.service.address.CityListService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import nobodyCanQuit.web.model.viligeDust.DustArea;
@@ -31,12 +30,11 @@ public class AddressTestController {
     @Autowired
     private KMAlistService kmAlistService;
 
-
     @GetMapping("/testKim")
     public String get(AddressInputCommand addressInputCommand, Model model) throws IOException {
 
         model.addAttribute("cityList", cityListService);
-        addressApiService.buildApi();
+        addressApiService.getSGIStoken();
 
         return "test/testKim";
     }
@@ -49,7 +47,7 @@ public class AddressTestController {
         */
         model.addAttribute("cityList", cityListService);
 
-        addressApiService.buildApi();
+        addressApiService.getSGIStoken();
         addressApiService.setAddressInputCommand(addressInputCommand);
 
         AddressCommand addressCommand =
@@ -60,6 +58,12 @@ public class AddressTestController {
                 mapper.readValue(addressApiService.getAddressLevel3Url() ,AddressForDongCommand.class);
         model.addAttribute("addressForDongCommand", addressForDongCommand);
 
+        // TODO 테스트 필요
+        CoordService coordService = new CoordService();
+        List<AddressCommand.Result> test = new ArrayList<>();
+        test = coordService.convert(addressCommand.getResultList(), addressCommand.getResultList(),
+                CoordService.CoordSystem.UTM, CoordService.CoordSystem.WGS84);
+
         /*
         * 시군구별 실시간 평균정보 조회
         */
@@ -67,17 +71,17 @@ public class AddressTestController {
 
         DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
         model.addAttribute("dustAreaAddr", dustAreaAddr);
-//        DustAreaAddr dustAreaAddrs = 
-        List<DustArea> listDust = dustAreaAddr.getDustArea();
+
         // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
+        List<DustArea> listDust = dustAreaAddr.getDustArea();
         List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
         model.addAttribute("areaGradeList", areaGradeList);
 
         if (! addressInputCommand.getGu().isEmpty()) {
             String guName = addressCommand.getName(addressInputCommand.getGu());
            
-            DustArea guNameSelected =  dustAreaAddrService.selected(guName, listDust);
-            model.addAttribute("guNameSelected",guNameSelected);
+            DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
+            model.addAttribute("guNameSelected", guNameSelected);
         }
 
         return "test/testKim";
