@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.address.AddressApiService;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.service.address.KMAlistService;
+import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
 import nobodyCanQuit.service.forecast.VilageFcstInfoService;
 import nobodyCanQuit.web.model.address.AddressCommand;
@@ -76,19 +77,19 @@ public class ForecastTestController {
 			forecastData.setViligeFcstStores(viligeFcstStores);
 			
 			//강수확률 강수형태 강수량
-			Map<String, String> PopMap =forecastData.getValue("POP");
-			Map<String, String> PtyeMap =forecastData.getValue("PTY");
-			Map<String, String> R06Map =forecastData.getValue("R06");
+			Map<String, String> PopMap =forecastData.getValue(ForecastCategory.POP);
+			Map<String, String> PtyeMap =forecastData.getValue(ForecastCategory.PTY);
+			Map<String, String> R06Map =forecastData.getValue(ForecastCategory.R06);
 			
 			//3시간 기온 최저기온 최고기온
-			Map<String, String> TH3Map =forecastData.getValue("TH3");
-			Map<String, String> TMNMap =forecastData.getValue("TMN");
-			Map<String, String> TMXMap =forecastData.getValue("TMX");
+			Map<String, String> TH3Map =forecastData.getValue(ForecastCategory.TH3);
+			Map<String, String> TMNMap =forecastData.getValue(ForecastCategory.TMN);
+			Map<String, String> TMXMap =forecastData.getValue(ForecastCategory.TMX);
 			
 			//하늘상태 풍향 풍속
-			Map<String, String> SkyMap =forecastData.getValue("SKY");
-			Map<String, String> VecMap =forecastData.getValue("VEC");
-			Map<String, String> WSDMap =forecastData.getValue("WSD");
+			Map<String, String> SkyMap =forecastData.getValue(ForecastCategory.SKY);
+			Map<String, String> VecMap =forecastData.getValue(ForecastCategory.VEC);
+			Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
 			
 			model.addAttribute("PopMap", PopMap);
 			model.addAttribute("vilage", viligeFcstStores);

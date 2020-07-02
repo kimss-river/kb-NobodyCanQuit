@@ -10,7 +10,6 @@ import nobodyCanQuit.service.address.CityListService;
 import java.io.IOException;
 import java.util.List;
 
-import nobodyCanQuit.web.model.viligeDust.GuNameSelected;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,7 @@ public class AddressTestController {
         // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
         List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
         model.addAttribute("areaGradeList", areaGradeList);
-        //TODO revision
+
         if (! addressInputCommand.getGu().isEmpty()) {
             String guName = addressCommand.getName(addressInputCommand.getGu());
            

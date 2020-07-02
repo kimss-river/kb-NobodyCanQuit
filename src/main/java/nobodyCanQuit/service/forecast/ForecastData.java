@@ -16,13 +16,13 @@ public class ForecastData {
 	@Setter
 	private ViligeFcstStores viligeFcstStores;
 
-	public Map<String, String> getValue(String category) {
+	public Map<String, String> getValue(ForecastCategory forecastCategory) {
 
 		Map<String, String> valueMap = new TreeMap<>();
 		List<FcstItem> items = viligeFcstStores.getFcstItem();
 
 		for (FcstItem f : items) {
-			if (f.getCategory().equals(category)) {
+			if (f.getCategory().equals(forecastCategory.toString())) {
 				valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), f.getFcstValue());
 			}
 		}
