@@ -19,22 +19,22 @@
 	<br />
     서울:${finedustAddr.dustAttempt[0].seoul}
     대구:${finedustAddr.dustAttempt[0].daegu}
-     인천:${finedustAddr.dustAttempt[0].incheon}
+    인천:${finedustAddr.dustAttempt[0].incheon}
     광주:${finedustAddr.dustAttempt[0].gwangju}
     대전:${finedustAddr.dustAttempt[0].daejeon}
     울산:${finedustAddr.dustAttempt[0].ulsan}
-     경기:${finedustAddr.dustAttempt[0].gyeonggi}
+    경기:${finedustAddr.dustAttempt[0].gyeonggi}
     강원:${finedustAddr.dustAttempt[0].gangwon}
-   <h3>미세먼지 표시 PM10</h3>
-  ${dustAttempGrade} <br />
-서울 : ${dustAttempGrade.seoul} 
-대구 : ${dustAttempGrade.daegu}
-인천: ${dustAttempGrade.incheon}
-광주: ${dustAttempGrade.gwangju}
-대전: ${dustAttempGrade.daejeon}
-울산: ${dustAttempGrade.ulsan}
-경기: ${dustAttempGrade.gyeonggi}
-강원: ${dustAttempGrade.gangwon}  
+    <h3>미세먼지 표시 PM10</h3>
+    ${dustAttempGrade} <br />
+    서울 : ${dustAttempGrade.seoul}
+    대구 : ${dustAttempGrade.daegu}
+    인천: ${dustAttempGrade.incheon}
+    광주: ${dustAttempGrade.gwangju}
+    대전: ${dustAttempGrade.daejeon}
+    울산: ${dustAttempGrade.ulsan}
+    경기: ${dustAttempGrade.gyeonggi}
+    강원: ${dustAttempGrade.gangwon}
 
 </body>
 </html>

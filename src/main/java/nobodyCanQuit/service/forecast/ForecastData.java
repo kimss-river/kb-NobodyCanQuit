@@ -23,7 +23,7 @@ public class ForecastData {
 
 		for (FcstItem f : items) {
 			if (f.getCategory().equals(forecastCategory.toString())) {
-				if(f.getCategory().equals(forecastCategory.PTY.toString())) {
+				if(f.getCategory().equals(ForecastCategory.PTY.toString())) {
 					
 					String pty = "";
 					
@@ -47,7 +47,7 @@ public class ForecastData {
 					
 					valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), pty);
 					
-				} else if(f.getCategory().equals(forecastCategory.SKY.toString())) {
+				} else if(f.getCategory().equals(ForecastCategory.SKY.toString())) {
 					
 					String sky = "";
 					
@@ -65,12 +65,12 @@ public class ForecastData {
 					
 					valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), sky);
 					
-				} else if(f.getCategory().equals(forecastCategory.VEC.toString())) {
+				} else if(f.getCategory().equals(ForecastCategory.VEC.toString())) {
 									
 					int vec = Integer.parseInt(f.getFcstValue());
 					vec = (int)((vec + 22.5 * 0.5)/22.5);
-					
-					valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), vec+"");
+
+					valueMap.put(f.getFcstDate() + ":" + f.getFcstTime(), String.valueOf(vec));
 					
 				} else {
 					

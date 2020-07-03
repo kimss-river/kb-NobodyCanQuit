@@ -32,7 +32,7 @@ public class AccessTokenProvider {
                     .append("&consumer_secret=").append(apiAuthKeys.getADDRESS_API_SECRET_KEY());
 
             AccessToken token = mapper.readValue(new URL(builder.toString()), AccessToken.class);
-            accessToken = token.getResult().getAccessToken();
+            this.accessToken = token.getResult().getAccessToken();
 
             accessTimeout = Long.valueOf(token.getResult().getAccessTimeout());
             accessTimeout -= (1 * 60 * 1000);
@@ -40,6 +40,6 @@ public class AccessTokenProvider {
             return accessToken;
         }
 
-        return accessToken;
+        return this.accessToken;
     }
 }

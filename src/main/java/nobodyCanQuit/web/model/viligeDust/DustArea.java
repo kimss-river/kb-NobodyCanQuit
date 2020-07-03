@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
+import nobodyCanQuit.service.address.Coordinates;
 
 @JsonIgnoreProperties({"_returnType",
 	"cityNameEng",
@@ -21,7 +22,7 @@ import lombok.Data;
     "serviceKey",
     "totalCount"})
 @Data
-public class DustArea {
+public class DustArea implements Coordinates {
 	//지역
 	@JsonProperty("cityName")
 	private String cityName;
@@ -57,4 +58,23 @@ public class DustArea {
 	private String xCoord;
 	private String yCoord;
 
+	@Override
+	public String getX() {
+		return xCoord;
+	}
+
+	@Override
+	public String getY() {
+		return yCoord;
+	}
+
+	@Override
+	public void setNewX(String newX) {
+		this.xCoord = newX;
+	}
+
+	@Override
+	public void setNewY(String newY) {
+		this.yCoord = newY;
+	}
 }

@@ -2,7 +2,6 @@ package nobodyCanQuit.service.dust;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
 
@@ -68,30 +66,32 @@ public class DustAttemptAddrService{
     		arr[13] = Double.parseDouble(e.getGyeongbuk());
     		arr[14] = Double.parseDouble(e.getGyeongnam());
     		arr[15] = Double.parseDouble(e.getJeju());
-    		arr[16] = Double.parseDouble(e.getSejong()); 
-        		for (int i = 0; i <= 16; i++) {
-        			str[i] = dustAreaAddrService.grade(arr[i],dustRating);
-        		} 		
-    	division.setSeoul(str[0]); 
-    	division.setBusan(str[1]);
-    	division.setDaegu(str[2]);
-    	division.setIncheon(str[3]);
-    	division.setGwangju(str[4]);
-    	division.setDaejeon(str[5]);
-		
-    	division.setUlsan(str[6]); 
-    	division.setGyeonggi(str[7]);
-    	division.setGangwon(str[8]);
-    	division.setChungbuk(str[9]);
-    	division.setChungnam(str[10]);
-    	division.setJeonbuk(str[11]);
-		
-    	division.setJeonnam(str[12]); 
-    	division.setGyeongbuk(str[13]);
-    	division.setGyeongnam(str[14]);
-    	division.setJeju(str[15]);
-    	division.setJeju(str[15]);
-    	division.setSejong(str[16]);
+    		arr[16] = Double.parseDouble(e.getSejong());
+
+			for (int i = 0; i <= 16; i++) {
+				str[i] = dustAreaAddrService.grade(arr[i],dustRating);
+			}
+
+			division.setSeoul(str[0]);
+			division.setBusan(str[1]);
+			division.setDaegu(str[2]);
+			division.setIncheon(str[3]);
+			division.setGwangju(str[4]);
+			division.setDaejeon(str[5]);
+
+			division.setUlsan(str[6]);
+			division.setGyeonggi(str[7]);
+			division.setGangwon(str[8]);
+			division.setChungbuk(str[9]);
+			division.setChungnam(str[10]);
+			division.setJeonbuk(str[11]);
+
+			division.setJeonnam(str[12]);
+			division.setGyeongbuk(str[13]);
+			division.setGyeongnam(str[14]);
+			division.setJeju(str[15]);
+			division.setJeju(str[15]);
+			division.setSejong(str[16]);
     	} 
         return division;
     } 

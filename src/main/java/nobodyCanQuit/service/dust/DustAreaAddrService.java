@@ -21,8 +21,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 	@Autowired
 	private ApiAuthKeys apiAuthKeys;
 	@Autowired
-	CityListService cityListService;
-	
+	private CityListService cityListService;
 	@Setter
 	private AddressInputCommand addressInputCommand;
 	private static final String FinedustArea_Abbr =
@@ -49,7 +48,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 	
 	public List<DustArea> dustAreaList(List<DustArea> listDust) {
 		for(DustArea e : listDust) {
-			if(!e.getPm10Value().isEmpty()) {
+			if(! e.getPm10Value().isEmpty()) {
 				e.setPm10Grade(grade(Double.parseDouble(e.getPm10Value()),DustRating.PM10));
 			}
 		}	 
@@ -65,14 +64,7 @@ public class DustAreaAddrService implements ApiUrlProvider {
 			}
 			for(DustArea e : listDust) {
 				if (e.getCityName().equals(guName) && b) {
-	            	guNameSelected.setSidoName(e.getSidoName());
-	            	guNameSelected.setCityName(e.getCityName());
-	            	guNameSelected.setPm25Value(e.getPm25Value());
-	            	guNameSelected.setPm10Value(e.getPm10Value());
-	            	guNameSelected.setSo2Value(e.getSo2Value());
-	            	guNameSelected.setCoValue(e.getCoValue());
-	            	guNameSelected.setO3Value(e.getO3Value());
-	            	guNameSelected.setNo2Value(e.getNo2Value());
+	            	guNameSelected = e;
 	            	b=false;
 	
 	            	if(e.getPm10Value() != null) 

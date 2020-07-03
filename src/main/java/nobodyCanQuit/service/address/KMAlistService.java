@@ -58,6 +58,10 @@ public class KMAlistService {
                         collectionType
                 );
 
+        if (gu.contains(" ")) {
+            gu = gu.replaceAll(" ","");
+        }
+
         for (FxxxKMA f: fxxxKMAList) {
             if (f.equals(gu)) {
                 kmaGuCode = f.getCode();

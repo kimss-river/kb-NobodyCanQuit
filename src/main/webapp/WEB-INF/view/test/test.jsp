@@ -49,11 +49,8 @@
 			<button class="btn btn-success" type="submit">
 				<spring:message code="common.search.title" />
 			</button>
-			<c:if test="${! empty addressInputCommand.dong}">
-				<h4>${addressInputCommand.dong}</h4>
-			</c:if>
-			<c:if test="${! empty test}">
-				<h4>${test}</h4>
+			<c:if test="${! empty addressInputCommand.gu}">
+				<h4>${addressInputCommand.gu}</h4>
 			</c:if>
 		</form:form>
 	</nav>
