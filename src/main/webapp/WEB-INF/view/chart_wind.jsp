@@ -3,6 +3,20 @@
 <!-- 바람 -->
 <div id="windChart" class="wChart"></div>
 
+<table id="table_wind">
+  <tr>
+    <th width="41">풍향&nbsp;</th>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+  </tr>
+</table>
+
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
 function getWindChart() {
@@ -23,7 +37,7 @@ function getWindChart() {
 		data: [{
 			type: "spline",
 			color: "#C0504E",
-			name: "풍속",
+			name: "풍속 (아이콘)풍향",
 			showInLegend: true,
 			yValueFormatString: "#,###.#m/s",
 			dataPoints: [

@@ -2,6 +2,19 @@
 
 <!-- 날씨 -->
 <div id="weatherChart" class="wChart"></div>
+<table id="table_weather">
+  <tr>
+    <th width="39">날씨&nbsp;</th>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
+  </tr>
+</table>
 
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요

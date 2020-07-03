@@ -46,7 +46,7 @@
 			</div>
 		</div>
 		<div class="content_area_value">
-			주간 날씨
+			<%@ include file="chart_3days.jsp" %>
 		</div>
 	</div>
 </div>

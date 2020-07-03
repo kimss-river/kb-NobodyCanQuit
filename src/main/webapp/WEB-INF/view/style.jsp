@@ -15,24 +15,23 @@ html { font-size:62.5%; }
 body {background: #fff;} 
 header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0; z-index: 10;}
 #contents {width: 1200px; margin: auto; margin-top: 85px;}
-section {float: left; width: 780px;}
+section {float: left; width: 780px; margin-bottom: 100px;}
 #map {width: 95%; height: 550px; margin-right: 5%;}
-aside {float: left; width: 420px;}
-footer {clear: both; width: 100%; height: 79px; background: #ede5ff; position:fixed; bottom:0; left:0; z-index: 10;}
+aside {float: left; width: 420px;  margin-bottom: 100px;}
+footer {clear: both; width: 100%; height: 80px; background: #ede5ff; position:fixed; bottom:0; left:0; z-index: 10;}
 
 /* 화면 너비 0 ~ 1200px */
 @media (max-width: 1200px){
-    #contents {width: 800px;}
-    section {width: 431px;}
-    aside {width: 369px;}
+    #contents {width: 850px;}
+    section {width: 430px;}
+    aside {width: 420px;}
 }
-/* 화면 너비 0 ~ 800px */
-@media (max-width: 800px){
+/* 화면 너비 0 ~ 850px */
+@media (max-width: 850px){
     #contents {width: 540px;}
-    section {width: 540px;}
+    section {width: 540px; margin-bottom: 30px;}
     #map {width: 100%; height: 550px;}
     aside {width: 540px;}
-    //#aside__sWrap .aside_search { width: 90px;} 반응형 수정필요
 }
 
 /* header */
@@ -50,9 +49,10 @@ header a {
 /* footer */
 footer > div {
     margin: auto;
+    padding-top: 10px;
 }
 footer ul {
-    padding-top: 10px;
+    padding-top: 5px;
     margin: auto;
     text-align: center;
 }
@@ -73,6 +73,17 @@ footer a:hover {
 
 
 /* aside_table */
+#table_weather {
+	margin: 10px 10px 0 10px;
+	width: 360px;
+}
+#table_wind {
+	margin: 10px 10px 0 15px;
+	width: 355px;
+}
+#table_weather3day {
+	width: 360px;
+}
 .btn {
 	padding:0;
 	background:transparent;
@@ -86,7 +97,7 @@ footer a:hover {
 }
 .tab_wrap {
 	width:100%;
-	margin:50px auto;
+	margin-top: 40px;
 }
 .tab_wrap .btn_tab {
 	float:left;
@@ -133,9 +144,13 @@ footer a:hover {
 	background: #fff;
 	
 }
+.content_area_value {
+	width: 380px;
+	margin: auto;
+}
 .wChart{
-	width:100%;
-	height: 150px
+	width:380px;
+	height: 150px;
 }
 
 /* aside table - fdWrab */
@@ -179,7 +194,7 @@ footer a:hover {
 /* aside search */
 #aside__sWrap {
 	text-align:center;
-	margin: 10px auto;"
+	margin: 10px auto;
 }
 
 select {
@@ -203,7 +218,7 @@ select::-ms-expand {
     border: 0px;
     background: #A197C9;
     outline: none;
-    float: right;
+    margin-left: 5px;
     color: white;
 }
 
