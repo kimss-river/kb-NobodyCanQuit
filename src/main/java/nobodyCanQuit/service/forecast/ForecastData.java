@@ -29,19 +29,19 @@ public class ForecastData {
 					
 					switch (f.getFcstValue()) {
 						case "1":
-							pty = "ºñ";
+							pty = "ë¹„";
 							break;
 						case "2":
-							pty = "ºñ/´«";
+							pty = "ë¹„/ëˆˆ";
 							break;
 						case "3":
-							pty = "´«";
+							pty = "ëˆˆ";
 							break;
 						case "4":
-							pty = "¼Ò³ª±â";
+							pty = "ì†Œë‚˜ê¸°";
 							break;
 						default:
-							pty = "¾øÀ½";
+							pty = "ì—†ìŒ";
 							break;
 					}
 					
@@ -53,13 +53,13 @@ public class ForecastData {
 					
 					switch (f.getFcstValue()) {
 						case "1":
-							sky = "¸¼À½";
+							sky = "ë§‘ìŒ";
 							break;
 						case "3":
-							sky = "±¸¸§¸¹À½";
+							sky = "êµ¬ë¦„ë§ìŒ";
 							break;
 						default:
-							sky = "Èå¸²";
+							sky = "íë¦¼";
 							break;
 					}
 					
