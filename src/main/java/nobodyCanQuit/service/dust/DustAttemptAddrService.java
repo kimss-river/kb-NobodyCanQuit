@@ -44,7 +44,7 @@ public class DustAttemptAddrService{
 	}
     
     //미세먼지 좋음 나쁨 표시
-    public DustAttemptGrade division(DustItemCodes itemCodes, DustAttemptAddr dustAttempt) {
+    public DustAttemptGrade division(DustRating dustRating, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	double[] arr = new double[17];
     	String[] str = new String[17];
@@ -69,31 +69,9 @@ public class DustAttemptAddrService{
     		arr[14] = Double.parseDouble(e.getGyeongnam());
     		arr[15] = Double.parseDouble(e.getJeju());
     		arr[16] = Double.parseDouble(e.getSejong()); 
-    		
-    		if (itemCodes.equals(DustItemCodes.PM10)) {
         		for (int i = 0; i <= 16; i++) {
-        			str[i] = dustAreaAddrService.grade(arr[i],DustRating.PM10);
-        		}
-    		arr[12] = Integer.parseInt(e.getJeonnam());
-    		arr[13] = Integer.parseInt(e.getGyeongbuk());
-    		arr[14] = Integer.parseInt(e.getGyeongnam());
-    		arr[15] = Integer.parseInt(e.getJeju());
-    		arr[16] = Integer.parseInt(e.getSejong());    		
-    	}
-
-    	if (itemCodes.equals(DustItemCodes.PM10)) {
-    		for (int i = 0; i <= 16; i++) {
-				if (arr[i] >= 0 && arr[i] <= 30) {
-					str[i] = "좋음";
-				} else if (arr[i] > 30 && arr[i] <= 80){
-					str[i] = "보통";
-				} else if (arr[i] >= 81 && arr[i] <= 150) {
-					str[i] = "나쁨";
-				} else {
-					str[i] = "매우 나쁨";
-				}
-    		}
-    	}
+        			str[i] = dustAreaAddrService.grade(arr[i],dustRating);
+        		} 		
     	division.setSeoul(str[0]); 
     	division.setBusan(str[1]);
     	division.setDaegu(str[2]);
