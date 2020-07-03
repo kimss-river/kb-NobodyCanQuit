@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
-import nobodyCanQuit.web.model.viligeDust.Division;
+import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
@@ -44,11 +44,11 @@ public class DustAttemptAddrService{
 	}
     
     //미세먼지 좋음 나쁨 표시
-    public Division division(DustItemCodes itemCodes, DustAttemptAddr dustAttempt) {
+    public DustAttemptGrade division(DustItemCodes itemCodes, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	double[] arr = new double[17];
     	String[] str = new String[17];
-    	Division division = new Division() ;
+    	DustAttemptGrade division = new DustAttemptGrade() ;
     	for(DustAttempt e:listDustAttempt) {
     		arr[0] = Double.parseDouble(e.getSeoul());
     		arr[1] = Double.parseDouble(e.getBusan());
@@ -72,8 +72,7 @@ public class DustAttemptAddrService{
     		
     		if (itemCodes.equals(DustItemCodes.PM10)) {
         		for (int i = 0; i <= 16; i++) {
-        			str[i] = dustAreaAddrService.grade(arr[i],dustAreaAddrService.dustArea(DustItemCodes.PM10));
-        			System.out.println(str[i]+"널이야?!");
+        			str[i] = dustAreaAddrService.grade(arr[i],DustRating.PM10);
         		}
     		arr[12] = Integer.parseInt(e.getJeonnam());
     		arr[13] = Integer.parseInt(e.getGyeongbuk());

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.dust.DustAttemptAddrService;
-import nobodyCanQuit.web.model.viligeDust.Division;
+import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
@@ -39,7 +39,7 @@ public class DustAttemptController {
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
 		URL url = dustAttemptAddrService.getApiUrl(DustItemCodes.PM10);
 		DustAttemptAddr dustAttempt = mapper.readValue(url, DustAttemptAddr.class);
-		Division dustAttempGrade = dustAttemptAddrService.division(DustItemCodes.PM10, dustAttempt);
+		DustAttemptGrade dustAttempGrade = dustAttemptAddrService.division(DustItemCodes.PM10, dustAttempt);
 		
 		model.addAttribute("finedustAddr", dustAttempt);
 		model.addAttribute("dustAttempGrade", dustAttempGrade);
