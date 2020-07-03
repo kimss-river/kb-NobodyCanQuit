@@ -58,8 +58,29 @@
 		</form:form>
 	</nav>
 
-	<c:forEach items="${valueMap}" var="valueMap">
-			${valueMap.key} : ${valueMap.value}
+	<hr>
+	<c:forEach items="${R06Map}" var="R06Map">
+			${R06Map.key} : ${R06Map.value}<br/>
+	</c:forEach>
+	<hr>
+	<c:forEach items="${TMNMap}" var="TMNMap">
+			${TMNMap.key} : ${TMNMap.value}<br/>
+	</c:forEach>
+	<hr>
+	<c:forEach items="${TMXMap}" var="TMXMap">
+			${TMXMap.key} : ${TMXMap.value}<br/>
+	</c:forEach>
+	<hr>
+	<c:forEach items="${PtyMap}" var="PtyMap">
+			${PtyMap.key} : ${PtyMap.value}<br/>
+	</c:forEach>
+	<hr>
+	<c:forEach items="${SkyMap}" var="SkyMap">
+			${SkyMap.key} : ${SkyMap.value}<br/>
+	</c:forEach>
+	<hr>
+	<c:forEach items="${VecMap}" var="VecMap">
+			${VecMap.key} : ${VecMap.value}<br/>
 	</c:forEach>
 
 
@@ -69,8 +90,6 @@
 	<!-- TMN(아침 최저기온)는 02시에 나옴 -->
 	<table class="table table-hover">
 		
-	
-	
 	
 		<c:forEach items="${vilage.response.body.items.fsctItems}"
 			var="fsctItem">

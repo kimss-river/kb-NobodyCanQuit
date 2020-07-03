@@ -78,7 +78,7 @@ public class ForecastTestController {
 			
 			//강수확률 강수형태 강수량
 			Map<String, String> PopMap =forecastData.getValue(ForecastCategory.POP);
-			Map<String, String> PtyeMap =forecastData.getValue(ForecastCategory.PTY);
+			Map<String, String> PtyMap =forecastData.getValue(ForecastCategory.PTY);
 			Map<String, String> R06Map =forecastData.getValue(ForecastCategory.R06);
 			
 			//3시간 기온 최저기온 최고기온
@@ -90,8 +90,13 @@ public class ForecastTestController {
 			Map<String, String> SkyMap =forecastData.getValue(ForecastCategory.SKY);
 			Map<String, String> VecMap =forecastData.getValue(ForecastCategory.VEC);
 			Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
-			
-			model.addAttribute("PopMap", PopMap);
+
+			model.addAttribute("R06Map", R06Map);
+			model.addAttribute("TMNMap", TMNMap);
+			model.addAttribute("TMXMap", TMXMap);
+			model.addAttribute("PtyMap", PtyMap);
+			model.addAttribute("SkyMap", SkyMap);
+			model.addAttribute("VecMap", VecMap);
 			model.addAttribute("vilage", viligeFcstStores);
 		}
 		return "test/test";
