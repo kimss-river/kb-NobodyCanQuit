@@ -82,7 +82,7 @@ footer a:hover {
 	width: 355px;
 }
 #table_weather3day {
-	width: 360px;
+	width: 100%;
 }
 .btn {
 	padding:0;
@@ -123,13 +123,16 @@ footer a:hover {
 	margin-bottom: 10px;
 }
 .tab_wrap .content_area .btn_tab {
-	background: #E2D6FB
+	background: #E2D6FB;
 }
 .tab_wrap .content_area .btn_tab.act {
-	background: #fff
+	background: #fff;
 }
-.tab_wrap .content_area .content_area_value {
+#fdust .content_area_value {
 	background: #E2D6FB;
+}
+#weather .content_area_value {
+	background: #fff;
 }
 .tab_wrap .content_area.act {
 	display:block;
@@ -147,6 +150,11 @@ footer a:hover {
 .content_area_value {
 	width: 380px;
 	margin: auto;
+}
+.content_3days {
+	box-sizing: border-box;
+	width: 400px;
+	padding: 8px 5px;
 }
 .wChart{
 	width:380px;

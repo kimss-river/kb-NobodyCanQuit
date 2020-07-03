@@ -5,13 +5,13 @@
 		<button class="btn btn_tab act" data-depth="0" data-idx="1">미세먼지</button>
 		<button class="btn btn_tab" data-depth="0" data-idx="0" onclick="getWeatherChart()">날씨</button>
 	</div>
-	<div class="content_area act" data-depth="0" data-idx="1">
+	<div id="fdust" class="content_area act" data-depth="0" data-idx="1">
 		<div class="content_area_value">
 			<!-- 미세먼지 -->
 			<%@ include file="chart_fdust.jsp" %>
 		</div>
 	</div>
-	<div class="content_area" data-depth="0" data-idx="0">
+	<div id="weather" class="content_area" data-depth="0" data-idx="0">
 		<div class="tab_area">
 			<div class="btn_area clearfix">
 				<button class="btn btn_tab act" data-depth="1" data-idx="0" onclick="getWeatherChart()">날씨</button>
@@ -45,7 +45,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="content_area_value">
+		<div class="content_area_value content_3days">
 			<%@ include file="chart_3days.jsp" %>
 		</div>
 	</div>
