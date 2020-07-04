@@ -20,7 +20,7 @@ public  class CoordService implements ApiProviderBySGIS {
     private AccessTokenProvider accessTokenProvider;
 
     public <T extends Coordinates> T convert(T target, CoordSystem targetSys, CoordSystem dstSys) throws IOException {
-
+        getSGIStoken();
         ConvertedCoord convertedCoord = getConvertedCoord(target.getX(), target.getY(), targetSys, dstSys);
         target.setNewX(convertedCoord.getX());
         target.setNewY(convertedCoord.getY());
@@ -28,9 +28,9 @@ public  class CoordService implements ApiProviderBySGIS {
         return target;
     }
 
-    public <T extends Coordinates, K extends Coordinates> K convert(
-            T target, K destination,  CoordSystem targetSys, CoordSystem dstSys) throws IOException {
-
+    public <T extends Coordinates, V extends Coordinates> V convert(
+            T target, V destination,  CoordSystem targetSys, CoordSystem dstSys) throws IOException {
+        getSGIStoken();
         ConvertedCoord convertedCoord = getConvertedCoord(target.getX(), target.getY(), targetSys, dstSys);
         destination.setNewX(convertedCoord.getX());
         destination.setNewY(convertedCoord.getY());
@@ -41,7 +41,7 @@ public  class CoordService implements ApiProviderBySGIS {
 
     public <T extends Coordinates> List<T> convert(List<T> target, CoordSystem targetSys, CoordSystem dstSys)
             throws IOException {
-
+        getSGIStoken();
         ConvertedCoord convertedCoord;
         for (T t: target) {
             convertedCoord = getConvertedCoord(t.getX(), t.getY(), targetSys, dstSys);
@@ -52,15 +52,15 @@ public  class CoordService implements ApiProviderBySGIS {
         return target;
     }
 
-    public <T extends Coordinates, K extends Coordinates> List<K> convert(
-            List<T> target, List<K> destination, CoordSystem targetSys, CoordSystem dstSys) throws IOException {
-
+    public <T extends Coordinates, V extends Coordinates> List<V> convert(
+            List<T> target, List<V> destination, CoordSystem targetSys, CoordSystem dstSys) throws IOException {
+        getSGIStoken();
         ConvertedCoord convertedCoord;
         int i = 0;
-        for (T t: target) {
-            convertedCoord = getConvertedCoord(t.getX(), t.getY(), targetSys, dstSys);
-            destination.get(i).setNewX(convertedCoord.getX());
-            destination.get(i).setNewY(convertedCoord.getY());
+        for (V t: destination) {
+            convertedCoord = getConvertedCoord(target.get(i).getX(), target.get(i).getY(), targetSys, dstSys);
+            t.setNewX(convertedCoord.getX());
+            t.setNewY(convertedCoord.getY());
             i++;
         }
         return destination;
@@ -68,10 +68,10 @@ public  class CoordService implements ApiProviderBySGIS {
 
     private ConvertedCoord getConvertedCoord(String x, String y, CoordSystem source, CoordSystem destination)
             throws IOException {
-
+        getSGIStoken();
         StringBuilder builder = new StringBuilder(BUILDED_API);
-        builder.append("&src=").append(source)
-                .append("&dst=").append(destination)
+        builder.append("&src=").append(source.toString())
+                .append("&dst=").append(destination.toString())
                 .append("&posX=").append(x)
                 .append("&posY=").append(y);
 

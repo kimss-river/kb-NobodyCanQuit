@@ -60,12 +60,13 @@ public class DustAreaAddrService implements ApiUrlProvider {
 		boolean b = true;
 		try {
 			if(guName.contains(" ")){
-				guName = guName.substring(0,3);
+				guName = guName.substring(0, guName.indexOf(" "));
 			}
+
 			for(DustArea e : listDust) {
 				if (e.getCityName().equals(guName) && b) {
 	            	guNameSelected = e;
-	            	b=false;
+	            	b = false;
 	
 	            	if(e.getPm10Value() != null) 
 	            		guNameSelected.setPm10Grade(grade(Double.parseDouble(e.getPm10Value()),DustRating.PM10));

@@ -3,7 +3,8 @@ package nobodyCanQuit.web.model.viligeDust;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import nobodyCanQuit.service.address.Coordinates;
 
 @JsonIgnoreProperties({"_returnType",
@@ -21,7 +22,8 @@ import nobodyCanQuit.service.address.Coordinates;
     "searchCondition",
     "serviceKey",
     "totalCount"})
-@Data
+@Getter
+@Setter
 public class DustArea implements Coordinates {
 	//지역
 	@JsonProperty("cityName")
@@ -76,5 +78,10 @@ public class DustArea implements Coordinates {
 	@Override
 	public void setNewY(String newY) {
 		this.yCoord = newY;
+	}
+
+	@Override
+	public String toString() {
+		return this.sidoName;
 	}
 }

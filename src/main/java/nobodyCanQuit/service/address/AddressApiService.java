@@ -1,5 +1,6 @@
 package nobodyCanQuit.service.address;
 
+import lombok.Getter;
 import lombok.Setter;
 import nobodyCanQuit.service.SGIS.AccessTokenProvider;
 import nobodyCanQuit.service.SGIS.ApiProviderBySGIS;
@@ -22,7 +23,8 @@ public class AddressApiService implements ApiProviderBySGIS {
     private AddressInputCommand addressInputCommand;
     private String BUILDED_API;
     private String city = "1";
-    private String gu;
+    @Getter
+    private String guStatus;
 
 
     public URL getAddressLevel2Url() throws IOException {
@@ -31,9 +33,9 @@ public class AddressApiService implements ApiProviderBySGIS {
 
         if (! addressInputCommand.getCity().equals(city)) {
             city = addressInputCommand.getCity();
-            gu = "reset";
+            guStatus = "reset";
         } else {
-            gu = "reload";
+            guStatus = "reload";
         }
 
         stringBuilder.append("&cd=").append(cityListService.getCityCode(city));
@@ -45,11 +47,11 @@ public class AddressApiService implements ApiProviderBySGIS {
 
         StringBuilder stringBuilder = new StringBuilder(BUILDED_API);
 
-        if (gu.equals("reset")) {
+        if (guStatus.equals("reset")) {
             return new URL(stringBuilder.append("&cd=1").toString());
         }
 
-        if (! addressInputCommand.getGu().isEmpty() && gu.equals("reload")) {
+        if (! addressInputCommand.getGu().isEmpty() && guStatus.equals("reload")) {
             stringBuilder.append("&cd=").append(addressInputCommand.getGu());
             return new URL(stringBuilder.toString());
         }

@@ -38,11 +38,13 @@
             <c:if test="${! empty addressInputCommand.dong}">
                 <h4>${addressInputCommand.dong}</h4>
             </c:if>
-            <c:if test="${! empty test}">
-                <h4>${test}</h4>
-            </c:if>
         </form:form>
     </nav>
+    <c:if test="${! empty tester}">
+        <c:forEach items="${tester}" var="test" varStatus="status">
+            ${status.index}: ${test.name}: ${test.x}, ${test.y}<br />
+        </c:forEach>
+    </c:if>
 
     <!-- 시군구별 실시간 평균정보 조회 조회	 -->
     <h3>미세먼지 일평균 일주일</h3>
@@ -55,7 +57,6 @@
     <br />
     <!-- DustAreaAddrService.Selected -->
 	<h2>Back End 처리</h2>
-
 		${guNameSelected}<br />
 		지역 : ${guNameSelected.sidoName}<br />
 		시군구 : ${guNameSelected.cityName}<br />
@@ -67,27 +68,26 @@
 		이산화질소 평균농도 : ${guNameSelected.no2Value}ppm ${guNameSelected.no2Grade}<br />
 	<h3>Gade 처리 결과</h3>
 	<c:forEach var="d" items="${areaGradeList}">
-	지역 : ${d.cityName} 
-	시군구 : ${d.cityName}
-	미세먼지(PM10) 평균농도 : ${d.pm10Value}㎍/㎥ 
-	미세먼지(PM2.5) 평균농도 : ${d.pm25Value}㎍/㎥ 
-	아황산가스 평균농도 : ${d.so2Value}ppm
-	일산화탄소 평균농도 : ${d.coValue}ppm
-	오존 평균농도 : ${d.o3Value}ppm
-	이산화질소 평균농도 : ${d.no2Value}ppm<br />
+        지역 : ${d.cityName}
+        시군구 : ${d.cityName}
+        미세먼지(PM10) 평균농도 : ${d.pm10Value}㎍/㎥
+        미세먼지(PM2.5) 평균농도 : ${d.pm25Value}㎍/㎥
+        아황산가스 평균농도 : ${d.so2Value}ppm
+        일산화탄소 평균농도 : ${d.coValue}ppm
+        오존 평균농도 : ${d.o3Value}ppm
+        이산화질소 평균농도 : ${d.no2Value}ppm<br />
 	</c:forEach>
     <h5>검색결과</h5>
     <c:forEach items="${dustAreaAddr.dustArea}" var= "dustArea" varStatus="status">
         ${status.count}.시/군/구 이름:${dustArea.cityName}
         <c:if test="${! empty dustArea.cityName}">
-        <!-- 사용자 구 검색 결과  -->
+            <!-- 사용자 구 검색 결과  -->
             <h5>
                 인덱스 : ${status.count}
-        pm10 : ${dustArea.pm10Value}
-        pm25 : ${dustArea.pm25Value}
+                pm10 : ${dustArea.pm10Value}
+                pm25 : ${dustArea.pm25Value}
             </h5>
         </c:if>
-        <br />
     </c:forEach>
 
 </body>
