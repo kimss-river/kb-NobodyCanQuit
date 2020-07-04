@@ -54,4 +54,8 @@ public class Result implements Coordinates {
         }
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

@@ -66,16 +66,20 @@
 		일산화탄소 평균농도 : ${guNameSelected.coValue}ppm ${guNameSelected.coGrade}<br />
 		오존 평균농도 : ${guNameSelected.o3Value}ppm ${guNameSelected.o3Grade}<br />
 		이산화질소 평균농도 : ${guNameSelected.no2Value}ppm ${guNameSelected.no2Grade}<br />
-	<h3>Gade 처리 결과</h3>
+	<h3>Grade 처리 결과</h3>
 	<c:forEach var="d" items="${areaGradeList}">
         지역 : ${d.cityName}
         시군구 : ${d.cityName}
-        미세먼지(PM10) 평균농도 : ${d.pm10Value}㎍/㎥
-        미세먼지(PM2.5) 평균농도 : ${d.pm25Value}㎍/㎥
-        아황산가스 평균농도 : ${d.so2Value}ppm
-        일산화탄소 평균농도 : ${d.coValue}ppm
-        오존 평균농도 : ${d.o3Value}ppm
-        이산화질소 평균농도 : ${d.no2Value}ppm<br />
+        미세먼지(PM10): ${d.pm10Value}㎍/㎥
+        미세먼지(PM2.5): ${d.pm25Value}㎍/㎥
+        아황산가스: ${d.so2Value}ppm
+        일산화탄소: ${d.coValue}ppm
+        오존: ${d.o3Value}ppm
+        이산화질소: ${d.no2Value}ppm
+        미세먼지등급: ${d.pm10Grade}
+        x: ${d.x}
+        y: ${d.y}
+        <br />
 	</c:forEach>
     <h5>검색결과</h5>
     <c:forEach items="${dustAreaAddr.dustArea}" var= "dustArea" varStatus="status">

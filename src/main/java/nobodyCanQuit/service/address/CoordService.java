@@ -57,7 +57,11 @@ public  class CoordService implements ApiProviderBySGIS {
         getSGIStoken();
         ConvertedCoord convertedCoord;
         int i = 0;
+        int range = target.size();
         for (V t: destination) {
+            if (i >= range) {
+                break;
+            }
             convertedCoord = getConvertedCoord(target.get(i).getX(), target.get(i).getY(), targetSys, dstSys);
             t.setNewX(convertedCoord.getX());
             t.setNewY(convertedCoord.getY());

@@ -59,31 +59,29 @@ public class AddressTestController {
                 mapper.readValue(addressApiService.getAddressLevel3Url(), AddressForDongCommand.class);
         model.addAttribute("addressForDongCommand", addressForDongCommand);
 
-        List<Result> names = dustAreaCoordService.tester(addressCommand);
-        model.addAttribute("tester", names);
-
-
         /*
         * 시군구별 실시간 평균정보 조회
         */
-//        dustAreaAddrService.setAddressInputCommand(addressInputCommand);
-//
-//        DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
-//        model.addAttribute("dustAreaAddr", dustAreaAddr);
-//
-//        // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
-//        List<DustArea> listDust = dustAreaAddr.getDustArea();
-//        List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
-//
-//        model.addAttribute("areaGradeList", areaGradeList);
-//
-//        if (! addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
-//            String guName = addressCommand.getName(addressInputCommand.getGu());
-//
-//            DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
-//            model.addAttribute("guNameSelected", guNameSelected);
-//
-//        }
+        dustAreaAddrService.setAddressInputCommand(addressInputCommand);
+
+        DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
+        model.addAttribute("dustAreaAddr", dustAreaAddr);
+
+        // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
+        List<DustArea> listDust = dustAreaAddr.getDustArea();
+        List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
+        //좌표 삽입
+        areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
+
+        model.addAttribute("areaGradeList", areaGradeList);
+
+        if (! addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
+            String guName = addressCommand.getName(addressInputCommand.getGu());
+
+            DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
+            model.addAttribute("guNameSelected", guNameSelected);
+
+        }
 
         return "test/testKim";
     }

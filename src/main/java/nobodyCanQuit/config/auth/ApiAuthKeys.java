@@ -9,6 +9,6 @@ public class ApiAuthKeys {
 
     private final String ADDRESS_API_SECRET_KEY = "39ab7bf878bc45f3ab98";
     private final String DUST_API_SERVICE_KEY =
-            "AFt3TjNEJq7jb0QYqGCXr2rMOb4LS%2F11Mv2HqbaHQNsJkT2McS8dfggWVOeac%2FGJFEQRokOtJaEmZSeZKKvqGQ%3D%3D";
+            "zGuDv3a%2FY%2FxXtJPaZ4x2I09BsyEbbwzdzoZ5xxO6VSba6r%2BrvDH7bOkuE3R0c5oe3hdHkLdeoFAdD6oPk48cxw%3D%3D";
 
 }

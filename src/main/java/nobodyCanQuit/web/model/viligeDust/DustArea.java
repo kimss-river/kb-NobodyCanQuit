@@ -22,8 +22,9 @@ import nobodyCanQuit.service.address.Coordinates;
     "searchCondition",
     "serviceKey",
     "totalCount"})
-@Getter
+
 @Setter
+@Getter
 public class DustArea implements Coordinates {
 	//지역
 	@JsonProperty("cityName")
@@ -57,31 +58,45 @@ public class DustArea implements Coordinates {
 	private String o3Grade;
 	private String no2Grade;
 //  좌표
-	private String xCoord;
-	private String yCoord;
+	private String x;
+	private String y;
 
 	@Override
 	public String getX() {
-		return xCoord;
+		return x;
 	}
 
 	@Override
 	public String getY() {
-		return yCoord;
+		return y;
 	}
 
 	@Override
 	public void setNewX(String newX) {
-		this.xCoord = newX;
+		this.x = newX;
 	}
 
 	@Override
 	public void setNewY(String newY) {
-		this.yCoord = newY;
+		this.y = newY;
+	}
+
+	@Override
+	public int hashCode() {
+		return cityName.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof DustArea) {
+			return this.cityName.equals(String.valueOf(((DustArea) obj).getCityName()));
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public String toString() {
-		return this.sidoName;
+		return this.cityName;
 	}
 }
