@@ -55,7 +55,7 @@
 		</form:form>
 	</nav>
 
-	<hr>
+	<%-- <hr>
 	<c:forEach items="${R06Map}" var="R06Map">
 			${R06Map.key} : ${R06Map.value}<br/>
 	</c:forEach>
@@ -78,7 +78,10 @@
 	<hr>
 	<c:forEach items="${VecMap}" var="VecMap">
 			${VecMap.key} : ${VecMap.value}<br/>
-	</c:forEach>
+	</c:forEach> --%>
+
+
+나와 ? ${rePty}
 
 
 	<%-- ${vilage.response.body.items.fsctItems} --%>

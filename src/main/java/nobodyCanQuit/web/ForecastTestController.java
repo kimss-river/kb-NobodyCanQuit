@@ -17,6 +17,7 @@ import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
 import java.io.IOException;
 import java.util.Map;
 
+import org.mariadb.jdbc.internal.com.send.authentication.ed25519.math.GroupElement.Representation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,6 +92,10 @@ public class ForecastTestController {
 			Map<String, String> VecMap =forecastData.getValue(ForecastCategory.VEC);
 			Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
 
+			String rePty = forecastData.getRepresentPty();
+			
+			model.addAttribute("rePty",rePty);
+			
 			model.addAttribute("R06Map", R06Map);
 			model.addAttribute("TMNMap", TMNMap);
 			model.addAttribute("TMXMap", TMXMap);
