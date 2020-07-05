@@ -1,4 +1,4 @@
-package nobodyCanQuit.service.SGIS;
+package nobodyCanQuit.service.sgis;
 
 import java.io.IOException;
 

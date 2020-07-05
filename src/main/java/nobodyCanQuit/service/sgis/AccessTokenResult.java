@@ -1,4 +1,4 @@
-package nobodyCanQuit.service.SGIS;
+package nobodyCanQuit.service.sgis;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

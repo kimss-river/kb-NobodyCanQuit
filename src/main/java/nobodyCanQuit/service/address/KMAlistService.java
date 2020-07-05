@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -65,10 +64,11 @@ public class KMAlistService {
         for (FxxxKMAcoord f: fxxxKMAList) {
             if (f.equals(gu)) {
                 kmaGuCode = f.getCode();
+                break;
             }
         }
 
-        List<FxxxKMAcoord> fcoordList = new ArrayList<>();
+        List<FxxxKMAcoord> fcoordList;
         try {
             fcoordList = mapper.readValue(
                     new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/leaf." + kmaGuCode + ".json.txt"),

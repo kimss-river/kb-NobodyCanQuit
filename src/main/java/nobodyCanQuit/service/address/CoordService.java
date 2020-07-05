@@ -1,8 +1,8 @@
 package nobodyCanQuit.service.address;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import nobodyCanQuit.service.SGIS.AccessTokenProvider;
-import nobodyCanQuit.service.SGIS.ApiProviderBySGIS;
+import nobodyCanQuit.service.sgis.AccessTokenProvider;
+import nobodyCanQuit.service.sgis.ApiProviderBySGIS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -97,7 +97,7 @@ public  class CoordService implements ApiProviderBySGIS {
 
         @Override
         public String toString() {
-            return code.toString();
+            return code;
         }
     }
 

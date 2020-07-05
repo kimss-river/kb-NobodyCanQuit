@@ -1,4 +1,4 @@
-package nobodyCanQuit.service.SGIS;
+package nobodyCanQuit.service.sgis;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.config.auth.ApiAuthKeys;
@@ -35,7 +35,7 @@ public class AccessTokenProvider {
             this.accessToken = token.getResult().getAccessToken();
 
             accessTimeout = Long.valueOf(token.getResult().getAccessTimeout());
-            accessTimeout -= (1 * 60 * 1000);
+            accessTimeout -= (60 * 1000);
 
             return accessToken;
         }
