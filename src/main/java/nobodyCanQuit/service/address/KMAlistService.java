@@ -50,9 +50,9 @@ public class KMAlistService {
         String gu = address.getName(addressInput.getGu());
         String dong = addressInput.getDong();
         String kmaGuCode = "";
-        CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMA.class);
+        CollectionType collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMAcoord.class);
 
-        List<FxxxKMA> fxxxKMAList =
+        List<FxxxKMAcoord> fxxxKMAList =
                 mapper.readValue(
                         new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/mdl." + kmaCityCode + ".json.txt"),
                         collectionType
@@ -62,13 +62,12 @@ public class KMAlistService {
             gu = gu.replaceAll(" ","");
         }
 
-        for (FxxxKMA f: fxxxKMAList) {
+        for (FxxxKMAcoord f: fxxxKMAList) {
             if (f.equals(gu)) {
                 kmaGuCode = f.getCode();
             }
         }
 
-        collectionType = mapper.getTypeFactory().constructCollectionType(List.class, FxxxKMAcoord.class);
         List<FxxxKMAcoord> fcoordList = new ArrayList<>();
         try {
             fcoordList = mapper.readValue(
