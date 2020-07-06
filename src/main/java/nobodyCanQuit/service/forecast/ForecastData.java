@@ -159,15 +159,15 @@ public class ForecastData {
 				}
 				break;
 			}
-			
+
 			if(rainCnt>0 || showerCnt>0)
 				representPty[i] = "비";
 			if(snowCnt>0 || rainSnowCnt>0)
-				representPty[i] = "눈";					
+				representPty[i] = "눈";
 		}
-		
+
 		return representPty[0] + ":" + representPty[1] + ":" + representPty[2]+":"+representPty[3];
-	
+
 	}
 
 	public String getRepresentSky() {
@@ -178,7 +178,7 @@ public class ForecastData {
 		int sunnyCnt = 0;
 		int cloudyCnt = 0;
 		int weekCloudyCnt = 0;
-		
+
 		TreeMap<String, String> skyMap = getValue(ForecastCategory.SKY);
 		Iterator<String> skyKeys = skyMap.keySet().iterator();
 		String oldSkyDate = skyMap.firstKey().split(":")[0];
@@ -186,12 +186,12 @@ public class ForecastData {
 
 		int i = 0;
 		while (skyKeys.hasNext()) {
-			
+
 			String key = skyKeys.next();
 			newSkyDate = key.split(":")[0];
-			
+
 			if (!oldSkyDate.equals(newSkyDate) || !skyKeys.hasNext()) {
-				
+
 				representSkyCnt = 0;
 				oldSkyDate = newSkyDate;
 				sunnyCnt = 0;
@@ -199,7 +199,7 @@ public class ForecastData {
 				weekCloudyCnt = 0;
 				i++;
 			}
-			
+
 			switch (skyMap.get(key)) {
 			case "맑음":
 				sunnyCnt++;
@@ -216,7 +216,7 @@ public class ForecastData {
 					representSkyCnt=cloudyCnt;
 				}
 				break;
-				
+
 			default:
 				weekCloudyCnt++;
 				if (representSkyCnt < weekCloudyCnt) {
@@ -224,7 +224,7 @@ public class ForecastData {
 					representSkyCnt=weekCloudyCnt;
 				}
 				break;
-			}				
+			}
 		}
 
 		return representSky[0] + ":" + representSky[1] + ":" + representSky[2]+":"+representSky[3];
