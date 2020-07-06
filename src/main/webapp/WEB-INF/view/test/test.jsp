@@ -55,7 +55,7 @@
 		</form:form>
 	</nav>
 
-	<%-- <hr>
+	 <hr>
 	<c:forEach items="${R06Map}" var="R06Map">
 			${R06Map.key} : ${R06Map.value}<br/>
 	</c:forEach>
@@ -71,7 +71,7 @@
 	<c:forEach items="${PtyMap}" var="PtyMap">
 			${PtyMap.key} : ${PtyMap.value}<br/>
 	</c:forEach>
-	<hr>
+	<%--<hr>
 	<c:forEach items="${SkyMap}" var="SkyMap">
 			${SkyMap.key} : ${SkyMap.value}<br/>
 	</c:forEach>

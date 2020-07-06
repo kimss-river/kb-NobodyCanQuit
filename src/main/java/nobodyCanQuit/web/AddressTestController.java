@@ -6,6 +6,8 @@ import nobodyCanQuit.service.dust.DustAreaAddrService;
 import nobodyCanQuit.web.model.address.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 import nobodyCanQuit.web.model.viligeDust.DustArea;
@@ -68,7 +70,9 @@ public class AddressTestController {
         model.addAttribute("dustAreaAddr", dustAreaAddr);
 
         // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
-        List<DustArea> listDust = dustAreaAddr.getDustArea();
+        List<DustArea> listDust= dustAreaAddr.getDustArea();
+        HashSet<DustArea> listD = new HashSet<>(listDust);
+        listDust = new ArrayList<>(listD); 
         List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
         //좌표 삽입
         areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
