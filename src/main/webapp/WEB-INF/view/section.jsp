@@ -5,9 +5,6 @@
 
 <section>
     <div id="map"></div>
-    <p>
-    ${areaGradeList[0].x}   
-    </p>
 
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f40abcb03a397dc715624e07f39732f&libraries=clusterer"></script>
     <script>
@@ -35,7 +32,6 @@
         imageOption
       );
       //DustArea
-      alert("${areaGradeList[0].x}");
       var markers = [];
       
       <c:forEach items="${areaGradeList}" var="info">
