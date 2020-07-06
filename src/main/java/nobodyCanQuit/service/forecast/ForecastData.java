@@ -89,7 +89,7 @@ public class ForecastData {
 
 	public String getRepresentPty() {
 
-		String[] representPty = new String[4];
+		String[] representPty = new String[3];
 		int representPtyCnt = 0;
 
 		int rainCnt = 0;
@@ -122,57 +122,52 @@ public class ForecastData {
 			}
 
 			switch (ptyMap.get(key)) {
-			case "비":
+			case "1":
 				rainCnt++;
 				if (representPtyCnt < rainCnt) {
-					representPty[i] = "비";
-					representPtyCnt=rainCnt;
+					representPty[i] = "1";
+					representPtyCnt++;
 				}
 
 				break;
-			case "비/눈":
+			case "2":
 				rainSnowCnt++;
 				if (representPtyCnt < rainSnowCnt) {
-					representPty[i] = "비/눈";
-					representPtyCnt=rainSnowCnt;
+					representPty[i] = "2";
+					representPtyCnt++;
 				}
 				break;
-			case "눈":
+			case "3":
 				snowCnt++;
 				if (representPtyCnt < snowCnt) {
-					representPty[i] = "눈";
-					representPtyCnt=snowCnt;
+					representPty[i] = "3";
+					representPtyCnt++;
 				}
 				break;
-			case "소나기":
+			case "4":
 				showerCnt++;
 				if (representPtyCnt < showerCnt) {
-					representPty[i] = "소나기";
-					representPtyCnt=showerCnt;
+					representPty[i] = "4";
+					representPtyCnt++;
 				}
 				break;
 			default:
 				noCnt++;
 				if (representPtyCnt < noCnt) {
-					representPty[i] = "0";
-					representPtyCnt=noCnt;
+					representPty[i] = "아무날도  아님";
+					representPtyCnt++;
 				}
 				break;
 			}
-			
-			if(rainCnt>0 || showerCnt>0)
-				representPty[i] = "비";
-			if(snowCnt>0 || rainSnowCnt>0)
-				representPty[i] = "눈";					
 		}
 		
-		return representPty[0] + ":" + representPty[1] + ":" + representPty[2]+":"+representPty[3];
+		return representPty[0] + ":" + representPty[1] + ":" + representPty[2];
 	
 	}
 
 	public String getRepresentSky() {
 
-		String[] representSky = new String[4];
+		String[] representSky = new String[3];
 		int representSkyCnt = 0;
 
 		int sunnyCnt = 0;
@@ -188,11 +183,10 @@ public class ForecastData {
 		while (skyKeys.hasNext()) {
 			
 			String key = skyKeys.next();
-			newSkyDate = key.split(":")[0];
+			newSkyDate = skyMap.get(key).split(":")[0];
 			
 			if (!oldSkyDate.equals(newSkyDate) || !skyKeys.hasNext()) {
-				
-				representSkyCnt = 0;
+
 				oldSkyDate = newSkyDate;
 				sunnyCnt = 0;
 				cloudyCnt = 0;
@@ -201,33 +195,30 @@ public class ForecastData {
 			}
 			
 			switch (skyMap.get(key)) {
-			case "맑음":
+			case "1":
 				sunnyCnt++;
 				if (representSkyCnt < sunnyCnt) {
-					representSky[i] = "맑음";
-					representSkyCnt=sunnyCnt;
+					representSky[i] = "1";
 				}
 
 				break;
-			case "구름많음":
+			case "3":
 				cloudyCnt++;
 				if (representSkyCnt < cloudyCnt) {
-					representSky[i] = "구름많음";
-					representSkyCnt=cloudyCnt;
+					representSky[i] = "3";
 				}
 				break;
-				
 			default:
-				weekCloudyCnt++;
 				if (representSkyCnt < weekCloudyCnt) {
-					representSky[i] = "흐림";
-					representSkyCnt=weekCloudyCnt;
+					representSky[i] = "4";
 				}
 				break;
-			}				
+			}
+
+			
 		}
 
-		return representSky[0] + ":" + representSky[1] + ":" + representSky[2]+":"+representSky[3];
+		return representSky[0] + ":" + representSky[1] + ":" + representSky[2];
 		
 	}
 
