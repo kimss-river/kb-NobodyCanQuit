@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.dust.DustAttemptAddrService;
-import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
