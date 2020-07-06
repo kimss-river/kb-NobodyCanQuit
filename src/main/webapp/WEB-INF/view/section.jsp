@@ -1,7 +1,13 @@
 <%@ page contentType="text/html; charset=utf-8" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <section>
     <div id="map"></div>
+    <p>
+    ${areaGradeList[0].x}   
+    </p>
 
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=2f40abcb03a397dc715624e07f39732f&libraries=clusterer"></script>
     <script>
@@ -28,21 +34,20 @@
         imageSize,
         imageOption
       );
-      var data = [
-        [35.878044, 128.627612, '<div style="padding:5px;">Hello World!</div>'],
-        [35.879018, 128.626593, '<div style="padding:5px;">Hello World!</div>'],
-        [35.879357, 128.628417, '<div style="padding:5px;">Hello World!</div>'],
-      ];
+      //DustArea
+      alert("${areaGradeList[0].x}");
       var markers = [];
-      for (var i = 0; i < data.length; i++) {
+      
+      <c:forEach items="${areaGradeList}" var="info">
+        console.log('${info.y},${info.x}');
         // 마커를 생성합니다
         var marker = new kakao.maps.Marker({
-          position: new kakao.maps.LatLng(data[i][0], data[i][1]),
+          position: new kakao.maps.LatLng(${info.y},${info.x}),
           image: markerImage,
         });
         // 인포윈도우를 생성합니다
         var infowindow = new kakao.maps.InfoWindow({
-          content: data[i][2],
+          content: '<div style="padding:5px;">Hello World!</div>',
         });
         // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
         infowindow.open(map, marker);
@@ -57,7 +62,7 @@
           "mouseout",
           makeOutListener(infowindow)
         );
-      }
+      </c:forEach>
       clusterer.addMarkers(markers);
       // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
       function makeOverListener(map, marker, infowindow) {

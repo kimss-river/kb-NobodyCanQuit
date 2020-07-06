@@ -16,15 +16,22 @@
 				        <option value=""><spring:message code="search.addressLevel1.title"/></option>
 						<form:options items="${cityList.cityName}" />
 				    </form:select>
-				    <form:select class="aside__serch" path="city" onChange="this.form.submit()">
-				        <option value=""><spring:message code="search.addressLevel1.title"/></option>
-						<form:options items="${cityList.cityName}" />
+				    <form:select class="aside__serch" path="gu" onChange="this.form.submit()">
+				        <option value=""><spring:message code="search.addressLevel2.title"/></option>
+				        <c:if test="${! empty addressCommand.resultList}">
+							<form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
+						</c:if>
 				    </form:select>
-				    <form:select path="city" onChange="this.form.submit()">
-				        <option value=""><spring:message code="search.addressLevel1.title"/></option>
-						<form:options items="${cityList.cityName}" />
+				    <form:select path="dong" onChange="this.form.submit()">
+				        <option value=""><spring:message code="search.addressLevel3.title"/></option>
+				        <c:if test="${! empty addressForDongCommand.resultList}">
+							<form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="name" />
+						</c:if>
 				    </form:select>
 				    <button class="serch__button" type="submit"><spring:message code="common.search.title"/></button>
+				    <c:if test="${! empty addressInputCommand.dong}">
+                		<h4>${addressInputCommand.dong}</h4>
+           			</c:if>
 				</form:form>
     </div>
 </div>
