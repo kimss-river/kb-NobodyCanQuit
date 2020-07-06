@@ -81,7 +81,8 @@
 	</c:forEach> --%>
 
 
-나와 ? ${rePty}
+나와 ? ${rePty} <br/>
+하늘상태? ${reSky}
 
 
 	<%-- ${vilage.response.body.items.fsctItems} --%>

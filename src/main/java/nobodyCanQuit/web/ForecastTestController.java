@@ -92,8 +92,10 @@ public class ForecastTestController {
 			Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
 
 			String rePty = forecastData.getRepresentPty();
+			String reSky = forecastData.getRepresentSky();
 			
 			model.addAttribute("rePty",rePty);
+			model.addAttribute("reSky",reSky);
 			
 			model.addAttribute("R06Map", R06Map);
 			model.addAttribute("TMNMap", TMNMap);
