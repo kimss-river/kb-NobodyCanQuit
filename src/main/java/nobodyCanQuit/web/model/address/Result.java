@@ -48,7 +48,7 @@ public class Result implements Coordinates {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof Result) {
-            return this.name.equals(((Result) obj).getName());
+            return this.name.equals(String.valueOf(((Result) obj).getName()));
         } else {
             return false;
         }
