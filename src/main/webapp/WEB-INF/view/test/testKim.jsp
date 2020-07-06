@@ -64,7 +64,7 @@
 		이산화질소 평균농도 : ${guNameSelected.no2Value}ppm ${guNameSelected.no2Grade}<br />
 	<h3>Grade 처리 결과</h3>
 	<c:forEach var="d" items="${areaGradeList}">
-        지역 : ${d.cityName}
+        지역 : ${d.sidoName}
         시군구 : ${d.cityName}
         미세먼지(PM10): ${d.pm10Value}㎍/㎥
         미세먼지(PM2.5): ${d.pm25Value}㎍/㎥

@@ -18,6 +18,7 @@ import nobodyCanQuit.service.dust.DustAttemptAddrService;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
 import nobodyCanQuit.web.model.viligeDust.DustArea;
 import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
+import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
 
 @Controller
@@ -41,7 +42,7 @@ public class DustAttemptController {
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
 		URL url = dustAttemptAddrService.getApiUrl(DustItemCodes.PM10);
 		DustAttemptAddr dustAttempt = mapper.readValue(url, DustAttemptAddr.class);
-		DustAttemptGrade dustAttempGrade = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
+		DustAttempt dustAttempGrade = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
 		
 		model.addAttribute("finedustAddr", dustAttempt);
 		model.addAttribute("dustAttempGrade", dustAttempGrade);

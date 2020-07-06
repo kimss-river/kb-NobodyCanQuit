@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
-import nobodyCanQuit.web.model.viligeDust.DustAttemptGrade;
 import nobodyCanQuit.web.model.viligeDust.DustAttempt;
 import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
 
@@ -42,11 +41,11 @@ public class DustAttemptAddrService{
 	}
     
     //미세먼지 좋음 나쁨 표시
-    public DustAttemptGrade division(DustRating dustRating, DustAttemptAddr dustAttempt) {
+    public DustAttempt division(DustRating dustRating, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	double[] arr = new double[17];
     	String[] str = new String[17];
-    	DustAttemptGrade division = new DustAttemptGrade() ;
+    	DustAttempt division = new DustAttempt() ;
     	for(DustAttempt e:listDustAttempt) {
 			arr[0] = Double.parseDouble(e.getSeoul());
 			arr[1] = Double.parseDouble(e.getBusan());
