@@ -16,7 +16,7 @@ body {background: #fff;}
 header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0; z-index: 10;}
 #contents {width: 1200px; margin: auto; margin-top: 85px;}
 section {float: left; width: 780px; margin-bottom: 100px;}
-#map {width: 95%; height: 550px; margin-right: 5%;}
+#map {width: 95%; height: 700px; margin-right: 5%;}
 aside {float: left; width: 420px;  margin-bottom: 100px;}
 footer {clear: both; width: 100%; height: 80px; background: #ede5ff; position:fixed; bottom:0; left:0; z-index: 10;}
 
@@ -162,17 +162,17 @@ footer a:hover {
 }
 
 /* aside table - fdWrab */
-.fdWrapF {
+.fdWrap {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows : repeat(1, 120px);
+  grid-template-rows : repeat(2, 120px);
   
   grid-gap: 8px 8px;
  
   padding: 5px;
 }
 
-.fdWrapS {
+/* .fdWrapS {
 	display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows : repeat(1, 120px);
@@ -180,7 +180,7 @@ footer a:hover {
     grid-gap: 8px 8px;
  
     padding: 5px;
-}
+} */
 
 .item {
   background-color: #fff;
@@ -211,9 +211,6 @@ padding: .8em .5em;
 border: 1px solid #999;
 font-family: inherit;
 border-radius: 0px;
-/* -webkit-appearance: none;
--moz-appearance: none;
-appearance: none; */
 }
 
 select::-ms-expand {

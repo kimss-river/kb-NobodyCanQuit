@@ -2,7 +2,7 @@
 
 <!-- 미세먼지 -->
 
-<div class="fdWrapF">
+<div class="fdWrap">
   <div class="item">
   	<h1>PM 2.5</h1>
   	<p class="item_fdn">초미세먼지</p>
@@ -21,8 +21,6 @@
   	<p class="item_fdsh">${guNameSelected.o3Value}ppm</p>
   	<p class="item_sta">${guNameSelected.o3Grade}<p>
   </div>
-</div>
-<div class="fdWrapS">
   <div class="item">
   	 <h1>NO2</h1>
   	<p class="item_fdn">이산화질소</p>
@@ -41,11 +39,4 @@
   	<p class="item_fdsh">${guNameSelected.so2Value}ppm</p>
   	<p class="item_sta">${guNameSelected.so2Grade}<p>
   </div>
-  <!-- 통합대기환경지수 지우고 3/3으로 맞춰야함 -->
-  <div class="item">
-  	<h1>CAI</h1>
-  	<p class="item_fdn">통합대기환경지수</p>
-  	<p class="item_fdsh">66</p>
-  	<p class="item_sta">보통<p>
-  </div>
-</div>
+ </div>

@@ -10,8 +10,8 @@
     <script>
       var mapContainer = document.getElementById("map"), // 지도를 표시할 div
         mapOption = {
-          center: new kakao.maps.LatLng(35.878044, 128.627612), // 지도의 중심좌표
-          level: 10, // 지도의 확대 레벨
+          center: new kakao.maps.LatLng(36.357041, 127.924168), // 지도의 중심좌표
+          level: 13, // 지도의 확대 레벨
           mapTypeId: kakao.maps.MapTypeId.ROADMAP, // 지도종류
         };
       // 지도를 생성한다
@@ -20,7 +20,7 @@
       var clusterer = new kakao.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
-        minLevel: 10, // 클러스터 할 최소 지도 레벨
+        minLevel: 13, // 클러스터 할 최소 지도 레벨
       });
       var imageSrc = "${pageContext.request.contextPath}/resources/imgs/good.png", // 마커이미지의 주소입니다
         imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
@@ -31,6 +31,11 @@
         imageSize,
         imageOption
       );
+        
+     /* var data = [
+    	  TODO : 검색 전 지도 전체 시도별 마커
+      ]; */
+        
       //DustArea
       var markers = [];
       
