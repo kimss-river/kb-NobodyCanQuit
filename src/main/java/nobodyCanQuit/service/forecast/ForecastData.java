@@ -1,5 +1,6 @@
 package nobodyCanQuit.service.forecast;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeMap;
@@ -19,6 +20,20 @@ public class ForecastData {
 	@Getter
 	private VilageFcstInfoService vilageFcstInfoService;
 
+	public List<FcstItem> getList(ForecastCategory forecastCategory) {
+
+		List<FcstItem> items = viligeFcstStores.getFcstItem();
+		List<FcstItem> t3hList = new ArrayList<>();
+
+		for (FcstItem fs : items) {
+			if (fs.getCategory().equals(forecastCategory.toString())) {
+				t3hList.add(fs);
+			}
+		}
+
+		return t3hList;
+	}
+
 	public TreeMap<String, String> getValue(ForecastCategory forecastCategory) {
 
 		TreeMap<String, String> valueMap = new TreeMap<>();
@@ -29,7 +44,7 @@ public class ForecastData {
 				if(f.getCategory().equals(ForecastCategory.PTY.toString())) {
 					
 					String pty = "";
-					
+
 					switch (f.getFcstValue()) {
 						case "1":
 							pty = "비";
@@ -82,7 +97,6 @@ public class ForecastData {
 				}
 			}
 		}
-		
 		return valueMap;
 
 	}

@@ -14,8 +14,12 @@ public class ViligeFcstStores {
 
 
 	public List<FcstItem> getFcstItem() {
-				
-		return  response.getBody().getItems().getFsctItems();
+		try {
+			return  response.getBody().getItems().getFsctItems();
+		} catch (NullPointerException npe) {
+			npe.getStackTrace();
+			return null;
+		}
 	}
 		
 }

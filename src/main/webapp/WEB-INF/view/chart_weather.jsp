@@ -40,7 +40,8 @@ function getWeatherChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###°C",
 			dataPoints: [
-				{ label: "00시", y: 21 },
+			<c:out value="${test2}">
+				{ label: "00시", y: ${test2[0].fcstValue},
 				{ label: "03시", y: 22 },
 				{ label: "06시", y: 23 },
 				{ label: "09시", y: 24 },
@@ -48,6 +49,7 @@ function getWeatherChart() {
 				{ label: "15시", y: 28 }, 
 				{ label: "18시", y: 25 }, 
 				{ label: "21시", y: 29 }
+            </c:out>
 			]
 		}]
 	};

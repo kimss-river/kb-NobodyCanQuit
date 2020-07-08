@@ -20,7 +20,7 @@ public class FxxxKMAcoord {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof String) {
-            return this.value.equals(String.valueOf(obj));
+            return value.equals(obj);
         } else {
             return false;
         }

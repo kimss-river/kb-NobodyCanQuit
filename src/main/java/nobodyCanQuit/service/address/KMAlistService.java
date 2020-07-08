@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.type.CollectionType;
 import nobodyCanQuit.web.model.address.*;
 import org.springframework.stereotype.Component;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -74,7 +73,7 @@ public class KMAlistService {
                     new URL("http://www.kma.go.kr/DFSROOT/POINT/DATA/leaf." + kmaGuCode + ".json.txt"),
                     collectionType
             );
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             e.getStackTrace();
             return null;
         }
