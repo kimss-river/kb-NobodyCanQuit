@@ -1,5 +1,7 @@
 package nobodyCanQuit.web;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -164,9 +166,12 @@ public class MainController {
             model.addAttribute("listPty", listPty);
             List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
             model.addAttribute("listSky", listSky);
+            List<String> listImg = forecastData.getImg(listPty, listSky);
+            model.addAttribute("listImg", listImg);
+
             
         }
-
+        
         return "index";
     }
 

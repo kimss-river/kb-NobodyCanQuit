@@ -83,6 +83,34 @@ public class ForecastData {
 		return list;
 	}
 
+	public List<String> getImg(List<FcstItem> listPty, List<FcstItem> listSky) {
+		List<String> listImg = new ArrayList<>();
+		for (FcstItem p : listPty) {
+			for (FcstItem s : listSky) {
+				if (p.getPty().equals("없음")) {
+					if (s.getSky().equals("맑음")) {
+						listImg.add("sun.png");
+					} else if (s.getSky().equals("구름많음")) {
+						listImg.add("cloud.png");
+					} else {
+						listImg.add("cloudsAsun.png");
+					}
+				} else {
+					if (p.getPty().equals("비") || p.getPty().equals("소나기")) {
+						listImg.add("rain.png");
+					} else if (p.getPty().equals("비/눈")) {
+						listImg.add("sleet.png");
+					} else if (p.getPty().equals("눈") || p.getPty().equals("빗방울/눈날림") || p.getPty().equals("눈날림")) {
+						listImg.add("snow.png");
+					} else if (p.getPty().equals("빗방울")) {
+						listImg.add("sunArain.png");
+					}
+				}
+			}
+		}
+		return listImg;
+	}
+
 	public TreeMap<String, String> getValue(ForecastCategory forecastCategory) {
 		TreeMap<String, String> valueMap = new TreeMap<>();
 		List<FcstItem> items = viligeFcstStores.getFcstItem();
