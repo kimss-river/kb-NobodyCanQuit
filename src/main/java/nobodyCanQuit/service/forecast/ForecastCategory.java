@@ -9,7 +9,7 @@ public enum ForecastCategory {
     //6시간 강수량(mm)
     R06("R06"),
     //3시간 기온(℃)
-    TH3("TH3"),
+    T3H("T3H"),
     //최저기온(발표시각 0200)
     TMN("TMN"),
     //최고기온(발표시각 1100)

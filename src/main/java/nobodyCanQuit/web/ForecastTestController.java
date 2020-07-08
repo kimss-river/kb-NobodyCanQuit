@@ -76,26 +76,27 @@ public class ForecastTestController {
 			
 			forecastData.setViligeFcstStores(viligeFcstStores);
 			
-			//강수확률 강수형태 강수량
-			Map<String, String> PopMap =forecastData.getValue(ForecastCategory.POP);
-			Map<String, String> PtyMap =forecastData.getValue(ForecastCategory.PTY);
-			Map<String, String> R06Map =forecastData.getValue(ForecastCategory.R06);
+			//강수확률, 강수형태, 강수량
+			Map<String, String> PopMap = forecastData.getValue(ForecastCategory.POP);
+			Map<String, String> PtyMap = forecastData.getValue(ForecastCategory.PTY);
+			Map<String, String> R06Map = forecastData.getValue(ForecastCategory.R06);
 			
-			//3시간 기온 최저기온 최고기온
-			Map<String, String> TH3Map =forecastData.getValue(ForecastCategory.TH3);
-			Map<String, String> TMNMap =forecastData.getValue(ForecastCategory.TMN);
-			Map<String, String> TMXMap =forecastData.getValue(ForecastCategory.TMX);
+			//3시간, 기온, 최저기온 최고기온
+			Map<String, String> TH3Map = forecastData.getValue(ForecastCategory.T3H);
+			Map<String, String> TMNMap = forecastData.getValue(ForecastCategory.TMN);
+			Map<String, String> TMXMap = forecastData.getValue(ForecastCategory.TMX);
 			
-			//하늘상태 풍향 풍속
-			Map<String, String> SkyMap =forecastData.getValue(ForecastCategory.SKY);
-			Map<String, String> VecMap =forecastData.getValue(ForecastCategory.VEC);
-			Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
-
+			//하늘상태, 풍향, 풍속
+			Map<String, String> SkyMap = forecastData.getValue(ForecastCategory.SKY);
+			Map<String, String> VecMap = forecastData.getValue(ForecastCategory.VEC);
+			Map<String, String> WSDMap = forecastData.getValue(ForecastCategory.WSD);
+			
 			String rePty = forecastData.getRepresentPty();
 			String reSky = forecastData.getRepresentSky();
 			
 			model.addAttribute("rePty",rePty);
 			model.addAttribute("reSky",reSky);
+			model.addAttribute("TH3Map",TH3Map);
 			
 			model.addAttribute("R06Map", R06Map);
 			model.addAttribute("TMNMap", TMNMap);

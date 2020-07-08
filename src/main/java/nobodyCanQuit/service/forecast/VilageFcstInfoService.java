@@ -27,7 +27,6 @@ public class VilageFcstInfoService {
 				+ "?serviceKey=zGuDv3a%2FY%2FxXtJPaZ4x2I09BsyEbbwzdzoZ5xxO6VSba6r%2BrvDH7bOkuE3R0c5oe3hdHkLdeoFAdD6oPk48cxw%3D%3D"
 				+ "&dataType=json&numOfRows=999&pageNo=1" + "&base_date=" + getDate() + "&base_time=" + getTime()
 				+ "&nx=" + fxxxKMAcoord.getX() + "&ny=" + fxxxKMAcoord.getY();
-
 		return new URL(Apiaddress);
 	}
 	
