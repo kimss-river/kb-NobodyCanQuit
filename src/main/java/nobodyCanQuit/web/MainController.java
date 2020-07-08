@@ -155,6 +155,10 @@ public class MainController {
             model.addAttribute("listTmx", listTmx);
             List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
             model.addAttribute("listReh", listReh);
+            List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
+            model.addAttribute("listPop", listPop);
+            List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
+            model.addAttribute("listR06", listR06);
         }
 
         return "index";

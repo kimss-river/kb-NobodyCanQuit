@@ -44,14 +44,14 @@ function getPrcptChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###mm",
 			dataPoints: [
-				{ label: "00시", y: 21 },
-				{ label: "03시", y: 22 },
-				{ label: "06시", y: 23 },
-				{ label: "09시", y: 24 },
-				{ label: "12시", y: 27 },
-				{ label: "15시", y: 28 }, 
-				{ label: "18시", y: 25 }, 
-				{ label: "21시", y: 29 }
+				{ label: ${listR06[0].fcstTime}+"시", y: ${listR06[0].fcstValue} },
+				{ label: ${listR06[1].fcstTime}+"시", y: ${listR06[1].fcstValue} },
+				{ label: ${listR06[2].fcstTime}+"시", y: ${listR06[2].fcstValue} },
+				{ label: ${listR06[3].fcstTime}+"시", y: ${listR06[3].fcstValue} },
+				{ label: ${listR06[4].fcstTime}+"시", y: ${listR06[4].fcstValue} },
+				{ label: ${listR06[5].fcstTime}+"시", y: ${listR06[5].fcstValue} }, 
+				{ label: ${listR06[6].fcstTime}+"시", y: ${listR06[6].fcstValue} }, 
+				{ label: ${listR06[7].fcstTime}+"시", y: ${listR06[7].fcstValue} }
 			]
 		},
 		{
@@ -62,14 +62,14 @@ function getPrcptChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###%",
 			dataPoints: [
-				{ label: "00시", y: 21 },
-				{ label: "03시", y: 22 },
-				{ label: "06시", y: 23 },
-				{ label: "09시", y: 24 },
-				{ label: "12시", y: 27 },
-				{ label: "15시", y: 28 }, 
-				{ label: "18시", y: 25 }, 
-				{ label: "21시", y: 29 }
+				{ label: ${listPop[0].fcstTime}+"시", y: ${listPop[0].fcstValue} },
+				{ label: ${listPop[1].fcstTime}+"시", y: ${listPop[1].fcstValue} },
+				{ label: ${listPop[2].fcstTime}+"시", y: ${listPop[2].fcstValue} },
+				{ label: ${listPop[3].fcstTime}+"시", y: ${listPop[3].fcstValue} },
+				{ label: ${listPop[4].fcstTime}+"시", y: ${listPop[4].fcstValue} },
+				{ label: ${listPop[5].fcstTime}+"시", y: ${listPop[5].fcstValue} }, 
+				{ label: ${listPop[6].fcstTime}+"시", y: ${listPop[6].fcstValue} }, 
+				{ label: ${listPop[7].fcstTime}+"시", y: ${listPop[7].fcstValue} }
 			]
 		}]
 	};
