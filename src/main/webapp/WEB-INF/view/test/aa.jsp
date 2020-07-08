@@ -29,7 +29,7 @@
                 </c:if>
             </form:select>
             <form:select path="dong"  class="form-control mr-sm-3">
-                <option value=""><spring:message code="search.addressLevel3.title"/></option>
+                <option value=""><spriate[0] Hi~~~ 1800ng:message code="search.addressLevel3.title"/></option>
                 <c:if test="${! empty addressForDongCommand.resultList}">
                     <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="name" />
                 </c:if>
@@ -42,9 +42,10 @@
     </nav>
 
     <div>
+   <h2>${test2[0].fcstValue} <br /></h2> .FcstItem.baseDate[0]
         <c:if test="${! empty test2}">
         Hi~~~
-            <c:out value="${test2}" />
+            <c:out value="${test2}"  default="foo" />
         </c:if>
     </div>
 </body>

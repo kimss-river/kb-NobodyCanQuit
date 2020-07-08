@@ -17,6 +17,7 @@
 
     <!-- 시군구별 실시간 평균정보 조회 조회	 -->
 	<h3>미세먼지 일평균 일주일</h3>
+	${dustAreaAddr}
 	<br />
     도시이름:${dustAreaAddr.dustArea[0].cityName}
 <br />
