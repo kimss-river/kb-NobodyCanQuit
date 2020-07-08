@@ -27,7 +27,7 @@ public class ForecastData {
 		
 		for (FcstItem fs : items) {
 			if (fs.getCategory().equals(forecastCategory.toString())) {
-				if (fs.getCategory().equals(ForecastCategory.T3H.toString())) {
+				if (fs.getCategory().equals(ForecastCategory.T3H.toString())||fs.getCategory().equals(ForecastCategory.REH.toString())) {
 					fs.setFcstTime(fs.getFcstTime().substring(0,2) );
 					list.add(fs);
 				}else if (fs.getCategory().equals(ForecastCategory.TMN.toString())||fs.getCategory().equals(ForecastCategory.TMX.toString())) {

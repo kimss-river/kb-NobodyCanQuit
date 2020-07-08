@@ -124,6 +124,8 @@ public class AaTestController {
             model.addAttribute("listTmn", listTmn);
             List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
             model.addAttribute("listTmx", listTmx);
+            List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
+            model.addAttribute("listReh", listReh);
         }
 
         return "test/aa";

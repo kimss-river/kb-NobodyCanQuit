@@ -46,8 +46,9 @@
     </script>
 test2 :${test2} <br />
 --------------------------
-    listTmx:${listTmx} <br />
-    ${listTmx[0].fcstValue}
+    listReh:${listReh} <br />
+    ${listReh[0].fcstValue}<br />
+    ${listReh[0].fcstTime}시 y: ${listReh[0].fcstValue},${listReh[1].fcstValue}
    <h2>${test2[0].fcstValue} <br /></h2> 
         <c:if test="${! empty listTmn}">
         Hi~~~

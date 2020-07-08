@@ -6,7 +6,6 @@
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
 function getHumidChart() {
-
 	var humid = {
 		animationEnabled: true,
 		theme: "light2",
@@ -27,14 +26,14 @@ function getHumidChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###%",
 			dataPoints: [
-				{ label: "00시", y: 21 },
-				{ label: "03시", y: 22 },
-				{ label: "06시", y: 23 },
-				{ label: "09시", y: 24 },
-				{ label: "12시", y: 27 },
-				{ label: "15시", y: 28 }, 
-				{ label: "18시", y: 25 }, 
-				{ label: "21시", y: 29 }
+				{ label: ${listReh[0].fcstTime}+"시", y: ${listReh[0].fcstValue} },
+				{ label: ${listReh[1].fcstTime}+"시", y: ${listReh[1].fcstValue} },
+				{ label: ${listReh[2].fcstTime}+"시", y: ${listReh[2].fcstValue} },
+				{ label: ${listReh[3].fcstTime}+"시", y: ${listReh[3].fcstValue} },
+				{ label: ${listReh[4].fcstTime}+"시", y: ${listReh[4].fcstValue} },
+				{ label: ${listReh[5].fcstTime}+"시", y: ${listReh[5].fcstValue} }, 
+				{ label: ${listReh[6].fcstTime}+"시", y: ${listReh[6].fcstValue} }, 
+				{ label: ${listReh[7].fcstTime}+"시", y: ${listReh[7].fcstValue} }
 			]
 		}]
 	};
