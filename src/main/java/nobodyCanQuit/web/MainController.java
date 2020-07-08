@@ -120,7 +120,7 @@ public class MainController {
             Map<String, String> R06Map = forecastData.getValue(ForecastCategory.R06);
 
             //3시간 기온, 최저기온, 최고기온
-            Map<String, String> TH3Map = forecastData.getValue(ForecastCategory.T3H);
+            Map<String, String> T3HMap = forecastData.getValue(ForecastCategory.T3H);
             Map<String, String> TMNMap = forecastData.getValue(ForecastCategory.TMN);
             Map<String, String> TMXMap = forecastData.getValue(ForecastCategory.TMX);
 
@@ -135,7 +135,7 @@ public class MainController {
             model.addAttribute("rePty",rePty);
             model.addAttribute("reSky",reSky);
 
-            model.addAttribute("wthr3day",TH3Map);
+            model.addAttribute("wthr3day",T3HMap);
             model.addAttribute("R06Map", R06Map);
             model.addAttribute("TMNMap", TMNMap);
             model.addAttribute("TMXMap", TMXMap);

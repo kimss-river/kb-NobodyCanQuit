@@ -55,7 +55,7 @@
 		</form:form>
 	</nav>
 
-<h1>이거는 3시간${TH3Map}</h1>
+<h1>이거는 3시간${T3HMap}</h1>
 	 <hr>
 	<c:forEach items="${R06Map}" var="R06Map">
 			${R06Map.key} : ${R06Map.value}<br/>
