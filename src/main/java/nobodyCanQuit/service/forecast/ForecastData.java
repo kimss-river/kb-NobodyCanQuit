@@ -23,20 +23,21 @@ public class ForecastData {
 	public List<FcstItem> getList(ForecastCategory forecastCategory) {
 
 		List<FcstItem> items = viligeFcstStores.getFcstItem();
-		List<FcstItem> t3hList = new ArrayList<>();
-
+		List<FcstItem> list = new ArrayList<>();
+		
 		for (FcstItem fs : items) {
 			if (fs.getCategory().equals(forecastCategory.toString())) {
-				if(fs.getCategory().equals(ForecastCategory.T3H.toString())) {
+				if (fs.getCategory().equals(ForecastCategory.T3H.toString())) {
 					fs.setFcstTime(fs.getFcstTime().substring(0,2) );
-					t3hList.add(fs);
+					list.add(fs);
+				}else if (fs.getCategory().equals(ForecastCategory.TMN.toString())||fs.getCategory().equals(ForecastCategory.TMX.toString())) {
+						list.add(fs);
 				}
-				
 			}
 		}
-
-		return t3hList;
+		return list;
 	}
+
 
 	public TreeMap<String, String> getValue(ForecastCategory forecastCategory) {
 

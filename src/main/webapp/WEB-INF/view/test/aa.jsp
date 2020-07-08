@@ -44,12 +44,13 @@
     <div>
     <script>
     </script>
-    ${test2[0].fcstValue} 
-    ${test2[4].fcstTime}
-   <h2>${test2[0].fcstValue} <br /></h2> .FcstItem.baseDate[0]
-        <c:if test="${! empty test2}">
+test2 :${test2} <br />
+--------------------------
+    listTmx:${listTmx} <br />
+    ${listTmx[0].fcstValue}
+   <h2>${test2[0].fcstValue} <br /></h2> 
+        <c:if test="${! empty listTmn}">
         Hi~~~
-            <c:out value="${test2}"  default="foo" />
         </c:if>
     </div>
 </body>

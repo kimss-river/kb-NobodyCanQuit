@@ -119,6 +119,11 @@ public class AaTestController {
             //TODO test delete
             List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
             model.addAttribute("test2", testlist);
+            
+            List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
+            model.addAttribute("listTmn", listTmn);
+            List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
+            model.addAttribute("listTmx", listTmx);
         }
 
         return "test/aa";
