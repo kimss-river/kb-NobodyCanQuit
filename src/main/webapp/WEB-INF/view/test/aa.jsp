@@ -44,12 +44,12 @@
     <div>
     <script>
     </script>
-test2 :${test2} <br />
+<br />
 --------------------------
-    listPop:${listR06} <br />
-    ${listR06[0].fcstValue}<br />
-    ${listR06[0].fcstTime}시 y: ${listR06[0].fcstValue},${listR06[1].fcstValue}
-   <h2>${test2[0].fcstValue} <br /></h2> 
+    listSky:${listSky} <br />
+    ${listSky[0].pty}<br />
+    ${listSky[0].fcstTime}시 y: ${listSky[0].pty},${listSky[1].pty}
+   <h2>${listSky[0].fcstValue} <br /></h2> 
         <c:if test="${! empty listTmn}">
         Hi~~~
         </c:if>

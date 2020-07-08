@@ -4,7 +4,14 @@
 <div id="weatherChart" class="wChart"></div>
 <table id="table_weather">
   <tr>
+   
     <th width="39">날씨&nbsp;</th>
+<!-- index는 7까지 나와야됌  -->
+    <c:forEach  items="${listPty}" var="p" varStatus="status">
+    <c:if test="${status.index <= 7}">
+    ${status.index}. ${p.fcstTime}시 ${p.pty}/${listSky[status.index].sky}<br />
+    </c:if>
+    </c:forEach>
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>

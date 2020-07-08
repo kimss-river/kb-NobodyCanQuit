@@ -30,8 +30,49 @@ public class ForecastData {
 				if (fs.getCategory().equals(ForecastCategory.T3H.toString())
 						|| fs.getCategory().equals(ForecastCategory.REH.toString())
 						|| fs.getCategory().equals(ForecastCategory.POP.toString())
-						|| fs.getCategory().equals(ForecastCategory.R06.toString())) {
+						|| fs.getCategory().equals(ForecastCategory.R06.toString())
+						|| fs.getCategory().equals(ForecastCategory.WSD.toString())) {
 					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
+					list.add(fs);
+				} else if (fs.getCategory().equals(ForecastCategory.PTY.toString())) {
+					String pty = "";
+					switch (fs.getFcstValue()) {
+					case "1":
+						pty = "비";
+						break;
+					case "2":
+						pty = "비/눈";
+						break;
+					case "3":
+						pty = "눈";
+						break;
+					case "4":
+						pty = "소나기";
+						break;
+					default:
+						pty = "없음";
+						break;
+					}
+					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
+					fs.setPty(pty);
+					list.add(fs);
+				} else if (fs.getCategory().equals(ForecastCategory.SKY.toString())) {
+
+					String sky = "";
+
+					switch (fs.getFcstValue()) {
+					case "1":
+						sky = "맑음";
+						break;
+					case "3":
+						sky = "구름많음";
+						break;
+					default:
+						sky = "흐림";
+						break;
+					}
+					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
+					fs.setSky(sky);
 					list.add(fs);
 				} else if (fs.getCategory().equals(ForecastCategory.TMN.toString())
 						|| fs.getCategory().equals(ForecastCategory.TMX.toString())) {

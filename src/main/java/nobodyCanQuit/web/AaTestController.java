@@ -130,6 +130,12 @@ public class AaTestController {
             model.addAttribute("listPop", listPop);
             List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
             model.addAttribute("listR06", listR06);
+            List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
+            model.addAttribute("listWsd", listWsd);
+            List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
+            model.addAttribute("listPty", listPty);
+            List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
+            model.addAttribute("listSky", listSky);
         }
 
         return "test/aa";

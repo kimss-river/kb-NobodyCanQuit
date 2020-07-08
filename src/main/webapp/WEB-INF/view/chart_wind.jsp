@@ -41,14 +41,14 @@ function getWindChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###.#m/s",
 			dataPoints: [
-				{ label: "00시", y: 21 },
-				{ label: "03시", y: 22 },
-				{ label: "06시", y: 23 },
-				{ label: "09시", y: 24 },
-				{ label: "12시", y: 27 },
-				{ label: "15시", y: 28 }, 
-				{ label: "18시", y: 25 }, 
-				{ label: "21시", y: 29 }
+				{ label: ${listWsd[0].fcstTime}+"시", y: ${listWsd[0].fcstValue} },
+				{ label: ${listWsd[1].fcstTime}+"시", y: ${listWsd[1].fcstValue} },
+				{ label: ${listWsd[2].fcstTime}+"시", y: ${listWsd[2].fcstValue} },
+				{ label: ${listWsd[3].fcstTime}+"시", y: ${listWsd[3].fcstValue} },
+				{ label: ${listWsd[4].fcstTime}+"시", y: ${listWsd[4].fcstValue} },
+				{ label: ${listWsd[5].fcstTime}+"시", y: ${listWsd[5].fcstValue} }, 
+				{ label: ${listWsd[6].fcstTime}+"시", y: ${listWsd[6].fcstValue} }, 
+				{ label: ${listWsd[7].fcstTime}+"시", y: ${listWsd[7].fcstValue} }
 			]
 		}]
 	};

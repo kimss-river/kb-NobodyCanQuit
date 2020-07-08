@@ -148,7 +148,6 @@ public class MainController {
             //TODO test delete
             List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
             model.addAttribute("test2", testlist);
-            
             List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
             model.addAttribute("listTmn", listTmn);
             List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
@@ -159,6 +158,13 @@ public class MainController {
             model.addAttribute("listPop", listPop);
             List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
             model.addAttribute("listR06", listR06);
+            List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
+            model.addAttribute("listWsd", listWsd);
+            List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
+            model.addAttribute("listPty", listPty);
+            List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
+            model.addAttribute("listSky", listSky);
+            
         }
 
         return "index";

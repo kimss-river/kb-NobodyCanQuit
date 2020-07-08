@@ -30,4 +30,7 @@ public class FcstItem {
 	
 	@JsonProperty("ny")
 	private int ny;
+	
+	private String pty;
+	private String sky;
 }
