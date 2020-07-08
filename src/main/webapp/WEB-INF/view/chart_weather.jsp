@@ -39,14 +39,14 @@ function getWeatherChart() {
 			showInLegend: true,
 			yValueFormatString: "#,###°C",
 			dataPoints: [
-				{ label: "현재", y: ${test2[0].fcstValue} },
-				{ label: "03시", y: ${test2[1].fcstValue} },
-				{ label: "06시", y: ${test2[2].fcstValue} },
-				{ label: "09시", y: ${test2[3].fcstValue} },
-				{ label: "12시", y: ${test2[4].fcstValue} },
-				{ label: "15시", y: ${test2[5].fcstValue} }, 
-				{ label: "18시", y: ${test2[6].fcstValue} }, 
-				{ label: "21시", y: ${test2[7].fcstValue} }
+				{ label: ${test2[0].fcstTime}+"시", y: ${test2[0].fcstValue} },
+				{ label: ${test2[1].fcstTime}+"시", y: ${test2[1].fcstValue} },
+				{ label: ${test2[2].fcstTime}+"시", y: ${test2[2].fcstValue} },
+				{ label: ${test2[3].fcstTime}+"시", y: ${test2[3].fcstValue} },
+				{ label: ${test2[4].fcstTime}+"시", y: ${test2[4].fcstValue} },
+				{ label: ${test2[5].fcstTime}+"시", y: ${test2[5].fcstValue} }, 
+				{ label: ${test2[6].fcstTime}+"시", y: ${test2[6].fcstValue} }, 
+				{ label: ${test2[7].fcstTime}+"시", y: ${test2[7].fcstValue} }
 			]
 		}]
 	};

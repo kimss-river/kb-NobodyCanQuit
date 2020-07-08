@@ -27,7 +27,11 @@ public class ForecastData {
 
 		for (FcstItem fs : items) {
 			if (fs.getCategory().equals(forecastCategory.toString())) {
-				t3hList.add(fs);
+				if(fs.getCategory().equals(ForecastCategory.T3H.toString())) {
+					fs.setFcstTime(fs.getFcstTime().substring(0,2) );
+					t3hList.add(fs);
+				}
+				
 			}
 		}
 

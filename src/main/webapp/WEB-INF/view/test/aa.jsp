@@ -42,6 +42,10 @@
     </nav>
 
     <div>
+    <script>
+    </script>
+    ${test2[0].fcstValue} 
+    ${test2[4].fcstTime}
    <h2>${test2[0].fcstValue} <br /></h2> .FcstItem.baseDate[0]
         <c:if test="${! empty test2}">
         Hi~~~

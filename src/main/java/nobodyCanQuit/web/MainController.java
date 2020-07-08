@@ -147,6 +147,7 @@ public class MainController {
 
             //TODO test delete
             List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
+            
             model.addAttribute("test2", testlist);
         }
 
