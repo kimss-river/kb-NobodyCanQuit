@@ -7,14 +7,16 @@
    
     <th width="39">날씨&nbsp;</th>
 <!-- index는 7까지 나와야됌  -->
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[0]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[1]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[2]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[3]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[4]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[5]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[6]}" width="30"></td>
-    <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[7]}" width="30"></td>
+
+    <td> ${listPty[0].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[0]}" width="30"></td>
+    
+    <td>${listPty[1].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[1]}" width="30"></td>
+    <td>${listPty[2].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[2]}" width="30"></td>
+    <td>${listPty[3].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[3]}" width="30"></td>
+    <td>${listPty[4].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[4]}" width="30"></td>
+    <td>${listPty[5].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[5]}" width="30"></td>
+    <td>${listPty[6].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[6]}" width="30"></td>
+    <td>${listPty[7].fcstTime}시<img src="${pageContext.request.contextPath}/resources/imgs/weather/${listImg[7]}" width="30"></td>
   </tr>
 </table>
 <script>

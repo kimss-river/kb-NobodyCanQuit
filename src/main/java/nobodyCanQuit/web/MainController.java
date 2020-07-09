@@ -139,9 +139,8 @@ public class MainController {
 			model.addAttribute("SkyMap", SkyMap);
 			model.addAttribute("VecMap", VecMap);
 			model.addAttribute("vilage", viligeFcstStores);
+
 			
-			List<String> getRepresent = forecastData.getRepresent();
-            model.addAttribute("getRepresent",getRepresent);
 			// 3시간 기온, 최저기온, 최고기온
 			List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
 			model.addAttribute("test2", testlist);
@@ -149,6 +148,7 @@ public class MainController {
 			model.addAttribute("listTmn", listTmn);
 			List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
 			model.addAttribute("listTmx", listTmx);
+			
 			// 강수확률, 강수형태, 강수량
 			List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
 			model.addAttribute("listPop", listPop);
@@ -165,9 +165,15 @@ public class MainController {
 			model.addAttribute("listWsd", listWsd);
 			List<FcstItem> listVec = forecastData.getList(ForecastCategory.VEC);
 			model.addAttribute("listVec", listVec);
-			//날씨 이미지
+			// 날씨 이미지
 			List<String> listImg = forecastData.getImg(listPty, listSky);
 			model.addAttribute("listImg", listImg);
+			//대표 날씨 이미지
+			List<String> getRepresent = forecastData.getRepresent();
+			model.addAttribute("getRepresent", getRepresent);
+			//최고 기온, 최저 기온
+			String[][] listF = forecastData.getTemp(listTmn, listTmx);
+			model.addAttribute("listF", listF);
 
 		}
 
