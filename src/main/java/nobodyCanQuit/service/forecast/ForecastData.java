@@ -211,7 +211,7 @@ public class ForecastData {
 			case "비":
 				rainCnt++;
 				if (representPtyCnt < rainCnt) {
-					representPty[i] = "비";
+					representPty[i] = "heavyRain.png";
 					representPtyCnt = rainCnt;
 				}
 
@@ -219,21 +219,21 @@ public class ForecastData {
 			case "비/눈":
 				rainSnowCnt++;
 				if (representPtyCnt < rainSnowCnt) {
-					representPty[i] = "비/눈";
+					representPty[i] = "sleet.png";
 					representPtyCnt = rainSnowCnt;
 				}
 				break;
 			case "눈":
 				snowCnt++;
 				if (representPtyCnt < snowCnt) {
-					representPty[i] = "눈";
+					representPty[i] = "snow.png";
 					representPtyCnt = snowCnt;
 				}
 				break;
 			case "소나기":
 				showerCnt++;
 				if (representPtyCnt < showerCnt) {
-					representPty[i] = "소나기";
+					representPty[i] = "rain.png";
 					representPtyCnt = showerCnt;
 				}
 				break;
@@ -247,9 +247,9 @@ public class ForecastData {
 			}
 
 			if (rainCnt > 0 || showerCnt > 0)
-				representPty[i] = "비";
+				representPty[i] = "rain.png";
 			if (snowCnt > 0 || rainSnowCnt > 0)
-				representPty[i] = "눈";
+				representPty[i] = "snow.png";
 		}
 
 		return representPty[0] + ":" + representPty[1] + ":" + representPty[2] + ":" + representPty[3];
@@ -290,7 +290,7 @@ public class ForecastData {
 			case "맑음":
 				sunnyCnt++;
 				if (representSkyCnt < sunnyCnt) {
-					representSky[i] = "맑음";
+					representSky[i] = "sun.png";
 					representSkyCnt = sunnyCnt;
 				}
 
@@ -298,7 +298,7 @@ public class ForecastData {
 			case "구름많음":
 				cloudyCnt++;
 				if (representSkyCnt < cloudyCnt) {
-					representSky[i] = "구름많음";
+					representSky[i] = "cloud.png";
 					representSkyCnt = cloudyCnt;
 				}
 				break;
@@ -306,7 +306,7 @@ public class ForecastData {
 			default:
 				weekCloudyCnt++;
 				if (representSkyCnt < weekCloudyCnt) {
-					representSky[i] = "흐림";
+					representSky[i] = "cloudsAsun.png";
 					representSkyCnt = weekCloudyCnt;
 				}
 				break;
@@ -317,4 +317,24 @@ public class ForecastData {
 
 	}
 
+	public List<String> getRepresent(){
+		List<String> list = new ArrayList<>();
+		
+		String representPty = getRepresentPty();
+		String representSky = getRepresentSky();
+		
+		String[] ptyArr = representPty.split(":");
+		String[] skyArr = representSky.split(":");
+		
+		for(int i=0; i <4 ; i ++) {			
+			if(ptyArr[i].equals("0")) {
+				
+				ptyArr[i]=skyArr[i];
+		
+			}
+			list.add(ptyArr[i]);
+		}
+			
+		return  list;
+	}
 }
