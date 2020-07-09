@@ -5,12 +5,17 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+import nobodyCanQuit.service.dust.DustAttemptAddrService;
+import nobodyCanQuit.service.dust.DustItemCodes;
+import nobodyCanQuit.service.dust.DustRating;
 import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
 import nobodyCanQuit.service.forecast.VilageFcstInfoService;
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.viligefcst.FcstItem;
-import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
+import nobodyCanQuit.web.model.dust.DustAttemptAddr;
+import nobodyCanQuit.web.model.dust.DustCityGrade;
+import nobodyCanQuit.web.model.forecast.FcstItem;
+import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,8 +32,8 @@ import nobodyCanQuit.service.address.KMAlistService;
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
+import nobodyCanQuit.web.model.dust.DustArea;
+import nobodyCanQuit.web.model.dust.DustAreaAddr;
 
 @Controller
 public class MainController {
@@ -48,13 +53,19 @@ public class MainController {
 	private VilageFcstInfoService vilageFcstInfoService;
 	@Autowired
 	private ForecastData forecastData;
+	@Autowired
+	private DustAttemptAddrService dustAttemptAddrService;
 
 	@GetMapping("/")
 	public String indexget(AddressInputCommand addressInputCommand, Model model) throws IOException {
 
+		addressApiService.getSGIStoken();
 		model.addAttribute("cityList", cityListService);
 
-		addressApiService.getSGIStoken();
+		DustAttemptAddr dustAttempt =
+				mapper.readValue(dustAttemptAddrService.getApiUrl(DustItemCodes.PM10), DustAttemptAddr.class);
+		List<DustCityGrade> dustCityList = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
+		model.addAttribute("dustCityList", dustCityList);
 
 		return "index";
 	}

@@ -2,7 +2,7 @@ package nobodyCanQuit.service.address;
 
 import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.Result;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
+import nobodyCanQuit.web.model.dust.DustArea;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

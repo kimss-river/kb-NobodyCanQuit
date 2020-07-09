@@ -13,7 +13,7 @@ html { font-size:62.5%; }
 /* 반응형 */
 #wrap {width: 100%; margin: auto;}
 body {background: #fff;} 
-header {width: 100%; height: 65px; background: #263857; position:fixed; top:0; left:0; z-index: 10;}
+header {width: 100%; height: 35px; background: #263857; position:fixed; top:0; left:0; z-index: 10;}
 #contents {width: 1200px; margin: auto; margin-top: 85px;}
 section {float: left; width: 780px; margin-bottom: 100px;}
 #map {width: 95%; height: 700px; margin-right: 5%;}
@@ -39,9 +39,9 @@ header a {
     display: block;
     width: 350px;
     margin: auto; 
-    line-height: 65px;
+    line-height: 35px;
     text-align: center;
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bolder;
     color: #E2D6FB;
 }

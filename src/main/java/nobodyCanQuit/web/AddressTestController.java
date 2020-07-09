@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
+import nobodyCanQuit.web.model.dust.DustArea;
+import nobodyCanQuit.web.model.dust.DustAreaAddr;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

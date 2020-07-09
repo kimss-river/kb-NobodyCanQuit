@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 
 import lombok.Getter;
 import lombok.Setter;
-import nobodyCanQuit.web.model.viligefcst.FcstItem;
-import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
+import nobodyCanQuit.web.model.forecast.FcstItem;
+import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 
 @Component
 public class ForecastData {

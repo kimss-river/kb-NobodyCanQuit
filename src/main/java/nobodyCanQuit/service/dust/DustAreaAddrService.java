@@ -10,7 +10,7 @@ import nobodyCanQuit.config.auth.ApiAuthKeys;
 import nobodyCanQuit.service.ApiUrlProvider;
 import nobodyCanQuit.service.address.CityListService;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
+import nobodyCanQuit.web.model.dust.DustArea;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

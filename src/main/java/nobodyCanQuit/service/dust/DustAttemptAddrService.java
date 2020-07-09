@@ -2,14 +2,16 @@ package nobodyCanQuit.service.dust;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
+import nobodyCanQuit.web.model.dust.DustCityGrade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import nobodyCanQuit.config.auth.ApiAuthKeys;
-import nobodyCanQuit.web.model.viligeDust.DustAttempt;
-import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
+import nobodyCanQuit.web.model.dust.DustAttempt;
+import nobodyCanQuit.web.model.dust.DustAttemptAddr;
 
 @Component
 public class DustAttemptAddrService{
@@ -20,7 +22,7 @@ public class DustAttemptAddrService{
 			"http://openapi.airkorea.or.kr/openapi/services/rest/ArpltnInforInqireSvc/getCtprvnMesureLIst?";
 	@Autowired
 	private DustAreaAddrService dustAreaAddrService;
-    
+
     public URL getApiUrl(DustItemCodes itemCodes) throws IOException {
 		String serviceKey = apiAuthKeys.getDUST_API_SERVICE_KEY();
 		String numOfRows = "1";
@@ -41,11 +43,10 @@ public class DustAttemptAddrService{
 	}
     
     //미세먼지 좋음 나쁨 표시
-    public DustAttempt division(DustRating dustRating, DustAttemptAddr dustAttempt) {
+    public List<DustCityGrade> division(DustRating dustRating, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	double[] arr = new double[17];
     	String[] str = new String[17];
-    	DustAttempt division = new DustAttempt() ;
     	for(DustAttempt e:listDustAttempt) {
 			arr[0] = Double.parseDouble(e.getSeoul());
 			arr[1] = Double.parseDouble(e.getBusan());
@@ -69,31 +70,35 @@ public class DustAttemptAddrService{
 		}
 
 		for (int i = 0; i <= 16; i++) {
-			str[i] = dustAreaAddrService.grade(arr[i],dustRating);
+			str[i] = dustAreaAddrService.grade(arr[i], dustRating);
 		}
 
-		division.setSeoul(str[0]);
-		division.setBusan(str[1]);
-		division.setDaegu(str[2]);
-		division.setIncheon(str[3]);
-		division.setGwangju(str[4]);
-		division.setDaejeon(str[5]);
+		List<DustCityGrade> theList = new ArrayList<>(17);
+		theList.add(new DustCityGrade("seoul","37.566656", "126.978426"));
+		theList.add(new DustCityGrade("busan","35.179787", "129.075014"));
+		theList.add(new DustCityGrade("daegu","35.871378", "128.601770"));
+		theList.add(new DustCityGrade("incheon","37.455900", "126.705527"));
+		theList.add(new DustCityGrade("gwangju","35.160049", "126.851438"));
+		theList.add(new DustCityGrade("daejeon","36.350444", "127.384839"));
+		theList.add(new DustCityGrade("ulsan","35.539585", "129.311555"));
+		theList.add(new DustCityGrade("gyeonggi","37.274988", "127.009410"));
+		theList.add(new DustCityGrade("gangwon","37.885343", "127.729790"));
+		theList.add(new DustCityGrade("chungbuk","36.635654", "127.491398"));
+		theList.add(new DustCityGrade("chungnam","36.659461", "126.673267"));
+		theList.add(new DustCityGrade("jeonbuk","35.820322", "127.108732"));
+		theList.add(new DustCityGrade("jeonnam","34.816154", "126.462928"));
+		theList.add(new DustCityGrade("gyeongbuk","36.575805", "128.505772"));
+		theList.add(new DustCityGrade("gyeongnam","35.238252", "128.692409"));
+		theList.add(new DustCityGrade("jeju","33.499563", "126.531251"));
+		theList.add(new DustCityGrade("sejong","36.478149,", "127.286546"));
 
-		division.setUlsan(str[6]);
-		division.setGyeonggi(str[7]);
-		division.setGangwon(str[8]);
-		division.setChungbuk(str[9]);
-		division.setChungnam(str[10]);
-		division.setJeonbuk(str[11]);
+		int i = 0;
+		for (DustCityGrade dcg : theList) {
+			dcg.setGrade(str[i]);
+			i++;
+		}
 
-		division.setJeonnam(str[12]);
-		division.setGyeongbuk(str[13]);
-		division.setGyeongnam(str[14]);
-		division.setJeju(str[15]);
-		division.setJeju(str[15]);
-		division.setSejong(str[16]);
+        return theList;
+    }
 
-        return division;
-    } 
-   
 }

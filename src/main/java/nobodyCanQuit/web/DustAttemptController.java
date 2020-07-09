@@ -7,6 +7,7 @@ import java.util.List;
 import nobodyCanQuit.service.dust.DustItemCodes;
 import nobodyCanQuit.service.dust.DustRating;
 
+import nobodyCanQuit.web.model.dust.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import nobodyCanQuit.service.dust.DustAttemptAddrService;
-import nobodyCanQuit.web.model.viligeDust.DustArea;
-import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
-import nobodyCanQuit.web.model.viligeDust.DustAttempt;
-import nobodyCanQuit.web.model.viligeDust.DustAttemptAddr;
 
 @Controller
 public class DustAttemptController {
@@ -41,7 +38,7 @@ public class DustAttemptController {
 		//측정항목 구분 SO2,CO,O3,NO2,PM10,PM25
 		URL url = dustAttemptAddrService.getApiUrl(DustItemCodes.PM10);
 		DustAttemptAddr dustAttempt = mapper.readValue(url, DustAttemptAddr.class);
-		DustAttempt dustAttempGrade = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
+		List<DustCityGrade> dustAttempGrade = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
 		
 		model.addAttribute("finedustAddr", dustAttempt);
 		model.addAttribute("dustAttempGrade", dustAttempGrade);

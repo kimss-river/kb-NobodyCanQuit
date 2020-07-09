@@ -19,7 +19,7 @@
       // 마커 클러스터러를 생성합니다
       var clusterer = new kakao.maps.MarkerClusterer({
         map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-        averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
+        averageCenter: false, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
         minLevel: 13, // 클러스터 할 최소 지도 레벨
       });
       var imageBad = "${pageContext.request.contextPath}/resources/imgs/bad.png",
@@ -78,8 +78,52 @@
           clusterer.addMarkers(markers);
         </c:forEach>
        </c:if>
-       <c:if test="${empty areaGradeList}">
 
+       var markers2 = [];
+       <c:if test="${empty areaGradeList}">
+        <c:forEach items="${dustCityList}" var="city">
+          // 마커를 생성합니다
+          var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(${city.y},${city.x}),
+            <c:if test="${city.grade == '좋음' }" >
+            image: new kakao.maps.MarkerImage(
+              imageGood,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${city.grade == '보통' }" >
+            image: new kakao.maps.MarkerImage(
+              imageNormal,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${city.grade == '나쁨' }" >
+            image: new kakao.maps.MarkerImage(
+              imageBad,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${city.grade == '매우 나쁨' }" >
+            image: new kakao.maps.MarkerImage(
+              imageSucks,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${empty city.grade}" >
+            image: new kakao.maps.MarkerImage(
+              imageError,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+          });
+          markers2.push(marker);
+          clusterer.addMarkers(markers2);
+        </c:forEach>
        </c:if>
     </script>
 </section>

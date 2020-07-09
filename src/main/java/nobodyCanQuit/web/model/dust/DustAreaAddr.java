@@ -1,4 +1,4 @@
-package nobodyCanQuit.web.model.viligeDust;
+package nobodyCanQuit.web.model.dust;
 
 import java.util.List;
 

@@ -1,15 +1,22 @@
 package nobodyCanQuit.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import nobodyCanQuit.service.dust.DustAttemptAddrService;
+import nobodyCanQuit.service.dust.DustItemCodes;
+import nobodyCanQuit.service.dust.DustRating;
 import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
 import nobodyCanQuit.service.forecast.VilageFcstInfoService;
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.viligefcst.FcstItem;
-import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
+import nobodyCanQuit.web.model.dust.DustAttemptAddr;
+import nobodyCanQuit.web.model.dust.DustCityGrade;
+import nobodyCanQuit.web.model.forecast.FcstItem;
+import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,6 +52,8 @@ public class AaTestController {
     private VilageFcstInfoService vilageFcstInfoService;
     @Autowired
     private ForecastData forecastData;
+    @Autowired
+    private DustAttemptAddrService dustAttemptAddrService;
 
     @GetMapping("/aa")
     public String indexget(AddressInputCommand addressInputCommand, Model model) throws IOException {
@@ -52,12 +61,19 @@ public class AaTestController {
         model.addAttribute("cityList", cityListService);
         addressApiService.getSGIStoken();
 
+        DustAttemptAddr dustAttempt =
+                mapper.readValue(dustAttemptAddrService.getApiUrl(DustItemCodes.PM10), DustAttemptAddr.class);
+        List<DustCityGrade> dustCityList = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
+        model.addAttribute("dustCityList", dustCityList);
+
+        model.addAttribute("test34", dustCityList);
+
         return "test/aa";
     }
 
     @PostMapping("/aa")
     public String indexpost(AddressInputCommand addressInputCommand, Model model) throws Exception {
-
+        model.addAttribute("test33", "asddddd");
         /*
          * 계층별 주소검색
          */

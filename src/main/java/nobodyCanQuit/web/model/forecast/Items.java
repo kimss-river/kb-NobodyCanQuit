@@ -1,4 +1,4 @@
-package nobodyCanQuit.web.model.viligefcst;
+package nobodyCanQuit.web.model.forecast;
 
 import java.util.List;
 

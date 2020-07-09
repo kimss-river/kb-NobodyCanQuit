@@ -12,7 +12,7 @@ import nobodyCanQuit.web.model.address.AddressCommand;
 import nobodyCanQuit.web.model.address.AddressForDongCommand;
 import nobodyCanQuit.web.model.address.AddressInputCommand;
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.viligefcst.ViligeFcstStores;
+import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 
 import java.io.IOException;
 import java.util.Map;

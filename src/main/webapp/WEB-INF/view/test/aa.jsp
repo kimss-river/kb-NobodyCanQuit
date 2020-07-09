@@ -41,18 +41,13 @@
         </form:form>
     </nav>
 
-    <div>
-    <script>
-    </script>
-<br />
---------------------------
-    listSky:${listSky} <br />
-    ${listSky[0].pty}<br />
-    ${listSky[0].fcstTime}시 y: ${listSky[0].pty},${listSky[1].pty}
-   <h2>${listSky[0].fcstValue} <br /></h2> 
-        <c:if test="${! empty listTmn}">
-        Hi~~~
-        </c:if>
-    </div>
+        hello<br />
+
+        <c:forEach items="${test34}" var="city">
+            ${city.x}<br />
+            ${city.y}<br />
+            ${city.grade}<br />
+        </c:forEach>
+
 </body>
 </html>
