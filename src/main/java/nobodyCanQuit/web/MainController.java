@@ -131,13 +131,6 @@ public class MainController {
 			Map<String, String> VecMap = forecastData.getValue(ForecastCategory.VEC);
 			Map<String, String> WSDMap = forecastData.getValue(ForecastCategory.WSD);
 
-            
-            
-            String rePty = forecastData.getRepresentPty();
-            
-
-          
-
 			model.addAttribute("wthr3day", T3HMap);
 			model.addAttribute("R06Map", R06Map);
 			model.addAttribute("TMNMap", TMNMap);
@@ -146,10 +139,10 @@ public class MainController {
 			model.addAttribute("SkyMap", SkyMap);
 			model.addAttribute("VecMap", VecMap);
 			model.addAttribute("vilage", viligeFcstStores);
-
-			// 3시간 기온, 최저기온, 최고기온
-            List<String> getRepresent = forecastData.getRepresent();
+			
+			List<String> getRepresent = forecastData.getRepresent();
             model.addAttribute("getRepresent",getRepresent);
+			// 3시간 기온, 최저기온, 최고기온
 			List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
 			model.addAttribute("test2", testlist);
 			List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
