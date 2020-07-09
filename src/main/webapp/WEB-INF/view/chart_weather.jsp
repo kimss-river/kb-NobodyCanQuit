@@ -22,7 +22,6 @@
 <script>
 //윈도우 로두 후 차트 관련 탭 클릭시 함수가 작동하도록 아래 코드 변경 필요
 function getWeatherChart() {
-
 	var weather = {
 		animationEnabled: true,  
 		theme: "light2",
@@ -48,8 +47,8 @@ function getWeatherChart() {
 				{ label: ${test2[2].fcstTime}+"시", y: ${test2[2].fcstValue} },
 				{ label: ${test2[3].fcstTime}+"시", y: ${test2[3].fcstValue} },
 				{ label: ${test2[4].fcstTime}+"시", y: ${test2[4].fcstValue} },
-				{ label: ${test2[5].fcstTime}+"시", y: ${test2[5].fcstValue} }, 
-				{ label: ${test2[6].fcstTime}+"시", y: ${test2[6].fcstValue} }, 
+				{ label: ${test2[5].fcstTime}+"시", y: ${test2[5].fcstValue} },
+				{ label: ${test2[6].fcstTime}+"시", y: ${test2[6].fcstValue} },
 				{ label: ${test2[7].fcstTime}+"시", y: ${test2[7].fcstValue} }
 			]
 		}]

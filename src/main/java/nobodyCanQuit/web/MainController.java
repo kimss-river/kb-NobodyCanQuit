@@ -1,12 +1,9 @@
 package nobodyCanQuit.web;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
@@ -100,7 +97,6 @@ public class MainController {
 
 		if (!addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
 			String guName = addressCommand.getName(addressInputCommand.getGu());
-
 			DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
 			model.addAttribute("guNameSelected", guNameSelected);
 		}
@@ -116,31 +112,6 @@ public class MainController {
 
 			forecastData.setViligeFcstStores(viligeFcstStores);
 
-			// 강수확률, 강수형태, 강수량
-			Map<String, String> PopMap = forecastData.getValue(ForecastCategory.POP);
-			Map<String, String> PtyMap = forecastData.getValue(ForecastCategory.PTY);
-			Map<String, String> R06Map = forecastData.getValue(ForecastCategory.R06);
-
-			// 3시간 기온, 최저기온, 최고기온
-			Map<String, String> T3HMap = forecastData.getValue(ForecastCategory.T3H);
-			Map<String, String> TMNMap = forecastData.getValue(ForecastCategory.TMN);
-			Map<String, String> TMXMap = forecastData.getValue(ForecastCategory.TMX);
-
-			// 하늘상태, 풍향, 풍속
-			Map<String, String> SkyMap = forecastData.getValue(ForecastCategory.SKY);
-			Map<String, String> VecMap = forecastData.getValue(ForecastCategory.VEC);
-			Map<String, String> WSDMap = forecastData.getValue(ForecastCategory.WSD);
-
-			model.addAttribute("wthr3day", T3HMap);
-			model.addAttribute("R06Map", R06Map);
-			model.addAttribute("TMNMap", TMNMap);
-			model.addAttribute("TMXMap", TMXMap);
-			model.addAttribute("PtyMap", PtyMap);
-			model.addAttribute("SkyMap", SkyMap);
-			model.addAttribute("VecMap", VecMap);
-			model.addAttribute("vilage", viligeFcstStores);
-
-			
 			// 3시간 기온, 최저기온, 최고기온
 			List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
 			model.addAttribute("test2", testlist);
@@ -148,7 +119,7 @@ public class MainController {
 			model.addAttribute("listTmn", listTmn);
 			List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
 			model.addAttribute("listTmx", listTmx);
-			
+
 			// 강수확률, 강수형태, 강수량
 			List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
 			model.addAttribute("listPop", listPop);
@@ -176,7 +147,6 @@ public class MainController {
 			model.addAttribute("listF", listF);
 
 		}
-
 		return "index";
 	}
 

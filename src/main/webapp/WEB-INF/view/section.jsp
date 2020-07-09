@@ -22,60 +22,64 @@
         averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정
         minLevel: 13, // 클러스터 할 최소 지도 레벨
       });
-      var imageSrc = "${pageContext.request.contextPath}/resources/imgs/good.png", // 마커이미지의 주소입니다
-        imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
+      var imageBad = "${pageContext.request.contextPath}/resources/imgs/bad.png",
+        imageGood = "${pageContext.request.contextPath}/resources/imgs/vgood.png",
+        imageError = "${pageContext.request.contextPath}/resources/imgs/error.png",
+        imageNormal = "${pageContext.request.contextPath}/resources/imgs/good.png",
+        imageSucks = "${pageContext.request.contextPath}/resources/imgs/vbad.png";
+
+      var imageSize = new kakao.maps.Size(44, 48), // 마커이미지의 크기입니다
         imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-      // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-      var markerImage = new kakao.maps.MarkerImage(
-        imageSrc,
-        imageSize,
-        imageOption
-      );
-        
-     /* var data = [
-    	  TODO : 검색 전 지도 전체 시도별 마커
-      ]; */
-        
+  
       //DustArea
       var markers = [];
-      
-      <c:forEach items="${areaGradeList}" var="info">
-        console.log('${info.y},${info.x}');
-        // 마커를 생성합니다
-        var marker = new kakao.maps.Marker({
-          position: new kakao.maps.LatLng(${info.y},${info.x}),
-          image: markerImage,
-        });
-        // 인포윈도우를 생성합니다
-        var infowindow = new kakao.maps.InfoWindow({
-          content: '<div style="padding:5px;">Hello World!</div>',
-        });
-        // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
-        infowindow.open(map, marker);
-        markers.push(marker);
-        kakao.maps.event.addListener(
-          marker,
-          "mouseover",
-          makeOverListener(map, marker, infowindow)
-        );
-        kakao.maps.event.addListener(
-          marker,
-          "mouseout",
-          makeOutListener(infowindow)
-        );
-      </c:forEach>
-      clusterer.addMarkers(markers);
-      // 인포윈도우를 표시하는 클로저를 만드는 함수입니다
-      function makeOverListener(map, marker, infowindow) {
-        return function () {
-          infowindow.open(map, marker);
-        };
-      }
-      // 인포윈도우를 닫는 클로저를 만드는 함수입니다
-      function makeOutListener(infowindow) {
-        return function () {
-          infowindow.close();
-        };
-      }
+      <c:if test="${! empty areaGradeList}">
+        <c:forEach items="${areaGradeList}" var="info">
+          // 마커를 생성합니다
+          var marker = new kakao.maps.Marker({
+            position: new kakao.maps.LatLng(${info.y},${info.x}),
+            <c:if test="${info.pm10Grade == '좋음' }" >
+            image: new kakao.maps.MarkerImage(
+              imageGood,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${info.pm10Grade == '보통' }" >
+            image: new kakao.maps.MarkerImage(
+              imageNormal,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${info.pm10Grade == '나쁨' }" >
+            image: new kakao.maps.MarkerImage(
+              imageBad,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${info.pm10Grade == '매우 나쁨' }" >
+            image: new kakao.maps.MarkerImage(
+              imageSucks,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+            <c:if test="${empty info.pm10Grade}" >
+            image: new kakao.maps.MarkerImage(
+              imageError,
+              imageSize,
+              imageOption
+            )
+            </c:if>
+          });
+          markers.push(marker);
+          clusterer.addMarkers(markers);
+        </c:forEach>
+       </c:if>
+       <c:if test="${empty areaGradeList}">
+
+       </c:if>
     </script>
 </section>
