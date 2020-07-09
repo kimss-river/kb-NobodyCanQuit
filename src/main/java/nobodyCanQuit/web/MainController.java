@@ -36,143 +36,146 @@ import nobodyCanQuit.web.model.viligeDust.DustAreaAddr;
 @Controller
 public class MainController {
 
-    private final ObjectMapper mapper = new ObjectMapper();
-    @Autowired
-    private CityListService cityListService;
-    @Autowired
-    private AddressApiService addressApiService;
-    @Autowired
-    private DustAreaAddrService dustAreaAddrService;
-    @Autowired
-    private KMAlistService kmAlistService;
-    @Autowired
-    private DustAreaCoordService dustAreaCoordService;
-    @Autowired
-    private VilageFcstInfoService vilageFcstInfoService;
-    @Autowired
-    private ForecastData forecastData;
+	private final ObjectMapper mapper = new ObjectMapper();
+	@Autowired
+	private CityListService cityListService;
+	@Autowired
+	private AddressApiService addressApiService;
+	@Autowired
+	private DustAreaAddrService dustAreaAddrService;
+	@Autowired
+	private KMAlistService kmAlistService;
+	@Autowired
+	private DustAreaCoordService dustAreaCoordService;
+	@Autowired
+	private VilageFcstInfoService vilageFcstInfoService;
+	@Autowired
+	private ForecastData forecastData;
 
-    @GetMapping("/")
-    public String indexget(AddressInputCommand addressInputCommand, Model model) throws IOException {
+	@GetMapping("/")
+	public String indexget(AddressInputCommand addressInputCommand, Model model) throws IOException {
 
-        model.addAttribute("cityList", cityListService);
+		model.addAttribute("cityList", cityListService);
 
-        addressApiService.getSGIStoken();
+		addressApiService.getSGIStoken();
 
-        return "index";
-    }
+		return "index";
+	}
 
-    @PostMapping("/")
-    public String indexpost(AddressInputCommand addressInputCommand, Model model) throws Exception {
+	@PostMapping("/")
+	public String indexpost(AddressInputCommand addressInputCommand, Model model) throws Exception {
 
-        /*
-         * 계층별 주소검색
-         */
-        model.addAttribute("cityList", cityListService);
+		/*
+		 * 계층별 주소검색
+		 */
+		model.addAttribute("cityList", cityListService);
 
-        addressApiService.getSGIStoken();
-        addressApiService.setAddressInputCommand(addressInputCommand);
+		addressApiService.getSGIStoken();
+		addressApiService.setAddressInputCommand(addressInputCommand);
 
-        AddressCommand addressCommand =
-                mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);
-        model.addAttribute("addressCommand", addressCommand);
+		AddressCommand addressCommand = mapper.readValue(addressApiService.getAddressLevel2Url(), AddressCommand.class);
+		model.addAttribute("addressCommand", addressCommand);
 
-        AddressForDongCommand addressForDongCommand =
-                mapper.readValue(addressApiService.getAddressLevel3Url(), AddressForDongCommand.class);
-        model.addAttribute("addressForDongCommand", addressForDongCommand);
+		AddressForDongCommand addressForDongCommand = mapper.readValue(addressApiService.getAddressLevel3Url(),
+				AddressForDongCommand.class);
+		model.addAttribute("addressForDongCommand", addressForDongCommand);
 
-        /*
-         * 시군구별 실시간 평균정보 조회
-         */
-        dustAreaAddrService.setAddressInputCommand(addressInputCommand);
+		/*
+		 * 시군구별 실시간 평균정보 조회
+		 */
+		dustAreaAddrService.setAddressInputCommand(addressInputCommand);
 
-        DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
-        model.addAttribute("dustAreaAddr", dustAreaAddr);
+		DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
+		model.addAttribute("dustAreaAddr", dustAreaAddr);
 
-        // areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
-        List<DustArea> listDust= dustAreaAddr.getDustArea();
-        HashSet<DustArea> listD = new HashSet<>(listDust);
-        listDust = new ArrayList<>(listD);
-        List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
-        //좌표 삽입
-        areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
+		// areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
+		List<DustArea> listDust = dustAreaAddr.getDustArea();
+		HashSet<DustArea> listD = new HashSet<>(listDust);
+		listDust = new ArrayList<>(listD);
+		List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
+		// 좌표 삽입
+		areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
 
-        model.addAttribute("areaGradeList", areaGradeList);
+		model.addAttribute("areaGradeList", areaGradeList);
 
-        if (! addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
-            String guName = addressCommand.getName(addressInputCommand.getGu());
+		if (!addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
+			String guName = addressCommand.getName(addressInputCommand.getGu());
 
-            DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
-            model.addAttribute("guNameSelected", guNameSelected);
-        }
+			DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
+			model.addAttribute("guNameSelected", guNameSelected);
+		}
 
-        /*
-        * 날씨 조회 서비스
-        * */
-        if (kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
+		/*
+		 * 날씨 조회 서비스
+		 */
+		if (kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
 
-            FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
-            ViligeFcstStores viligeFcstStores =
-                    mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord), ViligeFcstStores.class);
+			FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
+			ViligeFcstStores viligeFcstStores = mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord),
+					ViligeFcstStores.class);
 
-            forecastData.setViligeFcstStores(viligeFcstStores);
+			forecastData.setViligeFcstStores(viligeFcstStores);
 
-            //강수확률, 강수형태, 강수량
-            Map<String, String> PopMap = forecastData.getValue(ForecastCategory.POP);
-            Map<String, String> PtyMap = forecastData.getValue(ForecastCategory.PTY);
-            Map<String, String> R06Map = forecastData.getValue(ForecastCategory.R06);
+			// 강수확률, 강수형태, 강수량
+			Map<String, String> PopMap = forecastData.getValue(ForecastCategory.POP);
+			Map<String, String> PtyMap = forecastData.getValue(ForecastCategory.PTY);
+			Map<String, String> R06Map = forecastData.getValue(ForecastCategory.R06);
 
-            //3시간 기온, 최저기온, 최고기온
-            Map<String, String> T3HMap = forecastData.getValue(ForecastCategory.T3H);
-            Map<String, String> TMNMap = forecastData.getValue(ForecastCategory.TMN);
-            Map<String, String> TMXMap = forecastData.getValue(ForecastCategory.TMX);
+			// 3시간 기온, 최저기온, 최고기온
+			Map<String, String> T3HMap = forecastData.getValue(ForecastCategory.T3H);
+			Map<String, String> TMNMap = forecastData.getValue(ForecastCategory.TMN);
+			Map<String, String> TMXMap = forecastData.getValue(ForecastCategory.TMX);
 
-            //하늘상태, 풍향, 풍속
-            Map<String, String> SkyMap = forecastData.getValue(ForecastCategory.SKY);
-            Map<String, String> VecMap = forecastData.getValue(ForecastCategory.VEC);
-            Map<String, String> WSDMap = forecastData.getValue(ForecastCategory.WSD);
+			// 하늘상태, 풍향, 풍속
+			Map<String, String> SkyMap = forecastData.getValue(ForecastCategory.SKY);
+			Map<String, String> VecMap = forecastData.getValue(ForecastCategory.VEC);
+			Map<String, String> WSDMap = forecastData.getValue(ForecastCategory.WSD);
 
-            String rePty = forecastData.getRepresentPty();
-            String reSky = forecastData.getRepresentSky();
+			String rePty = forecastData.getRepresentPty();
+			String reSky = forecastData.getRepresentSky();
 
-            model.addAttribute("rePty",rePty);
-            model.addAttribute("reSky",reSky);
+			model.addAttribute("rePty", rePty);
+			model.addAttribute("reSky", reSky);
 
-            model.addAttribute("wthr3day",T3HMap);
-            model.addAttribute("R06Map", R06Map);
-            model.addAttribute("TMNMap", TMNMap);
-            model.addAttribute("TMXMap", TMXMap);
-            model.addAttribute("PtyMap", PtyMap);
-            model.addAttribute("SkyMap", SkyMap);
-            model.addAttribute("VecMap", VecMap);
-            model.addAttribute("vilage", viligeFcstStores);
+			model.addAttribute("wthr3day", T3HMap);
+			model.addAttribute("R06Map", R06Map);
+			model.addAttribute("TMNMap", TMNMap);
+			model.addAttribute("TMXMap", TMXMap);
+			model.addAttribute("PtyMap", PtyMap);
+			model.addAttribute("SkyMap", SkyMap);
+			model.addAttribute("VecMap", VecMap);
+			model.addAttribute("vilage", viligeFcstStores);
 
-            //TODO test delete
-            List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
-            model.addAttribute("test2", testlist);
-            List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
-            model.addAttribute("listTmn", listTmn);
-            List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
-            model.addAttribute("listTmx", listTmx);
-            List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
-            model.addAttribute("listReh", listReh);
-            List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
-            model.addAttribute("listPop", listPop);
-            List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
-            model.addAttribute("listR06", listR06);
-            List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
-            model.addAttribute("listWsd", listWsd);
-            List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
-            model.addAttribute("listPty", listPty);
-            List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
-            model.addAttribute("listSky", listSky);
-            List<String> listImg = forecastData.getImg(listPty, listSky);
-            model.addAttribute("listImg", listImg);
+			// 3시간 기온, 최저기온, 최고기온
+			List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
+			model.addAttribute("test2", testlist);
+			List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
+			model.addAttribute("listTmn", listTmn);
+			List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
+			model.addAttribute("listTmx", listTmx);
+			// 강수확률, 강수형태, 강수량
+			List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
+			model.addAttribute("listPop", listPop);
+			List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
+			model.addAttribute("listPty", listPty);
+			List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
+			model.addAttribute("listR06", listR06);
+			// 하늘상태, 습도, 풍속, 풍향
+			List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
+			model.addAttribute("listSky", listSky);
+			List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
+			model.addAttribute("listReh", listReh);
+			List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
+			model.addAttribute("listWsd", listWsd);
+			List<FcstItem> listVec = forecastData.getList(ForecastCategory.VEC);
+			model.addAttribute("listVec", listVec);
+			//날씨 이미지
+			List<String> listImg = forecastData.getImg(listPty, listSky);
+			model.addAttribute("listImg", listImg);
 
-            
-        }
-        
-        return "index";
-    }
+		}
+
+		return "index";
+	}
 
 }

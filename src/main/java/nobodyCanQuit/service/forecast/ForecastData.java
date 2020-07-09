@@ -27,14 +27,7 @@ public class ForecastData {
 
 		for (FcstItem fs : items) {
 			if (fs.getCategory().equals(forecastCategory.toString())) {
-				if (fs.getCategory().equals(ForecastCategory.T3H.toString())
-						|| fs.getCategory().equals(ForecastCategory.REH.toString())
-						|| fs.getCategory().equals(ForecastCategory.POP.toString())
-						|| fs.getCategory().equals(ForecastCategory.R06.toString())
-						|| fs.getCategory().equals(ForecastCategory.WSD.toString())) {
-					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
-					list.add(fs);
-				} else if (fs.getCategory().equals(ForecastCategory.PTY.toString())) {
+				if (fs.getCategory().equals(ForecastCategory.PTY.toString())) {
 					String pty = "";
 					switch (fs.getFcstValue()) {
 					case "1":
@@ -74,8 +67,16 @@ public class ForecastData {
 					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
 					fs.setSky(sky);
 					list.add(fs);
+				} else if (fs.getCategory().equals(ForecastCategory.VEC.toString())) {
+					int vec = Integer.parseInt(fs.getFcstValue());
+					vec = (int) ((vec + 22.5 * 0.5) / 22.5);
+					fs.setVec(vec);
+					list.add(fs);
 				} else if (fs.getCategory().equals(ForecastCategory.TMN.toString())
 						|| fs.getCategory().equals(ForecastCategory.TMX.toString())) {
+					list.add(fs);
+				} else {// T3H, REH, POP, R06, WSD
+					fs.setFcstTime(fs.getFcstTime().substring(0, 2));
 					list.add(fs);
 				}
 			}

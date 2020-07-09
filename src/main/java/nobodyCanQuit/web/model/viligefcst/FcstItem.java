@@ -33,4 +33,5 @@ public class FcstItem {
 	
 	private String pty;
 	private String sky;
+	private int vec;
 }

@@ -6,6 +6,12 @@
 <table id="table_wind">
   <tr>
     <th width="41">풍향&nbsp;</th>
+    
+  <!--   <c:forEach var="v" items="${listVec}" varStatus="status">
+    <c:if test="${status.index <= 7}">
+    ${v.vec}
+    </c:if>
+    </c:forEach> -->
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
     <td><img src="${pageContext.request.contextPath}/resources/imgs/weather/sun.png" width="30"></td>
