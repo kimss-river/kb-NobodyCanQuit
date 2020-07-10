@@ -115,42 +115,43 @@ public class MainController {
 			ViligeFcstStores viligeFcstStores = mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord),
 					ViligeFcstStores.class);
 
-			forecastData.setViligeFcstStores(viligeFcstStores);
+			if (viligeFcstStores.getFcstItem() != null) {
 
-			// 3시간 기온, 최저기온, 최고기온
-			List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
-			model.addAttribute("test2", testlist);
-			List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
-			model.addAttribute("listTmn", listTmn);
-			List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
-			model.addAttribute("listTmx", listTmx);
+				forecastData.setViligeFcstStores(viligeFcstStores);
+				// 3시간 기온, 최저기온, 최고기온
+				List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
+				model.addAttribute("test2", testlist);
+				List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
+				model.addAttribute("listTmn", listTmn);
+				List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
+				model.addAttribute("listTmx", listTmx);
 
-			// 강수확률, 강수형태, 강수량
-			List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
-			model.addAttribute("listPop", listPop);
-			List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
-			model.addAttribute("listPty", listPty);
-			List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
-			model.addAttribute("listR06", listR06);
-			// 하늘상태, 습도, 풍속, 풍향
-			List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
-			model.addAttribute("listSky", listSky);
-			List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
-			model.addAttribute("listReh", listReh);
-			List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
-			model.addAttribute("listWsd", listWsd);
-			List<FcstItem> listVec = forecastData.getList(ForecastCategory.VEC);
-			model.addAttribute("listVec", listVec);
-			// 날씨 이미지
-			List<String> listImg = forecastData.getImg(listPty, listSky);
-			model.addAttribute("listImg", listImg);
-			//대표 날씨 이미지
-			List<String> getRepresent = forecastData.getRepresent();
-			model.addAttribute("getRepresent", getRepresent);
-			//최고 기온, 최저 기온
-			String[][] listF = forecastData.getTemp(listTmn, listTmx);
-			model.addAttribute("listF", listF);
-
+				// 강수확률, 강수형태, 강수량
+				List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
+				model.addAttribute("listPop", listPop);
+				List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
+				model.addAttribute("listPty", listPty);
+				List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
+				model.addAttribute("listR06", listR06);
+				// 하늘상태, 습도, 풍속, 풍향
+				List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
+				model.addAttribute("listSky", listSky);
+				List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
+				model.addAttribute("listReh", listReh);
+				List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
+				model.addAttribute("listWsd", listWsd);
+				List<FcstItem> listVec = forecastData.getList(ForecastCategory.VEC);
+				model.addAttribute("listVec", listVec);
+				// 날씨 이미지
+				List<String> listImg = forecastData.getImg(listPty, listSky);
+				model.addAttribute("listImg", listImg);
+				//대표 날씨 이미지
+				List<String> getRepresent = forecastData.getRepresent();
+				model.addAttribute("getRepresent", getRepresent);
+				//최고 기온, 최저 기온
+				String[][] listF = forecastData.getTemp(listTmn, listTmx);
+				model.addAttribute("listF", listF);
+			}
 		}
 		return "index";
 	}
