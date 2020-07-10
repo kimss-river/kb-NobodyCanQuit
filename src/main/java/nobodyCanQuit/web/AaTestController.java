@@ -1,22 +1,14 @@
 package nobodyCanQuit.web;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import nobodyCanQuit.service.dust.DustAttemptAddrService;
 import nobodyCanQuit.service.dust.DustItemCodes;
-import nobodyCanQuit.service.dust.DustRating;
-import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
 import nobodyCanQuit.service.forecast.VilageFcstInfoService;
-import nobodyCanQuit.web.model.address.FxxxKMAcoord;
 import nobodyCanQuit.web.model.dust.DustAttemptAddr;
 import nobodyCanQuit.web.model.dust.DustCityGrade;
-import nobodyCanQuit.web.model.forecast.FcstItem;
-import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -63,7 +55,7 @@ public class AaTestController {
 
         DustAttemptAddr dustAttempt =
                 mapper.readValue(dustAttemptAddrService.getApiUrl(DustItemCodes.PM10), DustAttemptAddr.class);
-        List<DustCityGrade> dustCityList = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
+        List<DustCityGrade> dustCityList = dustAttemptAddrService.division(DustItemCodes.PM10, dustAttempt);
         model.addAttribute("dustCityList", dustCityList);
 
         model.addAttribute("test34", dustCityList);
@@ -89,70 +81,6 @@ public class AaTestController {
         AddressForDongCommand addressForDongCommand =
                 mapper.readValue(addressApiService.getAddressLevel3Url(), AddressForDongCommand.class);
         model.addAttribute("addressForDongCommand", addressForDongCommand);
-
-        /*
-         * 날씨 조회 서비스
-         * */
-        if (kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
-
-            FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
-
-            ViligeFcstStores viligeFcstStores =
-                    mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord), ViligeFcstStores.class);
-
-            forecastData.setViligeFcstStores(viligeFcstStores);
-
-            //강수확률 강수형태 강수량
-            Map<String, String> PopMap =forecastData.getValue(ForecastCategory.POP);
-            Map<String, String> PtyMap =forecastData.getValue(ForecastCategory.PTY);
-            Map<String, String> R06Map =forecastData.getValue(ForecastCategory.R06);
-
-            //3시간 기온 최저기온 최고기온
-            Map<String, String> TH3Map =forecastData.getValue(ForecastCategory.T3H);
-            Map<String, String> TMNMap =forecastData.getValue(ForecastCategory.TMN);
-            Map<String, String> TMXMap =forecastData.getValue(ForecastCategory.TMX);
-
-            //하늘상태 풍향 풍속
-            Map<String, String> SkyMap =forecastData.getValue(ForecastCategory.SKY);
-            Map<String, String> VecMap =forecastData.getValue(ForecastCategory.VEC);
-            Map<String, String> WSDMap =forecastData.getValue(ForecastCategory.WSD);
-
-            String rePty = forecastData.getRepresentPty();
-            String reSky = forecastData.getRepresentSky();
-
-            model.addAttribute("rePty",rePty);
-            model.addAttribute("reSky",reSky);
-
-            model.addAttribute("wthr3day",TH3Map);
-            model.addAttribute("R06Map", R06Map);
-            model.addAttribute("TMNMap", TMNMap);
-            model.addAttribute("TMXMap", TMXMap);
-            model.addAttribute("PtyMap", PtyMap);
-            model.addAttribute("SkyMap", SkyMap);
-            model.addAttribute("VecMap", VecMap);
-            model.addAttribute("vilage", viligeFcstStores);
-
-            //TODO test delete
-            List<FcstItem> testlist = forecastData.getList(ForecastCategory.T3H);
-            model.addAttribute("test2", testlist);
-            
-            List<FcstItem> listTmn = forecastData.getList(ForecastCategory.TMN);
-            model.addAttribute("listTmn", listTmn);
-            List<FcstItem> listTmx = forecastData.getList(ForecastCategory.TMX);
-            model.addAttribute("listTmx", listTmx);
-            List<FcstItem> listReh = forecastData.getList(ForecastCategory.REH);
-            model.addAttribute("listReh", listReh);
-            List<FcstItem> listPop = forecastData.getList(ForecastCategory.POP);
-            model.addAttribute("listPop", listPop);
-            List<FcstItem> listR06 = forecastData.getList(ForecastCategory.R06);
-            model.addAttribute("listR06", listR06);
-            List<FcstItem> listWsd = forecastData.getList(ForecastCategory.WSD);
-            model.addAttribute("listWsd", listWsd);
-            List<FcstItem> listPty = forecastData.getList(ForecastCategory.PTY);
-            model.addAttribute("listPty", listPty);
-            List<FcstItem> listSky = forecastData.getList(ForecastCategory.SKY);
-            model.addAttribute("listSky", listSky);
-        }
 
         return "test/aa";
     }

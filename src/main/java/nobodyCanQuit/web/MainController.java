@@ -6,14 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 
 import nobodyCanQuit.service.dust.DustAttemptAddrService;
-import nobodyCanQuit.service.dust.DustItemCodes;
-import nobodyCanQuit.service.dust.DustRating;
 import nobodyCanQuit.service.forecast.ForecastCategory;
 import nobodyCanQuit.service.forecast.ForecastData;
 import nobodyCanQuit.service.forecast.VilageFcstInfoService;
 import nobodyCanQuit.web.model.address.FxxxKMAcoord;
-import nobodyCanQuit.web.model.dust.DustAttemptAddr;
-import nobodyCanQuit.web.model.dust.DustCityGrade;
 import nobodyCanQuit.web.model.forecast.FcstItem;
 import nobodyCanQuit.web.model.forecast.ViligeFcstStores;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,11 +58,6 @@ public class MainController {
 		addressApiService.getSGIStoken();
 		model.addAttribute("cityList", cityListService);
 
-		DustAttemptAddr dustAttempt =
-				mapper.readValue(dustAttemptAddrService.getApiUrl(DustItemCodes.PM10), DustAttemptAddr.class);
-		List<DustCityGrade> dustCityList = dustAttemptAddrService.division(DustRating.PM10, dustAttempt);
-		model.addAttribute("dustCityList", dustCityList);
-
 		return "index";
 	}
 
@@ -91,31 +82,34 @@ public class MainController {
 		/*
 		 * 시군구별 실시간 평균정보 조회
 		 */
-		dustAreaAddrService.setAddressInputCommand(addressInputCommand);
+		if (!addressInputCommand.getCity().equals("empty")) {
+			dustAreaAddrService.setAddressInputCommand(addressInputCommand);
 
-		DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
-		model.addAttribute("dustAreaAddr", dustAreaAddr);
+			DustAreaAddr dustAreaAddr = mapper.readValue(dustAreaAddrService.getApiUrl(), DustAreaAddr.class);
+			model.addAttribute("dustAreaAddr", dustAreaAddr);
 
-		// areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
-		List<DustArea> listDust = dustAreaAddr.getDustArea();
-		HashSet<DustArea> listD = new HashSet<>(listDust);
-		listDust = new ArrayList<>(listD);
-		List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
-		// 좌표 삽입
-		areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
+			// areaGradeList : 선택된 도시의 구 전체의 pm10 등급,수치,좌표 리스트
+			List<DustArea> listDust = dustAreaAddr.getDustArea();
+			HashSet<DustArea> listD = new HashSet<>(listDust);
+			listDust = new ArrayList<>(listD);
+			List<DustArea> areaGradeList = dustAreaAddrService.dustAreaList(listDust);
+			// 좌표 삽입
+			areaGradeList = dustAreaCoordService.getConvertedList(addressCommand, areaGradeList);
 
-		model.addAttribute("areaGradeList", areaGradeList);
+			model.addAttribute("areaGradeList", areaGradeList);
 
-		if (!addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
-			String guName = addressCommand.getName(addressInputCommand.getGu());
-			DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
-			model.addAttribute("guNameSelected", guNameSelected);
+			if (!addressInputCommand.getGu().isEmpty() && addressApiService.getGuStatus().equals("reload")) {
+				String guName = addressCommand.getName(addressInputCommand.getGu());
+				DustArea guNameSelected = dustAreaAddrService.selected(guName, listDust);
+				model.addAttribute("guNameSelected", guNameSelected);
+			}
 		}
 
 		/*
 		 * 날씨 조회 서비스
 		 */
-		if (kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
+		if (!addressInputCommand.getCity().equals("empty") &&
+				kmAlistService.getKMAcoord(addressCommand, addressInputCommand) != null) {
 
 			FxxxKMAcoord fxxxKMAcoord = kmAlistService.getKMAcoord(addressCommand, addressInputCommand);
 			ViligeFcstStores viligeFcstStores = mapper.readValue(vilageFcstInfoService.getApiUrl(fxxxKMAcoord),

@@ -23,30 +23,55 @@
 			<div class="content_area act" data-depth="1" data-idx="0">
 				<div class="content_area_value">
 					<!-- 날씨 -->
-					<%@ include file="chart_weather.jsp" %>
+					<c:if test="${! empty listPop}">
+						<%@ include file="chart_weather.jsp" %>
+					</c:if>
+					<c:if test="${empty listPop}">
+						<%@ include file="aside_nodata.jsp" %>
+					</c:if>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="1">
 				<div class="content_area_value">
 					<!-- 강수 -->
-					<%@ include file="chart_prcpt.jsp" %>
+					<c:if test="${! empty listPop}">
+						<%@ include file="chart_prcpt.jsp" %>
+					</c:if>
+					<c:if test="${empty listPop}">
+						<%@ include file="aside_nodata.jsp" %>
+					</c:if>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="2">
 				<div class="content_area_value">
 					<!-- 바람 -->
-					<%@ include file="chart_wind.jsp" %>
+					<c:if test="${! empty listPop}">
+						<%@ include file="chart_wind.jsp" %>
+					</c:if>
+					<c:if test="${empty listPop}">
+						<%@ include file="aside_nodata.jsp" %>
+					</c:if>
 				</div>
 			</div>
 			<div class="content_area" data-depth="1" data-idx="3">
 				<div class="content_area_value">
 					<!-- 습도 -->
-					<%@ include file="chart_humid.jsp" %>
+					<c:if test="${! empty listPop}">
+						<%@ include file="chart_humid.jsp" %>
+					</c:if>
+					<c:if test="${empty listPop}">
+						<%@ include file="aside_nodata.jsp" %>
+					</c:if>
 				</div>
 			</div>
 		</div>
 		<div class="content_area_value content_3days">
-			<%@ include file="chart_3days.jsp" %>
+			<c:if test="${! empty listPop}">
+				<%@ include file="chart_3days.jsp" %>
+			</c:if>
+			<c:if test="${empty listPop}">
+				<%@ include file="aside_nodata.jsp" %>
+			</c:if>
 		</div>
 	</div>
 </div>

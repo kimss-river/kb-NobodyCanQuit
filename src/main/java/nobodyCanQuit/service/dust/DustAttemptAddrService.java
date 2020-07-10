@@ -43,7 +43,7 @@ public class DustAttemptAddrService{
 	}
     
     //미세먼지 좋음 나쁨 표시
-    public List<DustCityGrade> division(DustRating dustRating, DustAttemptAddr dustAttempt) {
+    public List<DustCityGrade> division(DustItemCodes dustRating, DustAttemptAddr dustAttempt) {
     	List<DustAttempt> listDustAttempt = dustAttempt.getDustAttempt();
     	double[] arr = new double[17];
     	String[] str = new String[17];
