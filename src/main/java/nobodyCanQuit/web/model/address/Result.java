@@ -3,11 +3,13 @@ package nobodyCanQuit.web.model.address;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import nobodyCanQuit.service.address.Coordinates;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @JsonIgnoreProperties({"full_addr"})
 public class Result implements Coordinates {
 
@@ -19,6 +21,12 @@ public class Result implements Coordinates {
     private String name;
     @JsonProperty("cd")
     private String code;
+
+    public Result(String name, String x, String y) {
+        this.name = name;
+        this.xCoor = x;
+        this.yCoor = y;
+    }
 
     @Override
     public String getX() {

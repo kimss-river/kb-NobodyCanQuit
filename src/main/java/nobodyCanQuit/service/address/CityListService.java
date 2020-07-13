@@ -13,7 +13,7 @@ public class CityListService {
     private final List<String> cityName;
 
     public CityListService() {
-        this.cityMap = new TreeMap<>();
+        this.cityMap = new HashMap<>();
         initCityList();
         this.cityName = new ArrayList<>(cityMap.keySet());
     }

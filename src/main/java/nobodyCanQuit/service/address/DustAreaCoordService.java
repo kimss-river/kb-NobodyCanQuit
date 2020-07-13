@@ -20,19 +20,12 @@ public class DustAreaCoordService {
         List<Result> list = addressCommand.getResultList();
         List<Result> names = new ArrayList<>(list.size());
 
-        int i = 0;
-        for (Result result : list) {
-            names.add(new Result());
-            names.get(i).setName(result.getName());
-            names.get(i).setXCoor(result.getX());
-            names.get(i).setYCoor(result.getY());
-            i++;
-        }
-
-        for (Result t : names) {
-            if (t.getName().contains(" ")) {
-                t.setName(t.getName().substring(0, t.getName().indexOf(" ")));
-            }
+        for (Result r : list) {
+            names.add(new Result(
+                    r.getName().contains(" ") ? r.getName().substring(0, r.getName().indexOf(" ")) : r.getName(),
+                    r.getX(),
+                    r.getY())
+            );
         }
 
         HashSet<Result> namesSet = new HashSet<>(names);

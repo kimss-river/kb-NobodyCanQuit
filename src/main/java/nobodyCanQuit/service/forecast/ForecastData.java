@@ -338,22 +338,17 @@ public class ForecastData {
 		return  list;
 	}
 	
-	public String[][] getTemp(List <FcstItem> listTmn,List <FcstItem> listTmx){
+	public String[][] getTemp(List<FcstItem> listTmn, List<FcstItem> listTmx){
 		String[][] listF = new String[8][8];
 		int num = 0;
 		for (FcstItem n : listTmn) {
 			for (FcstItem x : listTmx) {
-				{
-					if (n.getFcstDate().equals(x.getFcstDate())) {
-						listF[num][0] = n.getFcstDate();
-						listF[num][1] = n.getFcstValue();
-						listF[num][2] = x.getFcstValue();
-						num++;
-					} else {
-
-					}
+				if (n.getFcstDate().equals(x.getFcstDate())) {
+					listF[num][0] = n.getFcstDate();
+					listF[num][1] = n.getFcstValue();
+					listF[num][2] = x.getFcstValue();
+					num++;
 				}
-
 			}
 		}
 		return listF;

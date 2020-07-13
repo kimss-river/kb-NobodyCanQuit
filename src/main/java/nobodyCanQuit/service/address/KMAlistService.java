@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 
 @Component
 public class KMAlistService {
@@ -18,7 +18,7 @@ public class KMAlistService {
     private final Map<String, String> cityMap;
 
     public KMAlistService() {
-        this.cityMap = new TreeMap<>();
+        this.cityMap = new HashMap<>();
         initCityList();
     }
 

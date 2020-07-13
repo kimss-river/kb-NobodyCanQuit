@@ -21,7 +21,7 @@
                     <form:options items="${addressCommand.resultList}" itemLabel="name" itemValue="code" />
                 </c:if>
             </form:select>
-            <form:select path="dong" onChange="this.form.submit()">
+            <form:select path="dong">
                 <option value=""><spring:message code="search.addressLevel3.title"/></option>
                 <c:if test="${! empty addressForDongCommand.resultList}">
                     <form:options items="${addressForDongCommand.resultList}" itemLabel="name" itemValue="name" />
